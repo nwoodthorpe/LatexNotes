@@ -1,0 +1,41 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 30, 2015\\
+		\large Proof of CJRT - More Polynomials
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Proof of CJRT}}
+	
+	\textbf{Recall: } CJRT states that if $n$ is a root of a complex polynomial, then $\overline{n}$ is also a root, so long as $f(x)$ has real coefficients.\\
+	\begin{itemize}
+		\item[\textbf{Proof: }] Assume $f(x)$ is a polynomial with real coefficients, and that $c \in \mathbb{C}$ is a root of $f(x)$.\\\\
+		So,\\
+		\[f(c) = a_nc^n + a_{n-1}c^{n-1} + \dots + a_1c + a_0 = 0\]
+		\[\overline{a_nc^n + a_{n-1}c^{n-1} + \dots + a_1c + a_0} = \overline{0}\]
+		\[\overline{a_n} \overline{c}^n + \overline{a_{n-1}} \overline{c}^{n-1} + \dots + \overline{a_1} \overline{c} + \overline{a_0} = 0\]
+		\[ a_n \overline{c}^n + a_{n-1} \overline{c}^{n-1} + \dots + a_1 \overline{c} + a_0 = 0 \]
+		\begin{center}(Because $a_i$ is a real number, and the conjugate of a real is itself.)\end{center}
+		$\therefore f(\overline{c}) = 0$, so $\overline{c}$ is a root of $f$.\\
+		\item[\textbf{Ex. }] Write $f(x) = x^4 - 5x^3 + 16x^2 - 9x - 13$ as a product of irreducible factors in $\mathbb{C} \left[ x \right]$, given that $2-3i$ is a root.\\\\We know $2-3i$ is a root, so by CJRT, $2+3i$ is a root. $\therefore (x - 2 - 3i)(x - 2 + 3i)$ is a factor of $f(x)$\\
+		$(x - 2 - 3i)(x-2+3i)$\\
+		$= x^2 - 2x + 3xi - 2x + 4 - 6i - 3ix + 6i + 9$\\
+		$= x^2 - 4x + 13$\\
+		Now, by long division, we see that $f(x) = (x^2 - 4x + 13)(x^2 - x - 1) = (x - 2 - 3i)(x - 2 +3i)(x - \frac{1}{2} - \frac{\sqrt5}{2})(x - \frac12 + \frac{sqrt5}{2})$\\\\
+		$\therefore f(x)$ written as irreducible factors in $\mathbb{C} \left[ x \right]$ is $f(x) =  (x - 2 - 3i)(x - 2 +3i)(x - \frac{1}{2} - \frac{\sqrt5}{2})(x - \frac12 + \frac{sqrt5}{2})$\\
+		\item[\textbf{Ex. }] Prove that any real polynomial of odd degree has a real root.\\\\
+		Proof by contradiction.\\
+		Assume that $f(x)$ is a polynomial of $k$ degree and $k$ is odd and $f(x)$ has no real roots.\\\\
+		Thus, all of its roots are complex numbers with non-zero imaginary parts.\\\\
+		By CJRT, if $c$ is a root, then $\overline{c}$ is also root. We know $c \neq \overline{c}$ since all the roots have non-zero imaginary parts.\\\\
+		Thus, since all roots are imaginary, there must be an even number of roots.\\\\
+		but, by CPN, there are $k$ complex roots for a complex polynomial of degree $k$, and $k$ is odd.\\\\
+		Contradiction!
+	\end{itemize}
+\end{document}

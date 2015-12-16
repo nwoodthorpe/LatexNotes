@@ -1,0 +1,141 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 18, 2015\\
+		\large Conversions Between Polar Form and Standard Form - DMT
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Polar Form}}
+	
+	The polar form for the complex number $z$ is $z = r (\cos \theta + i \sin \theta)$. We usually factor the $r$, rather than showing it as $z = r \cos \theta + r i \sin \theta$
+	
+	\underline{\textbf{Polar to Standard}}
+	
+	Given $r$ and $\theta$, how do we find $z$ in standard form?
+	
+	By trig ratio's, we can figure out that $x = r \cos \theta$ and $y = r \sin \theta$.
+	
+	\begin{itemize}
+		\item[Ex. ] If $r = 3$, $\theta = \frac{\pi}{4}$, what is $z$ in standard form?\\\\
+		\begin{minipage}[t]{0.5\textwidth}
+		$x = r \cos \theta$\\
+		$x = 3 \cos \frac{\pi}{4}$\\
+		$x = \frac{3\sqrt{2}}{2}$\\
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			$y = r \sin \theta$\\
+			$y = 3 \sin \frac{\pi}{4}$\\
+			$y = \frac{3 \sqrt{2}}{2}$\\
+		\end{minipage}\\
+		
+		$z = \dfrac{3\sqrt{2}}{2} + \dfrac{3\sqrt{2}}{2} i$
+	\end{itemize}
+	
+	\underline{\textbf{Standard to Polar}}
+	
+	Suppose we're given $z = x + yi$, and we want to convert to polar form, $z = r(\cos \theta + i \sin \theta)$. We need to figure out $r$ and $\theta$.
+	
+	$r = \sqrt{x^2 + y^2}$
+	
+	$\tan\theta = \frac{y}{x}$\\
+	$\theta = \arctan \frac{y}{x}$\\
+	
+	\begin{itemize}
+		\item[Ex. ]If $z = \sqrt6 + \sqrt2 i$. what is $z$ in polar form?\\
+		\begin{minipage}[t]{0.5\textwidth}
+			$r = \sqrt{(\sqrt{6})^2 + (\sqrt{2})^2}$\\
+			$r = \sqrt8$\\
+			$r = 2\sqrt2$
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			$\theta = \arctan \dfrac{\sqrt{2}}{\sqrt{6}}$\\
+			$\theta = \arctan \dfrac{1}{\sqrt{3}}$\\
+			$\theta = \dfrac{\pi}{6}$
+		\end{minipage}
+		
+		$z = 2\sqrt{2}\left( \cos \dfrac{\pi}{6} + i \sin \dfrac{\pi}{6}\right)$
+		\item[Ex. ] Write $\cos \dfrac{15\pi}{6} + i \sin \dfrac{15\pi}{6}$ in standard form.
+		
+		By inspection, we see $r = 1$, $\theta = \dfrac{15\pi}{6}$.
+		
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				x &= r \cos \theta&\\
+				&= 1 \cos \dfrac{15 \pi}{6}\\
+				&= 1 \cos \dfrac{5\pi}{2}\\
+				&= 1 \cos \dfrac{\pi}{2}\\
+				&= 0
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				y &= r \sin \theta&\\
+				&= 1 \sin \dfrac{15 \pi}{6}\\
+				&= 1 \sin \dfrac{\pi}{2}\\
+				&= 1
+			\end{flalign*}
+		\end{minipage}
+		
+		$\therefore z = 0 + 1i = i$
+		\\\\\\
+		\item[Ex. ] Convert $z = -3\sqrt{2} + 3\sqrt{6}i$ into polar form.\\\\
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				r &= \sqrt{18 + 54}&\\
+				&= \sqrt{72}\\
+				&= 6\sqrt{2}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				\theta &= \arctan \left( \dfrac{3\sqrt6}{-3\sqrt2} \right)&\\
+				&= \arctan (-\sqrt3)\\
+				&= \dfrac{2 \pi}{3}
+			\end{flalign*}
+		\end{minipage}
+		\\ $z = 6\sqrt2 (\cos \frac{2\pi}{3} + i \sin \frac{2 \i}{3})$
+	\end{itemize}
+	
+	\underline{\textbf{Polar Multiplication of Complex Numbers (PMCN)}}
+	
+	\[ \text{If } z_1 = r_1(\cos \theta_1 + i \sin \theta_1) \text{ and } z_2 = 4_2(\cos \theta_2 + i \sin \theta_2), \text{then } z_1z_2 = r_1r_2(\cos(\theta_1 + \theta_2) + i \sin(\theta_1 + \theta_2) \]
+	
+	\begin{itemize}
+		\item[Ex. ] Multiply $(\sqrt6 + \sqrt2 i)(-3 \sqrt2 + 3\sqrt6 i)$
+		\begin{flalign*}
+			&= \bigg[ 2 \sqrt{2} \left( \cos \frac{\pi}{6} + i \sin \frac{\pi}{6} \right) \bigg] \cdot \bigg[ 6\sqrt{2} \left( \cos \frac{2 \pi}{3} + i \sin \frac{2 \pi}{3}\right) \bigg]&\\
+			&= 24 \bigg[\cos \frac{5 \pi}{6} + i \sin \frac{5 \pi}{6}\bigg]\\
+			&= 24 \bigg[ \frac{- \sqrt{3}}{2} + i \frac{1}{2} \bigg]\\
+			&= -12 \sqrt{3} + 12 i
+		\end{flalign*}
+	\end{itemize}
+	
+	We can see ghat when we multiply complex numbers, geometrically we multiply the distances from the pole and ad the angles from the polar axis.
+	
+	\underline{\textbf{De Moivre's Theorem}}
+	
+	\[ \text{If } \theta \in \mathbb{R}, n \in \mathbb{Z}\text{, then:} \]
+	\[ (\cos \theta + i \sin \theta)^n = \cos(n \theta)  + i \sin(n \theta)\]\\
+	
+	\begin{itemize}
+		\item[Ex. ] Simplify $(\cos \frac{3 \pi}{4} + i \sin \frac{3 \pi}{4})^{-1000}$
+		\begin{flalign*}
+			&= (\cos \frac{-3000 \pi}{4} + i \sin{-3000 \pi}{4})&\\
+			&= \cos(-750 \pi) + i \sin (-750 \pi)\\
+			&= \cos 0 + i \sin 0\\
+			&= 1 + oi\\
+			&= 1
+		\end{flalign*}
+	\end{itemize}
+	
+	\underline{\textbf{Corollary To DMT}}
+	
+	\[ \text{If } z = r(cos \theta + i \sin \theta) \text{ and } n \text{ is an integer,} \]
+	\[ z^n= r^n(\cos (n \theta) + i \sin(n \theta)) \]
+\end{document}

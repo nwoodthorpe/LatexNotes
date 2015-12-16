@@ -1,0 +1,45 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - December 04, 2015\\
+		\large Final Exam Review II
+	\end{center}
+	\vspace{0.25 in}
+	
+	\underline{\textbf{Things We Need To Know For Le Exam}}\\
+	
+	\begin{itemize}
+		\item Limits including L'Hopitals rule and squeeze theorem.
+		\item Differentiability using definition of the derivative.
+		\item Continuity
+		\item Derivatives including implicit and logarithmic differentiation
+		\item Curve sketching
+		\item Linear approximation
+		\item Newton's Method
+		\item Inverse and hyperbolic trig functions
+		\item MVT, IVT
+		\item Related rates
+		\item Man/Min values over a closed interval
+		\item Reimann sums as definite integrals.
+		\item Using FTC 1 and FTC 2
+		\item Areas between curves
+		\item Definitions and statements of theorems as required on Learn.
+		\item NOTE: We will need to know all theorems listen on Learn, but we will not be required to state proofs.
+	\end{itemize}
+\end{document}

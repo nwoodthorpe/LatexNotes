@@ -1,0 +1,74 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 26, 2015\\
+		\large Reducible Polynomials - FTA
+	\end{center}
+	\vspace{0.25 in}
+	\begin{itemize}
+		\item[\textbf{Proof: }] Prove that a polynomial over any field $\mathbb{F}$ of degree $n \geq 1$ has, at most, $n$ distinct roots.\\\\
+		Proof by induction.\\
+		\textbf{Base case: } When $n=1$, $f(x) = ax + c$, which has the sole root, $x=-\frac{c}{a}$. The polynomial is degree one, and has at most, one root.\\\\
+		\textbf{Inductive Hypothesis: } Assume that a polynomial of degree $k$ has at most $k$ roots for some $k \in \mathbb{N}$.\\\\
+		\textbf{Inductive Conclusion: } Need to show: A polynomial of degree $k+1$ has at most $k+1$ distinct roots.\\
+		Let $f(x)$ be a polynomial of degree $k+1$.\\
+		Assume $x = c_1$ is a root of $f$.\\
+		We know $(x-c_1)$ is a factor of $f(x)$. (FT)\\
+		$f(x) = (x-c_1)q(x)$ where $q(x)$ is a polynomial of degree $k$.\\
+		$q(x)$ is a polynomial of degree $k$, which, by the inductive hypothesis, has at most $k$ roots. Combined with our root $(x-c_1)$, we have at most $k+1$ roots.\\\\
+		$\therefore$ by POMI, the statement holds $\forall n \in \mathbb{N}$\\\\
+		\textbf{Note: } Its important to note that $\mathbb{F}$ is a field. This propery does not apply in $\mathbb{Z}_n$ with a non-prime $n$, or $\mathbb{Z}$.	
+	\end{itemize}
+	
+	\underline{\textbf{Reducible / Irreducible}}
+		
+	Let $\mathbb{F}$ be a field. A polynomial in $\mathbb{F}\left[ x \right]$ positive degree is reducible in $\mathbb{F}\left[ x \right]$ if it can be written as the product of two polynomials in $\mathbb{F} \left[ x \right]$ of positive degree. Otherwise, the polynomial is irreducible in $\mathbb{F} \left[ x \right]$
+	
+	\begin{itemize}
+		\item[Ex. ] Write $f(x) = x^4 + x^2 + 1$ as a product of irreducible factors in$\mathbb{Z}_3 \left[ x \right]$\\\\
+		
+		In $\mathbb{Z}_3$, we only have 3 numbers to check so we can just plug them in and see which produce 0.\\
+		$f(0) = 1, f(1) = 0, f(2) = 0$\\
+		$\therefore x=1, 2$ are roots.\\
+		So, the polynomial is divisible by $(x-1)(x-2) = (x+2)(x+1) = x^2 + 2$.\\\\
+		$(x^2 + 2)(x^2 + 2) = x^4 + x^2 + 1$ (By inspection)\\
+		$= (x+2)^2 (x+1)^2$\\
+		$x = 1, 2$ are repeated roots.
+	\end{itemize}
+	
+	\underline{\textbf{Multiplicity of a Root}}
+	
+	The multiplicity of a root $c$ of a polynomial $f(x)$ is the largest positive integer $k$ such that $(x-c)^k$ is a factor of $f(x)$.
+	
+	\begin{itemize}
+		\item[Ex. ] $f(x) = x^2 + 1$ \;\;\;\;\; in $\mathbb{R}\left[ x \right]$\\
+		This is irreducible.\\\\
+		\textbf{Note: } $(x^2 + 1)^2 = x^4 + 2x^2 + 1$ has no roots in $\mathbb{R} \left[ x \right]$, but is still reducible. Roots and reducible-ness are related, but don't have an absolute 1-1 relationship.\\\\
+		What if we use $\mathbb{C}$?\\
+		$x^2+1 = (x-i)(x+i)$\\
+		So, $x^4 + 2x^2 + 1 = (x-i)^2 (x+i)^2$\\
+		$x = \pm i$ are roots with multiplicity of 2.
+	\end{itemize}
+	
+	\underline{\textbf{Fundamental Theorem of algebra}}
+	
+	For all complex polynomials $f(z)$ with deg$(f(z)) \geq 1$, there exists a $z_0 \in \mathbb{C}$ such that $f(z_0) = 0$
+	
+	\begin{itemize}
+		\item[Ex. ] Solve $x^3 0 x^2 + x - 1 = 0$ in $\mathbb{C}$\\\\
+		$x^2(x-1) + (x-1) = 0$\\
+		$(x-1)(x^2 + 1) = 0$\\
+		$x=1, \pm i$
+	\end{itemize}
+	
+	\underline{\textbf{Complex Polynomials of Degree n Have n Roots (CPN)}}
+	
+	If $f(z)$ is a complex polynomial of degree $n \geq 1$, then $f(z)$ has $n$ roots, $c_1, c_2, \dots, c_n \in \mathbb{C}$ and can be written as:
+	\[ c(z-c_1)(z-c_2)\dots (z-c_n) \text{ for some } c \in \mathbb{C} \]
+\end{document}

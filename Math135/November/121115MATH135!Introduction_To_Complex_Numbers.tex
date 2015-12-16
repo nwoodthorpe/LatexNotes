@@ -1,0 +1,126 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 12, 2015\\
+		\large Introduction To Complex Numbers
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Number Sets We Know So Far}}
+	
+	The first number set we learned was the Naturals ($\mathbb{N}$). After that, we moved to a superset of the Naturals, the Integers ($\mathbb{Z}$). Then, to a superset of the Integers, the Rationals ($\mathbb{Q}$). And finally, a superset of the Rationals, the Reals($\mathbb{R})$. Today, we will the basics of a superset of the reals: The Complex Number System ($\mathbb{C}$). Hooray.
+	
+	\underline{\textbf{Complex Numbers}}
+	
+	A \textbf{Complex Number} in \textbf{standard form} is an expression of the form $x+yi$, where $x, y \in \mathbb{R}$.\\
+	The set of all complex numbers is written as $\mathbb{C} = \lbrace x+yi \mid x, y \in \mathbb{R}\rbrace$\\
+	The real part of a complex number $z$, $x$, is denoted as $Re(z)$.\\
+	The imaginary part of a complex number $z$, $yi$, is denoted as $Ie(z)$
+	
+	\underline{\textbf{Examples of Complex Numbers}}
+	\begin{enumerate}[i)]
+		\item $z = -1 + 2i$:\\ $Re(z) = -1$, $Im(z) = 2$
+		\item $z = \pi + \sqrt{7}i$:\\ $Re(z) = 5$, $Im(z) = 0$
+		\item $z = 5 + 0i$:\\ $Re(z) = 5$, $Im(z) = 0$\\
+		Note: $Im(z) = 0$. When this is the case, we say $z \in \mathbb{R}$
+		\item $z = 0 - 3i$:\\ $Re(z) = 0$, $Im(z) = 3$\\
+		Note: $Re(z) = 0$. When this is the case, we say $z$ is purely imaginary.
+	\end{enumerate}
+	Complex numbers are equal iff the real parts are equal \textbf{and} the imaginary parts are equal.
+	
+	\underline{\textbf{Addition}}
+	
+	Addition in the complex number is defined as:\\
+	
+	$(a + bi) + (c+ di) = (a+c) + (b+d)i$\\
+	
+	Example: $(3+2i) + (-1+4i) = (2 + 6i)$
+	
+	\underline{\textbf{Multiplication}}
+	
+	Multiplication is defined as :\\
+	
+	$(a + bi)(c + di) = (ac-bd)+(ad+cb)i$\\
+	
+	This looks really confusing. Turns out, we don't need this formula at all if we keep in mind $i^2 = -1$. Using this fact, we can just FOIL complex number products in the same way we do with reals.\\
+	
+	Example:
+	\begin{flalign*}
+		(4-3i)(2+i) &= 8 + ri - 6i - 3i^2&\\
+		&= 8 - 2i + 3\\
+		&= 11 - 2i
+	\end{flalign*}
+	\pagebreak\\
+	\underline{\textbf{Solving Equations}}
+	
+	Example: Solve $x^2 + 2x + 5 = 0$.
+	\begin{flalign*}
+		x &= \frac{-2 \pm \sqrt{2^2 - 4(1)(5)}}{2(1)}&\\
+		&= \frac{-2 \pm \sqrt{-16}}{2}\\
+		&= \frac{-2 \pm 4\sqrt{-1}}{2}\\
+		&= 1 \pm 2\sqrt{-1}
+	\end{flalign*}
+	Previously, we would stop here (Or when we noticed -16 under the square root) and state that there is no real solution. However when working in the complex number system, we can fully solve for x.
+	\begin{flalign*}
+		x &= -1 \pm 2\sqrt{-1}&\\
+		&= -1 \pm 2i
+	\end{flalign*}
+	
+	Subbing these two solutions back into our original equation would produce an answer of 0.
+	
+	\underline{\textbf{Additive Identity}}
+	
+	The additive identity in the complex number system is $0 + 0i$.
+	
+	$z + 0+0i = z$\\
+	
+	\underline{\textbf{Additive Inverse}}
+	
+	$x + yi + (-x -yi) = 0 + 0i$
+	
+	So, the additive inverse $-z$ of $z$ (Defined as $(x + yi)$) is $(-x -yi)$.\\
+	
+	\underline{\textbf{Subtraction}}
+	
+	Subtraction is defined as:
+	
+	$z-w = z + (-w)$
+	
+	Subtraction in the complex number system works exactly the same as subtraction in the real number system.\\
+	
+	\underline{\textbf{Multiplicative Identity}}
+	
+	The multiplicative identity is $1 + 0i$
+	
+	$(z)(1 + 0i) = z$\\
+	
+	\underline{\textbf{Multiplicative Inverse}}
+	
+	$(x+yi)^{-1} = \dfrac{x+yi}{x^2+y^2} = \dfrac{(x-yi)}{(x+yi)(x-yi)}$\\
+	
+	\underline{\textbf{Division}}
+	
+	The easy way to do division in the complex number system is to multiply by the congigate of the denominator over the congigate of the denominator.\\
+	\pagebreak\\
+	\underline{\textbf{Examples:}}
+	\begin{enumerate}[i)]
+	\item Express the following in standard form:\begin{flalign*}
+		&\frac{(1-2i)-(3+4i)}{(5-6i)}&\\
+		&= \frac{(-2-6i)}{5-6i}\frac{5+6i}{5+6i}\\
+		&= \frac{-10 -12i -30i + 36i^2}{25 - 36i^2}\\
+		&= \frac{-46 - 42i}{61}\\
+		&= \frac{46}{61} - \frac{42i}{61}
+	\end{flalign*}
+	\item Simplify:
+	\begin{flalign*}
+		&i^{2015}&\\
+		&= (i^2)^{1007} i\\
+		&= (-1)^{1007} i\\
+		&= -i
+	\end{flalign*}
+	\end{enumerate}
+\end{document}

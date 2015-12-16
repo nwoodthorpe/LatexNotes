@@ -1,0 +1,66 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 20, 2015\\
+		\large Integration Applications - Intro to First Principles
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Integral Applications:}}
+	
+	\textbf{Note for non-physics people:} An object falling close to the earths surface has upward acceleration of -9.8$m/s^2$.
+	
+	\begin{itemize}
+		\item[Ex. ] A stone is dropped from the Space Deck of the CN Tower 450m above the ground.
+		\begin{enumerate}[a)]
+			\item Find the height $h$ of the stone above the ground at time $t$.\\\\
+			We know $a(t) = -9.8$\\
+			$v(t) = -9.8t + c$\\
+			The stone is dropped, so its initial velocity is 0.\\\\
+			$v(0) = 0 =  -9.8(0) + c$\\
+			$\therefore c = 0$\\
+			$\therefore v(t) = -9.8(t)$\\\\
+			$h(t) = \dfrac{-9.8t^2}{2} + c_1$\\\\
+			The stone was dropped at $h=450$.\\
+			$h(0) = 450 \implies \dfrac{-9.8(0)}{2} + c_1 = 450$\\
+			$c_1 = 0$\\
+			$\therefore h(t) = -4.9t^2 + 450$
+			\item How long does it take the stone to hit the ground?\\\\
+			We need to find t when $h(t) = 0$\\
+			\begin{flalign*}
+				0 &= -4.9t^2 + 450&\\
+				t^2 &= \dfrac{450}{4.9}\\
+				t &= +\sqrt{\dfrac{450}{4.9}}\;\;\;\text{(Time cannot be negative in this application)}\\
+				t &\approx 9.58s
+			\end{flalign*}
+			\item What is the stones impact velocity?\\\\
+			We need to find $v(9.58)$\\\\
+			\begin{flalign*}
+				v(t) &= -9.8t&\\
+				v(9.58) &= -9.8(9.58)\\
+				&= -93.9 m/s
+			\end{flalign*}
+		\end{enumerate}
+	\end{itemize}
+	\clearpage
+	\underline{\textbf{First Principles:}}
+	
+	\textbf{Note: } in this section I reference 'Area Under a Curve', a pdf available under Mike Eden's section on Learn.
+	
+	\begin{enumerate}
+		\item \textbf{What would be another way to estimate the total distance Caroline travelled?}\\
+		We could have used the right endpoint of each interval instead of the left. (Denoted $R_6$).
+		\item \textbf{How could we make the estimate better?}\\
+			We could have use the midpoint speed of each interval instead of left or right.\\
+			We could decrease the width of our intervals (i.e. increase the number of intervals)
+		\item \textbf{How is this related to area under a curve?}\\
+		The antiderivative of velocity is distance.\\
+		The area under the velocity curve gives distance over an interval $[t_1, t_2]$.\\\\
+		Conclusion: The anti-derivative of velocity is the area under the velocity curve.
+	\end{enumerate}
+\end{document}

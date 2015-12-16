@@ -1,0 +1,134 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 20, 2015\\
+		\large Roots of Exponential Numbers
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Complex $\mathbf{n}$'th Roots}}
+	
+	If $a$ is a complex number and $n$ is a natural number, then the complex numbers that solve $z^n = a$ are called the complex $n$'th roots.
+	
+	\begin{itemize}
+		\item[Ex. ] Find all complex 6'th roots of -64.\\\\
+		We need to solve $z^6 = -64$.\\
+		Let $z = r(cos \theta + - \sin \theta)$\\
+		$r^6 (\cos (6\theta) + i \sin (6\theta)) = 64(\cos \pi + i \sin \pi)$\\\\
+		Two complex numbers in polar form are equal iff their moduli are equal and the difference between their arguments is a multiple of $2 \pi$. (Including 0 and negatives)\\\\
+		Thus,
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				r^6 &= 64&\\
+				4 &= 2
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				6\theta - \pi &= 2k\pi, k \in \mathbb{Z}&\\
+				6\theta &= (2k+1)\pi\\
+				\theta &= \frac{\pi}{6} + \frac{\pi}{3}k
+			\end{flalign*}
+		\end{minipage}\\\\
+		
+		Note: If we start with $k=0$ and count up, $\theta$ will begin to repeat when $k=6$ since $6(\frac{\pi}{3}) = 2\pi$, and $\sin$ / $\cos$ of $2\pi$ = 0.\\\\
+		We get 6 roots with arguments:\\
+		\[ \dfrac{\pi}{6}, \dfrac{3\pi}{6}, \dfrac{5\pi}{6}, \dfrac{7\pi}{6}, \dfrac{9\pi}{6}, \dfrac{11\pi}{6} \]\\
+		$\therefore$ the roots will be:\\
+		\[ \sqrt{3} + 1, \;2i\;, -\sqrt{3} + i, -\sqrt{3} - i, -2i, \sqrt{3} - i \]\\
+		
+		Notice what happens when we plot these roots on the complex plane.
+		\\\\
+		
+		\begin{center}\begin{tikzpicture}
+		\begin{axis}[
+		x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+		y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+		xlabel={Re},
+		ylabel={\;\;Im\;(i)},
+		axis equal image,
+		axis lines=middle,
+		xmin=-2,xmax=2,
+		ymin=-2,ymax=2,
+		enlargelimits={abs=1cm},
+		axis line style={latex-latex},
+		yticklabel style={anchor=west},
+		ytick={},
+		xtick={-1.7, 1.7}
+		]
+
+		\addplot[only marks] table {
+			1.7 1
+			0 2
+			-1.7 1
+			-1.7 -1
+			0 -2
+			1.7 -1
+		};
+		\end{axis}
+		\end{tikzpicture}\;\;\;\;\;\;\;\;\;\end{center}
+	\end{itemize}
+	\clearpage
+	
+	\underline{\textbf{Complex $\mathbf{n}$'th Roots Theorem (CNRT)}}
+	
+	Let $n \in \mathbb{N}$. If $r(\cos \theta + i \sin \theta)$ is the polar form of a complex number $a$, then the solutions to $z^n = a$ are:
+	\[ \sqrt[n]{r} \bigg( \cos \dfrac{\theta + 2k \pi}{n} + i \sin \dfrac{\theta + 2k \pi}{n} \bigg)  \text{for } k = 0, 1, 2, \dots, n-1\]
+	
+	Note \begin{enumerate}
+		\item Any non-zero complex number will have $n$ distinct $n'th$ roots.
+		\item The roots graphed on a complex plane will lie on a circle of radius $r$ centered on the pole (origin) and they will be evenly spaced with angles of $\frac{2\pi}{n}$ between them.
+	\end{enumerate}
+	
+	\underline{\textbf{$\mathbf{n}$'th Roots of Unity}}
+	
+	Let $n \in \mathbb{N}$ An $n$'th root of unity is a complex number that solves:
+	\[ z^n = 1 \]
+	
+	\begin{itemize}
+		\item[Ex. ] Find all 8'th roots of unity.\\\\
+		First, note that the complex number $1$ has $r=1$ and $\theta=0$ (Think about where 1 lies on the complex plane)\\\\
+		So, we will use CNRT where $n=8, a=1, r=1, \theta = 0$\\
+		\begin{flalign*}
+			z &= \sqrt[8]{1} \bigg( \cos \dfrac{0 + 2k\pi}{8} + i \sin \dfrac{0 + 2k\pi}{8} \bigg)&\\
+			&= \cos \dfrac{k \pi}{4} + i \sin \dfrac{k \pi}{4}, k = 0, 1, \dots, 7\\
+			&= 1, \frac{sqrt{2}}{2} +\frac{\sqrt{2}}{2}i, i, -\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i, -1, -\frac{\sqrt{2}{2}} - \frac{\sqrt{2}}{2}i, -i, \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2}i
+		\end{flalign*}
+		\item[Ex. ] $z^5 = -16\overline{z}$\\\\
+		$z = r(\cos \theta + i \sin \theta)$\\\\
+		$r^5(\cos (5 \theta) + i \sin(5 \theta)) = 16(\cos \pi + i \sin \pi)(r(\cos (-\theta) + i \sin(-\theta)))$\\
+		$r^5(\cos (5 \theta) + i \sin(5 \theta)) = 16r(\cos(\pi - \theta) + i \sin(\pi - \theta))$\\
+		
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			r^5 &= 16r&\\
+			r^5 - 16r &= 0\\
+			r(r^4 - 16) &= 0\\
+			r = 0,&\;\; r = 2\\
+			\end{flalign*}
+			If $r=0$, $z = 0 + 0i$\\
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			5 \theta &= \pi - \theta + 2k\pi&\\
+			6 \theta &= \pi + 2k \pi\\
+			\theta &= \dfrac{\pi + 2k \pi}{6}\\
+			\theta &= \dfrac{\pi}{6} + \dfrac{k\pi}{3}
+			\end{flalign*}
+		\end{minipage}\\
+		$z = \sqrt{3} + i, 2i, -\sqrt{3} + i, -\sqrt{3} - i, -2i, \sqrt{3} - i, 0$
+	\end{itemize}
+\end{document}

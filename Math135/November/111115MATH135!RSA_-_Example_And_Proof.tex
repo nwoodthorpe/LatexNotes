@@ -1,0 +1,131 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 11'th, 2015\\
+		\large RSA - Example And Proof
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Example:}}
+	
+	Suppose Alice chooses $p=11$, $q=13$, $e=23$.
+	\begin{enumerate}[1)]
+		\item What is Alice's public key?
+		\item What is Alice's private key?
+		\item If Bob wants to send message $M=25$ to Alice, what is ciphertext $C$?
+	\end{enumerate}
+	\begin{enumerate}[1)]
+		\item Alice's public key is $(e, n)$\\
+		$n=pq$\\
+		$n = (11)(13)$\\
+		$n = 143$\\
+		Alice has already chosen $e$ such that $1 < e < (p-1)(q-1)$ and $\gcd(e, (p-1)(q-1)) = 1$.\\
+		So, public key is $(23, 143)$
+		\item To get private key $d$, we must solve\\
+		$ed \equiv 1\;(\bmod\; 120)$\\
+		$23d \equiv 1 \;(\bmod\; 120)$\\
+		
+		We'll use EEA to solve this.
+		\begin{flalign*}
+			23d &\equiv 1\;(\bmod\; 120)&\\
+			23d - 1 &= 120k, k \in \mathbb{Z}\\
+			120k + 23d &= 1\\
+		\end{flalign*}
+		\begin{tabular}{c|c|c|c}
+			k&d&r&q\\
+			\hline
+			1&0&120&0\\
+			0&1&23&0\\
+			1&-5&5&5\\
+			-4&21&3&4\\
+			5&-26&2&1\\
+			9&47&1&1\\
+			23&-120&0&2
+		\end{tabular}
+		\;\;\;\;\;\;\;\;\;\;\;So, $d=47$.\\
+		
+		\item To encode the message, we need to solve the following congruence:
+		\begin{flalign*}
+			25^{23} &\equiv C\;(\bmod\; 143)&\\
+			25^{16} 25^4 25^2 25 &\equiv C\;(\bmod\; 143) \text{ (Calculate these off to the side)}\\
+			(14)(92)(53)(25) &\equiv C\;(\bmod\; 143)\\
+			(1288)(1325) &\equiv C\;(\bmod\; 143)\\
+			(1)(38) &\equiv C\;(\bmod\; 143)\\
+			38 &\equiv C\;(\bmod\; 143)
+		\end{flalign*}
+		Because $C < 143$, $C = 38$.\\
+		
+		\textbf{Note:} If Alice wanted to decrypt message $C$, she must solve:\\
+		$38^{47} \equiv 25\;(\bmod\; 143)$
+	\end{enumerate}
+	\pagebreak
+	\underline{\textbf{RSA Theorem}}
+	
+	If:
+	\begin{enumerate}[ 1)]
+		\item $p$ and $q$ are prime numbers.
+		\item $n=pq$
+		\item $e$ and $d$ are positive integers such that $ed \equiv 1\;(\bmod\; (p-1)(q-1))$
+		\item $0 \leq M \leq n$
+		\item $M^e \equiv C\;(\bmod\; n)$
+		\item $C^d \equiv R\;(\bmod\; n)$ Where $0 \leq R \leq n$
+	\end{enumerate}
+	Then, $R=M$.
+	
+	\underline{\textbf{RSA Theorem - Proof}}
+	
+	Assume all hypothesis of the RSA Theorem (1-6).
+	\begin{flalign*}
+		R &\equiv C^d\;(\bmod\; n) \text{ (By hypothesis)}&\\
+		&\equiv M^{e^d}\;(\bmod\; n) \text{ (By hypothesis)}\\
+		&\equiv M^{ed}\;(\bmod\; n)
+	\end{flalign*}
+	We know:
+	\begin{flalign*}
+		ed &\equiv 1\;(\bmod\; (p-1)(q-1))&\\
+		&= 1 + k(p-1)(q-1), k \in \mathbb{Z}
+	\end{flalign*}
+	\begin{flalign*}
+		\text{So, } R &\equiv M^{1+k(p-1)(q-1)}\;(\bmod\; n)&\\
+		&\equiv M \cdot M^{k(p-1)q-1)}\;(\bmod\; n)\\
+	\end{flalign*}
+	Since $p\mid n$ and $q \mid n$, we know:\\
+	
+	$ \equiv  M \cdot M^{k(p-1)(q-1)}\;(\bmod\; p)$ and $R \equiv M \cdot M^{k(p-1)(q-1)}\;(\bmod\; q)$\\
+	
+	We will show $ \equiv M\;(\bmod\; p)$ and $R \equiv M\;(\bmod\; q)$\\
+	
+	\begin{minipage}[t]{0.5\textwidth}
+		\textbf{Case 1:} $p \mid m$\\
+		$M \equiv 0\;(\bmod\; p)$\\
+		and $m \cdot M^{k(p-1)(p=1)} \equiv 0 \;(\bmod\; p)$\\
+		So, $R \equiv M\;(\bmod\; p)$\\
+	\end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+		\textbf{Case 2:} $p \nmid m$
+		\begin{flalign*}
+		M^{p-1} &\equiv 1\;(\bmod\; p) \text{ (By F$\ell$T)}&\\
+		(M^{(p-1)})^{k(q-1)} &\equiv 1^{l(q-1)} \equiv 1\;(\bmod p)\\
+		M \cdot M^{k(p-1)(q-1)} &\equiv M\;(\bmod\; p)
+		\end{flalign*}
+		$R \equiv M \;(\bmod\; p)$ (By Transitivity of Congruences)
+	\end{minipage}
+	
+	In a similar manner, we show $R \equiv M\;(\bmod\; q)$.\\
+	
+	Since $\gcd(p, q) = 1$, then $R \equiv M\;(\bmod\; pq)$ (CRT)\\
+	
+	And, since $n=pq$, $R \equiv M\;(\bmod\; n)$\\
+	
+	As $0 \leq R, M \leq n$, $R=M$\\
+	\pagebreak
+	
+	\underline{\textbf{Why is RSA Secure?}}
+	
+	Given $(e, n)$ (The public key) and $C$, the ciphertext (or encrypted message), we need to find $d$ to decrypt.\\
+	To find $d$, you need $(p-1)(q-1)$, which means factoring $n$. This is a very difficult task for computers, especially with large $n$. This means an eavesdropper has no efficient method of computing $d$ and decoding the message.
+\end{document}

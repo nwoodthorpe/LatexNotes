@@ -1,0 +1,77 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 25, 2015\\
+		\large More Polynomials: RT and FT
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Example:}}
+	
+	\begin{itemize}
+		\item[\;\;] Let $f(x)$ and $g(x)$ be polynomials in a field $\mathbb{F}$.\\\\
+		If $f(x) \;\vert\; g(x)$ and $g(x)\;\vert\; f(x)$, show that $f(x) = c g(x)$ for some $c$ in the field $\mathbb{F}$.\\
+		\begin{itemize}
+			\item[Proof: ] Assume $f(x) \mid g(x)$ and $g(x) \mid f(x)$\\
+			$g(x) = _1(x)f(x)$ for some $g_q(x) \in \mathbb{F}\left[x\right]$\\
+			$f(x) = q_2g(x)$ for some $q_2(x) \in \mathbb{F}\left[x\right]$\\
+			
+			By substitution, $g(x) = q_1(x)q_2(x)g(x)$\\
+			We know the degree of $q_1(x)q_2(x) = 0$ (Since $(q_1(x)q_2(x) = 1$)\\
+			So, the degree of $q_1(x) = 0$, and the degree of $q_2(x) = 0$\\
+			This means $q_1(x)$ and $q_2(x)$ are constants.\\
+			$q_2(x) = c,$ for some $c \in \mathbb{F}$.\\\\
+			$\therefore f(x) = c g(x)$
+		\end{itemize}
+	\end{itemize}
+	\underline{\textbf{Polynomial Equation}}
+	
+	A polynomial equation is an equation of the form:
+	\[ a_nx^n + a_{n-1}x^{n-1}+ \dots + a_1x + a_0 = 0 \]
+	Which will often be written as $f(x) = 0$/
+	
+	An element $c \in \mathbb{F}$ is called a root or zero of $f(x)$ iff $f(c) = 0$.
+	
+	\underline{\textbf{Remainder Theorem}}
+	
+	The remainder when the polynomial $f(x)$ is divided by $(x-c)$ is $f(c)$.
+	
+	\begin{itemize}
+		\item[Ex. ]
+		\begin{enumerate}[i)]
+			\item From yesterday:\\\\
+			$f(z) = iz^3 + (3+i)z^2 + (3+5i)z + (-2+2i)$\\
+			$f(z) = (iz^2 + 4z + (-1-i))(z + (1+i)) + 2i$\\\\
+			RT tells us $f(-1-i) = 2i$
+			
+			\item $f(x) = x^2 + 1 = (x+1)(x-1) +2$\\\\
+			RT tells us $f(-1) = 2$, $f(1) = 2$.
+		\end{enumerate}
+		\item[Ex. ] In $\mathbb{Z}_7$, what is the remainder when $f(x) = 4x^3 + 2x + 5$ is divided by $x + 6$\\\\
+		\begin{minipage}[t]{0.5\textwidth}
+			The dumb way:
+			\begin{flalign*}
+			f(x) &= f(-6)&\\
+			&= 4(-6)^3 + 2(-6) + 5\\
+			&= -864 + 2 + 5\\
+			&= 4
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			The smart way:
+			\begin{flalign*}
+				f(-6) &= f(1)&\\
+				&= 4 + 2 + 5\\
+				&= 4
+			\end{flalign*}
+		\end{minipage}
+	\end{itemize}
+	\underline{\textbf{Factor Theorem (FT)}}
+	
+	The linear polynomial $(x-c)$ is a factor of the polynomial $f(x)$ iff $f(c ) = 0$.
+\end{document}

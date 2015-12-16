@@ -1,0 +1,90 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 13'th, 2015\\
+		\large Newton's Method - Integral Calculus
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Newton's Method}}
+	
+	Newton's Method is an efficient algorithm to find roots of $f(x)$. That is, the x values where $f(x) = 0$
+	
+	To use Newton's Method, begin by making an root approximation, $x_0$. A closer approximation will mean Newton's Method will converge faster, though an accurate approximation is not necessary. We run our approximation through a simple algorithm $n$ times to achieve a close approximation. Usually, an accurate estimation can be reached within 3 iterations of Newtons Method.
+	
+	When we have a $x_i$, we calculate $x_{i+1}$ using the following formula.
+	\[x_{i+1} = x_n - \frac{f(x_n)}{f'(x_n)} \text{\;\;\;\;So long as $f'(x_n) \neq 0$}\] 
+	
+	\textbf{Example:} Use Newton's Method to find the root in $(0, 2)$ to $f(x) = e^x - 2\cos x = 0$
+	\begin{itemize}
+		\item[ ] Start by computing $f'(x)$.\\
+		
+		$f'(x) = e^x + 2 \sin x$\\
+		
+		Now we need to choose an estimation. Lets choose $x_0 = 1.5$\\
+		
+		We obtain the following sequence of approximations using the Newton's Method algorithm listed above:\\
+		
+		$x_0 = 1.5, x_1 = 0.830, x_2 = 0.580, x_3 = 0.541$\\
+		
+		The actual root was $c \approx 0.540$ Newton's Method is not exact but a very good approximation.
+	\end{itemize}
+	
+	\underline{\textbf{Integral Calculus}}
+	
+	The basis of integral calculus comes from the area problem. Suppose you're given a continuous function $f(x)$ that is positive on some interval $[a, b]$. Find the area between $f(x)$ and the x axis between $a$ and $b$.
+	
+	We could approximate the area beneath the curve by dividing the interval into $n$ equal subintervals, drawing vertical lines through our function. We can then tally up the area of these rectangles and have a good estimation of our area.
+	
+	As $n \rightarrow \infty$ that the approximation of the area $\rightarrow$ $A$, our actual area.
+	
+	\begin{itemize}
+		\item[ ]\textbf{Define: Riemann Sum:} Let $f(x)$ be defined on $[a, b]$ and let $\Delta$ be a partition of $[a, b]$, given by:
+		
+		\[ a = x_0 < x_1 < x_2 < \dots < x_{n-1} < x_n = b\]
+		
+		Where $\Delta x_i = x_i - x_{i-1}, i = 1, 2, \dots, n$ ($\Delta x_i$ represents the width of the $i$'th partition/sub-interval)\\
+		
+		Let $c_i \in [x_{i-1}, x_i]$, then
+		
+		\[ \sum_{i=1}^n f(c_i) \Delta x_i \]
+		
+		Is called a Riemann sum of $f(x)$ for the partition $\Delta$. It represents an approximation of the area $A$ under the curve.
+	\end{itemize}
+	\textbf{Remark: } If each subinterval is of equal length, then $\Delta x_i = \Delta x = \frac{b-a}{n}$
+	
+	And $x_j = a + (\frac{b-1}{n})j, j = 0,\dots,n$
+	
+	Also, as $n \rightarrow \infty, \Delta x \rightarrow 0$
+	
+	\textbf{Example:} Estimate or approximate the area between $y=f(x)=\sqrt{1-x^2}$ and the x axis between $x=0$ and $x=1$
+	\begin{itemize}
+		\item[ ] Choose the subintervals to be of equal length.\\
+		$\Delta x = \frac{1-0}{n}=\frac{1}{n}$\\
+		
+		\[ A \approx \sum_{i=1}^b f(c_i) \Delta x = \sum_{i=1}^n \sqrt{1-{c_i}^2} \cdot \frac{1}{n}, x_{i-1} < c_i < x \]
+		
+		If we choose $c_i = \frac{i}{n}$, we'll get a lower approximation.
+		
+		\[ A_L = \sum_{i=1}^{n} \frac{1}{n} \cdot \sqrt{1 - (\frac{i}{n})^2} \]
+		
+		If we choose $c_i = x_{i-1} = \frac{i-1}{n}$, we obtain an upper estimate.
+		
+		\[ A_U = \sum_{i=1}^n \frac{1}{n} \cdot \sqrt{1- (\frac{i-1}{n})^2} \]
+		
+		Thus, $A_L < A < A_U$ for all $n$\\
+		
+		\begin{tabular}{c|c|c}
+			$n$&$A_L$&$A_U$\\
+			\hline
+			4&0.6239&0.8739\\
+			10&0.7261&0.8261\\
+			100&0.7801&0.7901\\
+			1000&0.7848&0.7858
+		\end{tabular}
+	\end{itemize}
+\end{document}

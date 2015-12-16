@@ -1,0 +1,108 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - October 29'th, 2015
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{L'Hopitals Rule - Examples:}}
+	\vspace{0.25 in}
+	
+	\begin{enumerate}[i)]
+		\item Evaluate $\lim_{x \to 0} \frac{\ln{\cos{x}}}{\sin{x}}$\\
+		
+		Let $f(x) = \ln{\cos{x}}$\\
+		Let $g(x) = \sin{x}$\\
+		Then, $f(0) = g(0) = 0$\\
+		
+		$f'(x) = \frac{-\sin{x}}{\cos{x}}$ (Chain rule)\\
+		$g'(x) = \cos{x}$\\
+		
+		Since $\lim_{x \to 0} \frac{f'(x)}{g'(x)} = -\lim_{x \to 0} \frac{\sin{x}}{\cos^2{x}} = 0$ (By Quotient Rule)\\
+		$\implies \lim_{x \to 0} \frac{\ln{\cos{x}}}{\sin{x}} = 0$ (By L'Hopitals Rule)\\
+		
+		\item Evaluate $\lim_{x \to 0} \left( \frac{1}{\sin{x}} - \frac{1}{x} \right)$\\
+		
+		Rewrite $\left( \frac{1}{\sin{x}} - \frac{1}{x} \right) = \frac{x - \sin{x}}{x \sin{x}}$  (This is an indeterminate limit (0/0) so we apply L'Hoptials Rule)\\
+		
+		Let $f(x) = x - \sin{x}$\\
+		Let $g(x) = x \sin{x}$\\
+		$f'(x) = 1 - \sin{x}$\\
+		$g'(x) = \sin{x} + x \cos{x}$\\
+		
+		But, $\lim_{x \to 0} f'(x) = 0$, $\lim_{x \to 0} g'(x) = 0$\\
+		Our limit is still indeterminate, so we apply L'Hopitals rule again.\\
+		
+		$\lim_{x \to 0} \frac{f(x)}{g(x)} = \lim_{x \to 0}\frac{f'(x)}{g'(x)} = \lim_{x \to 0} \frac{f''(x)}{g''(x)}$\\
+		
+		$f''(x) = sinx$\\
+		$g''(x) = 
+		2 \cos{x} - x \sin{x}$\\
+		
+		$\lim_{x \to 0}\frac{f''(x)}{g''(x)} = \lim_{x \to 0} \frac{\sin{x}}{2 \cos{x} \sin{x}} = \frac{0}{2} = 0$ (Limit Quotient Rule)\\
+		
+		$\therefore \lim_{x \to 0}\left( \frac{1}{\sin{x}} - \frac{1}{x} \right) = 0$ (By L'Hoptials Rule)\\
+		
+		\item Evaluate $\lim_{x \to 0^+} x \ln{x}$\\
+		
+		Rewrite $x \ln{x} = \frac{ln {x}}{\frac {1}{x}}$ ($\frac{-\infty}{\infty}$ Indeterminate limit, so we use L'Hopitals rule)\\
+		
+		Let $f(x) = \ln{x}$\\
+		Let $g(x) = \frac{1}{x}$\\
+		So, $f'(x) = \frac{1}{x}$\\
+		and $g'(x) = \frac {-1}{x^2}$\\
+	
+		$\lim_{x \to 0^+} \frac{f(x)}{g(x)} 
+		= \lim_{x \to 0^+} \frac{f'(x)}{g'(x)} 
+		= \lim_{x \to 0^+} \frac{\frac{1}{x}}{\frac{-1}{x^2}}
+		= \lim_{x \to 0^+} \frac{x^2}{-x}
+		= \lim_{x \to 0^+} -x
+		= 0$\\
+		
+		$\therefore \lim_{x \to 0^+} x \ln{x} = 0$ (By L'Hopitals Rule)
+		\pagebreak
+		
+		\vspace{0.25 in}
+		\textbf{Note:} Similarily, we can show that for any $a > 0$, $\lim_{x \to 0^+} x^a \ln{x} = 0$\\
+		
+		\item Evaluate $\lim_{x \to \infty}x^\frac{1}{x}$\\
+		
+		\begin{flalign*}
+			Simplify: x^\frac{1}{x} &= e^{\ln{x^\frac{1}{x}}} &\\
+			&= e^{\frac{1}{x} \ln{x}} \\
+			&= e^{\frac {\ln {x}}{x}} 
+		\end{flalign*}
+		\begin{flalign*}
+			\lim_{x \to \infty} x^{\frac{1}{x}} &= \lim_{x \to \infty} e^{\frac{\ln{x}}{x}} &\\
+			&= e^{\lim_{x \to \infty} \frac{\ln{x}}{x}}\\
+		\end{flalign*}
+		So, we must find $\lim_{x \to \infty} \frac{\ln{x}}{x}$\\
+		This is an indeterminate limit, so we use L'Hopitals Rule.
+		Let $f(x) = \ln{x}$\\
+		Let $g(x) = x$\\
+		$f'(x) = \frac{1}{x}$\\
+		$g'(x) = 1$\\
+		
+		\begin{flalign*}
+			\lim_{x \to \infty} \frac{f(x)}{g(x)} &= \lim_{x \to \infty} \frac{f'(x)}{g'(x)} &\\
+			&= \lim_{x \to \infty}\frac{\frac{1}{x}}{x}\\
+			&= 0 \text{ (By L'Hopitals Rule)}	
+		\end{flalign*}
+		
+		\begin{flalign*}
+			\lim_{x \to \infty} x^\frac{1}{x} &= e^{\lim_{x \to \infty} \frac{\ln{x}}{x}} &\\
+			&= e^0\\
+			&= 1
+		\end{flalign*}
+	\end{enumerate}
+	
+	\vspace{0.25 in}
+	\underline{\textbf{Extreme Value Theorem (EVT)}}
+	\vspace{0.25 in}
+	
+	If $f$ is continuous on a closed interval $[a, b]$, then $f$ attains an absolute maximum value $f(c)$ and an absolute minimum value $f(d)$ at some points $c, d \in [a, b]$
+\end{document}

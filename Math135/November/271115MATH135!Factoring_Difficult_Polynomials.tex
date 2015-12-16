@@ -1,0 +1,82 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 27, 2015\\
+		\large Factoring in Special Cases
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Rational Roots Theorem}}
+	
+	Let $f(x) = a_nx^n + a_{n-1}^{n-1} + \dots + a_1x + a)$ be a polynomial with integer coefficients. If $\frac{p}{q}$ is a rational root with gcd($p, q$) = 1, then $p \mid a_0$ and $q \mid a_n$.\\
+	\textbf{Note: } We need integer coefficients or this does not apply. Also, this will only find rational roots.\\\\
+	\begin{itemize}
+		\item[Ex. ] Express $f(x) = 2x^3 + x^2 - 6x - 3$ as a product of irreducible factors in $\mathbb{R} \left[ x \right]$.\\\\
+		Divisors of -3: $\pm 1, \pm 3$\\
+		Divisors of \;2: $\pm 1, \pm 2$\\\\
+		Candidates for a rational root:\\
+		$\pm 1, \pm \frac{1}{2}, \pm 3, \pm \frac{3}{2}$\\\\
+		Now comes the fun part. We need to plug in these values into our function until one of them equals 0. Start with integers because they are easy to compute. Eventually we will find a candidate $c$ such that $f(c) = 0$. In this case, $f(\frac{-1}{2}) = 0$\\
+		So, $(x+\frac{1}{2})$ is a factor of $f(x)$.\\\\
+		Now we'll divide $f(x)$ by this factor to get $f(x)$ in simpler form. We keep repeating this process until we get irreducible terms.  We can use long division to divide, or we can use synthetic division.\\\\
+		\textbf{Synthetic Division: } Synthetic division is a shorthand for long division. It only works when you're dividing a polynomial by a linear term (That is, $(x \pm n)$ for some number $n$.\\\\
+		To do synthetic division, Begin by drawing an L shape that is two spaces high, and $d$ spaces high, where d is the degree of your polynomial. Write the factor (with an opposite sign and without the x) just to the left of the L, and write the coefficients of your polynomial across the top of the L. Insert 0's for any terms with a coefficient of 0.\\
+		Now bring the first coefficient down, and write it just beneath the L. Then multiply this coefficient by your term to the left of the L, and place the product below your second coefficient. Now, subtract the coefficient and your product, and write the difference below the L in that column. Repeat the process until you get to the end. When you're finished, if you did the math right, your last number under the L should be a 0, representing a remainder of 0. The other numbers beneath the L represent the quotient function. See the below example(Note: I drew the L as a cross because figuring out how to make the L didn't sound fun):\\\\
+		\begin{tabular}{c|c c c c}
+			$\frac{-1}{2}$&2&1&-6&-3\\
+			&&-1&0&3\\
+			\hline
+			&2&0&-6&0
+		\end{tabular}
+		\begin{flalign*}
+			f(x) &= (x+\frac{1}{2})(2x^2 - 6)&\\
+			&= 2(x+\frac{1}{2})(x^2 - 3)\\
+			&=2(x+\frac{1}{2})(x-\sqrt 3)(x+ \sqrt 3)
+		\end{flalign*}
+		\clearpage
+		\item[Ex. ] Express $f(x) = x^3 - \frac{32}{15}x^2 + \frac{1}{5}x + \frac{2}{15}$ as a product of irreducible factors in $\mathbb{R} \left[ x \right]$\\\\
+		$15f(x) = 15x^3 - 32x^2 + 3x + 2$\\\\
+		Divisors of 15: $\pm 1, \pm 3, \pm 5, \pm 15$\\
+		Divisors of \;2: $\pm 1, \pm 2$\\\\
+		Now you have to try A bunch of stuff until you get something that works. Eventually, you'll find $f(2) = 0$.\\\\
+		\begin{tabular}{c|c c c c}
+			2&15&-32&3&2\\
+			&&30&-4&2\\
+			\hline
+			&15&-2&-1&0
+		\end{tabular}\\\\
+		$15f(x) = (x-2)(15x^2 - 2x - 1)$\\
+		$15f(x) = (x-2)(5x+1)(3x-1)$\\
+		$f(x) = \frac{1}{15}(x-2)(5x+1)(3x-1)$\\
+		
+		\item[Ex. ] Prove that $\sqrt 7$ is irrational.\\\\
+		Proof by contradiction:\\
+		Assume $\sqrt 7$ is rational.\\\\
+		$\sqrt 7 = x$, Where $x \in \mathbb{Q}$.\\
+		$7 = x^2$\\
+		$x^2 - 7 = 0$\\\\
+		By RRT, this should have a rational root since $x$ is rational.\\\\
+		Candidates for rational roots: $\pm 1, \pm 7$.\\\\
+		$f(1) = f(-1) = 1-7 \neq 0$\\
+		$f(7) = f(-7) = 49 - 7 \neq 0$\\
+		CONTRACTION!\\
+		
+		\item[Ex. ] Prove that $\sqrt 5 + \sqrt 3$ is irrational.\\\\
+		Proof by contradiction:\\
+		Let $\sqrt 5 + \sqrt 3 = x$\\
+		$5 + 2\sqrt5 \sqrt 3 + 3 = x^2$\\
+		$2 \sqrt{15} = x^2 - 8$\\
+		$60 = x^4 - 16x^2 + 64$\\
+		$0 = x^4 - 16x^2 + 4$\\\\
+		Using RRT, we can go through the possible rational roots and see that none work. But this is a polynomial with rational coefficients, and RRT assures us that we can find a rational root! CONTRADICTION!
+	\end{itemize}
+	
+	\underline{\textbf{Conjugate Roots Theorem (CJRT)}}
+	
+	Let $f(x) = a_nx^n + a_{n01}x^{n-1} + \dots + a_0$ be a polynomial with real coefficients. If $c \in \mathbb{C}$ is a root of $f(x)$ then $\overline{c} \in \mathbb{C}$ is root of $f(x)$.
+\end{document}

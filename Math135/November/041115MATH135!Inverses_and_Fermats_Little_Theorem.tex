@@ -1,0 +1,97 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 4'th, 2015\\
+		\large Inverses and Fermat's Little Theorem
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Recall all are equivalent:}}
+	
+	\begin{itemize}
+		\item $a \equiv b\;(\bmod\; m)$
+		\item $m \vert (a-b)$
+		\item $\exists k \in \mathbb{Z}, a-b = km$
+		\item $a$ and $b$ have the same remainder when divided by $m$.
+		\item $[a] = [b]$ in $\mathbb{Z}_m$
+	\end{itemize}
+	
+	\underline{\textbf{Multiplicative Inverse}}
+	
+	Example: Find $[5]^{-1}$ in $\mathbb{Z}_{17}$
+	
+	\begin{enumerate}[ ]
+		\item $[5][x] = [1]$
+		\item By inspection, $[x] = [7]$.
+		\item Therefore $[5]^{-1} = [7]$.
+		\item 
+		\item If we couldn't find a solution by inspection, we could convert into Linear Diophantine and solve.
+		\item $5x + 17y = 1$
+		\item Solve by EEA.
+	\end{enumerate}
+	
+	\underline{\textbf{Linear Congruence Theorem 2}}
+	
+	Let $\gcd(a, m) = d \not= 0$\\
+	The equation $[a][x] = [c]$ in $\mathbb{Z}_m$ has a solution iff $d\vert c$ Also, if $[x] = [x_0]$ is one solution, the complete solution is\\
+	$\lbrace[x_0], [x_0 + 2\frac{m}{d}], \dots , [x_0 + (d-1)\frac{m}{d}]\rbrace$\\
+	
+	\underline{\textbf{Prove:}}
+	\begin{enumerate}[i)]
+		\item $[a]^{-1}$ exists iff $\gcd(a, m) = 1$\\
+		
+		As this is an 'if and only if', we must prove the implication both ways.\\
+		$\implies$: 
+		\begin{enumerate}[ ]
+			\item Assume $[a]^{-1}$ exists.\\
+			$\iff [a][x] = [1]$\\
+			$\iff \gcd(a, m) \vert 1$ (By LCD 2)\\
+			$\iff \gcd(a, m) = 1$
+		\end{enumerate}
+		Because every property we used was an iff (That is, they all apply both ways), we can say WLOG, the other direction must be true as well.\\
+		$\therefore [a]^{-1}$ exists iff $gcd(a, m) = 1$
+		\item The multiplicative inverse pf $[a]$ in $\mathbb{Z}_m$ is unique (if it exists)\\
+		
+		if $[a]^{-1}$ exists in $\mathbb{Z}_m$, then\\
+		$[a][x] = [1]$ has a solution.\\
+		Thus, $\gcd(a, m) = 1$\\
+		By LCT2, the complete solution of all inverses is:\\
+		$\lbrace x_{0}, x_{0}+m, x_{0}+2m, \dots \rbrace$\\
+		$\equiv \lbrace x_{0} \rbrace$\\
+		$\therefore$ The inverse is unique.
+	\end{enumerate}
+	\pagebreak
+	\underline{\textbf{Fermat's Little Theorem (F$\ell$T)}}
+	
+	If $p$ is a prime number that does not divide an integer $a$, then\\
+	$a^{p-1} \equiv 1\;(\bmod\; p)$\\
+	
+	Examples:
+	\begin{enumerate}[i)]
+		\item $5^6 \equiv 1\;(\bmod\; 7)$
+		\item $3^6 \equiv 1\;(\bmod\; 7)$
+		\item $8^6 \equiv 1\;(\bmod\; 7)$
+		\item $35^6 \not\equiv 1\;(\bmod\; 7)$ (Because $7 \vert 35$)
+		\item Find the remainder when $7^{32}$ is divided by $11$.
+		\begin{enumerate}[ ]
+			\item By F$\ell$T, $7^{10} \equiv 1\;(\bmod\; 11)$ (Since $11$ is prime and $11\nmid 7$)
+			\item 
+				\begin{flalign*}
+					7^{32} &\equiv (7^{10})^9 7^2 \;(\bmod\; 11)&\\
+					&\equiv (1)^9 7^2 \;(\bmod\; 11)\\
+					&\equiv 49 \;(\bmod\; 11)\\
+					&\equiv 5 \;(\bmod\; 11)\\
+					&\therefore \text{ The remainder is } 5
+				\end{flalign*}
+		\end{enumerate}
+	\end{enumerate}
+	
+	\underline{\textbf{F$\ell$T in Congruence Classes}}
+	
+	$[a^{p-1}] = [1]$ in $\mathbb{Z}_p$\\
+	$[a]^{p-1} = [1]$ in $\mathbb{Z}_p$
+\end{document}

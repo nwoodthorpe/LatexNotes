@@ -1,0 +1,190 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 6'th, 2015\\
+		\large GCRT and Complex Systems of Congruences
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Generalized Chinese Remainder Theorem (GCRT)}}
+	
+	If $m_1, m_2, \dots, m_k \in \mathbb{Z}$ and $\gcd(m_i, m_j) = 1$ whenever $i \not= j$, then for any choice of integers $a_1, a_2, \dots, a_k$, there exists a solution to the simultaneous congruences
+	
+	\begin{center}
+		$n \equiv a_1 \;(\bmod\; m_1)$\\
+		$n \equiv a_2 \;(\bmod\; m_2)$\\
+		$\vdots$\\
+		$n \equiv a_k \;(\bmod\; m_k)$
+	\end{center}
+	
+	Also, if $n = n_0$ is one integer solution, then the complete solution is 
+	
+	\begin{center}
+		$n \equiv \nLeftarrow_0 \;(\bmod\; m_1m_2\dots m_k)$
+	\end{center}
+	\underline{\textbf{Example:}}
+	\begin{flalign*}
+		\text{Find all } x \in \mathbb{Z} \text{ such that } x &\equiv 5 \;(\bmod\; 6)&\\
+		x &\equiv 2\;(\bmod\; 7)\\
+		x &\equiv 3\;(\bmod\; 11)
+	\end{flalign*}	
+	Solution:
+	\begin{enumerate}[ ]
+		\item $x = 3 + 11k, k \in \mathbb{Z}$\\
+		Sub into 2'nd equation.\\
+		\begin{flalign*}
+			3 + 11k &\equiv 2\;(\bmod\; 7)&\\
+			4k &\equiv 6\;(\bmod\; 7)\\
+			8k &\equiv 12\;(\bmod\; 7) \text{ (Since $[4]^{-1} = [2]$)}\\
+			k &\equiv 5\;(\bmod\; 7)\\
+			k &= 5 + 7j, j \in \mathbb{Z}\\\\
+			x &= 3 + 11 (5+j)\\
+			x &= 58 + 77j\\
+			x &\equiv 58 \;(\bmod\; 77)
+		\end{flalign*}
+		Now $k\equiv 58\;(\bmod\; 77)$ is the solution to the last 2 congruences, now we solve:
+		\begin{flalign*}
+			x &\equiv 5\;(\bmod\; 6)&\\
+			x &\equiv 58\;(\bmod\; 77)
+		\end{flalign*}
+		
+		\begin{flalign*}
+			58 + 77j &\equiv 5\;(\bmod\; 6)&\\
+			5j &\equiv -53\;(\bmod\; 6)\\
+			5j &\equiv -5\;(\bmod\; 6)\\
+			j &\equiv -1\;(\bmod\; 6) \text{ (Allowed since 5 and 6 are coprime)}\\
+			j &\equiv 5\;(\bmod\; 6)\\
+		\end{flalign*}
+		From that, we get $j = 5 + 6l$
+		\begin{flalign*}
+			\text{We sub that into our solution for x and we get } x &= 58 + 77(5 + 6l)&\\
+			&= 443 + 462l\\\\
+			x &\equiv 443\;(\bmod\; 462)
+		\end{flalign*}
+	\end{enumerate}
+	
+	\underline{\textbf{Challenging Twists:}}
+	\begin{enumerate}[i)]
+		\item Solve the following system of congruences:
+		\begin{flalign*}
+			3x &\equiv 2 \;(\bmod\; 5)&\\
+			2x &\equiv 6\;(\bmod\; 7)
+		\end{flalign*}
+		To solve, first solve for x in each of the congruences.\\
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				3x &\equiv 2\;(\bmod\; 5)&\\
+				6x &\equiv 4\;(\bmod\; 5)\\
+				x &\equiv 4\;(\bmod\; 5)\\
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				2x &\equiv 6\;(\bmod\; 7)&\\
+				x &\equiv 3\;(\bmod\; 7)\\
+			\end{flalign*}
+		\end{minipage}
+		
+		Now, we solve this new system of congruences as we've done previously.\\
+		\begin{flalign*}
+			x &\equiv 4\;(\bmod\; 5)&\\
+			x &\equiv 3\;(\bmod\; 7)
+		\end{flalign*}
+		\begin{minipage}[t]{0.2\textwidth}
+			$x = 4 + 5j, j \in \mathbb{Z}$\\
+			$4 + 5j \equiv 3\;(\bmod\; 7)$\\
+			$5j \equiv -1\;(\bmod\; 7)$\\
+			$5j \equiv 6\;(\bmod\; 7)$\\
+			$15j \equiv 18\;(\bmod\; 7)$\\
+			$j \equiv 4\;(\bmod\; 7)$\\\\
+			$j = 4 + 7l, l \in \mathbb{Z}$\\
+			$x = 4 + 5(4 + 7l)$\\
+			$x = 24 + 35l$\\
+			$x \equiv 24\;(\bmod\; 35)$\\
+			
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\textbf{First, Convert the first congruence into an equality.}\\
+			\textbf{Next, sub it into the second congruence.}\\
+			\textbf{Solve for j.}\\\\\\
+			\textbf{Express as an equation.}
+			\textbf{Sub back into the equation for x and solve.}
+		\end{minipage}
+		\item Solve the following system of congruences:
+		\begin{flalign*}
+			x &\equiv 4\;(\bmod\; 6)&\\
+			x &\equiv 2\;(\bmod\; 8)
+		\end{flalign*}
+		\begin{flalign*}
+			x &= 4 + 6k, k \in \mathbb{Z}&\\
+			4 + 6k &\equiv 2\;(\bmod\; 8)\\
+			6k &\equiv -2\;(\bmod\; 8)\\
+			6k &\equiv 6\;(\bmod\; 8)
+		\end{flalign*}
+		Now we have a problem. We cannot divide by 6 because 6 and 8 are not coprime.\\
+		$[6]^{-1}$ does not exist in $\mathbb{Z}_8$!\\
+		If we turn this congruence into an equation, we may be able to simplify.
+		\pagebreak
+		\begin{flalign*}
+			6k &= 6 + 8l, l \in \mathbb{Z}&\\
+			3k &= 3 + 4l\\
+			3k &\equiv 3\;(\bmod\; 4) \text{ (Since 3 and 4 are coprime, we can divide both sides by 3)}\\
+			k &\equiv 1\;(\bmod\; 4)\\
+			k &= 1 + 4m, m \in \mathbb{Z}\\\\
+			x &= 4 + 6(1 + 4m)\\
+			x &= 10 + 24m\\
+			x &\equiv 10\;(\bmod\; 24)
+		\end{flalign*}
+		\item Solve $x^2 \equiv 34\;(\bmod\; 99)$\\\\
+		We could solve this the same way we've solved polynomial congruences in the past (A table from 0 to our modulus), but figuring out what $1^2, 2^2, \dots, 97^2, 98^2$ are in modulus 99 will be tedious and difficult. Instead, we can split the modulus into factors and solve a system of congruences instead!.
+		\begin{flalign*}
+			x^2 &\equiv 34\;(\bmod\; 9) \implies x^2 \equiv 7\;(\bmod\; 9)&\\
+			x^2 &\equiv 34\;(\bmod\; 11) \implies x^2 \equiv 1\;(\bmod\; 11)
+		\end{flalign*}
+		First, solve one of the congruences using the table method.\\\\
+		\begin{minipage}[t]{0.2\textwidth}
+			$x\;(\bmod\; 9)$\\
+			$x^2\;(\bmod\; 9)$
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			0 1 2 3 \textbf{4 5} 6 7 8 \;\;\;\;\; So, $x \equiv 4, 5\;(\bmod\; 9)$\\
+			0 1 4 0 \textbf{7 7} 0 4 1\\
+		\end{minipage}\\
+		Now do the same thing for the other congruence.\\\\
+		\begin{minipage}[t]{0.2\textwidth}
+			$x\;(\bmod\; 11)$\\
+			$x^2\;(\bmod\; 11)$
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			0 \textbf{1} 2 3 4 5 6 7 8 9 \textbf{10} \;\;\;\;\; So, $x \equiv 1, 10\;(\bmod\; 11)$\\
+			0 \textbf{1} 4 9 5 3 3 5 9 4 \textbf{1}\\
+		\end{minipage}\\
+		I'm confused by what the prof did here, but I'll write exactly what he did.\\\\
+		\begin{minipage}[t]{0.2\textwidth}
+			$x \equiv 1\;(\bmod\; 11) \implies$\\
+			$x \equiv 10\;(\bmod\; 11)\implies$
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			01, 12, \textbf{23}, 34, 45, 56, \textbf{67}, 78, 89\\
+			10, 21, \textbf{32}, 43, 54, 65, \textbf{76}, 87, 98\\
+		\end{minipage}\\
+		$\therefore x \equiv 23, 32, 67, 76\;(\bmod\; 99)$
+	\end{enumerate}
+	
+	\underline{\textbf{Splitting Modulus (SM)}}
+	
+	Let $p$ and $q$ be coprime positive integers. Then for any two integers $x$ and $a$,\\\\
+	\begin{minipage}[t]{0.15\textwidth}
+		$x \equiv a\;(\bmod\; p)$\\
+		\\
+		$x \equiv a\;(\bmod\; q)$
+	\end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+		\phantom\\
+		$\iff x \equiv a\;(\bmod\; pq)$
+	\end{minipage}\\
+\end{document}

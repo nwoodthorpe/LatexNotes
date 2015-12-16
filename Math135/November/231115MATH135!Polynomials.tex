@@ -1,0 +1,102 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 23, 2015\\
+		\large Polynomials
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Polynomials in the field $\mathbb{F}$}}
+	
+	A polynomial in $x$ over the field $\mathbb{F}$ is al algebraic expression of the form:
+	
+	
+	\[a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0\]
+	
+	where $n \geq 0$ is an integer.
+	\begin{itemize}
+		\item[- ] $x$ is the indeterminate or value
+		\item[- ] The numbers $a_0, a_1, \dots, a_n$ are called coefficients
+	\end{itemize}
+	
+	The coefficients $a_i$ belong to field $\mathbb{F}$.
+	
+	We use $\mathbb{F}\left[ x \right]$ to denote the set of all polynomials over a set $\mathbb{F}$, where typically $\mathbb{F}$ is either $\mathbb{C}, \mathbb{R}, \mathbb{Q}$, or $\mathbb{Z}_p$
+	\begin{enumerate}[i)]
+		\item $(2i + \pi) z^3 - \sqrt{5} z + \frac{55}{4}i$ is a polynomial over the field $\mathbb{C}$.
+		\item $\frac{5}{2}x^5 + \sqrt2 x^3  + x$ is a polynomial over $\mathbb{R}$ or $\mathbb{C}$
+		\item $x^2 + x + \frac{1}{x}$ Is not a polynomial as the term $\frac{1}{x} = x^{-1}$ and-1 is not $\geq 0$
+		\item $x = \sqrt{x}$ is not a polynomial as the term $\sqrt x = x^{\frac{1}{2}}$ and $\frac{1}{2}$ is not an integer.
+	\end{enumerate}
+	
+	\underline{\textbf{Degree of a polynomial}}
+	
+	Let $n \geq 0$ be an integer. If $a_n \neq 0$ in the polynomial:
+	\[ a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0 \]
+	
+	Then the polynomial is said to have degree $n$. In other words, the degree of a polynomial is the largest element of $x$ that has a non-zero coefficient.
+	
+	The zero polynomial has al[[]]l of its coefficients $= 0$ and its degree is not defined. Polynomials of degree 1 are called linear polynomials. Degree 2 polynomials are called quadratics. Degree 3 polynomials are called cubics.
+	
+	\underline{\textbf{Equality of Polynomials}}
+	
+	Let $f(x) = a_nx^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0$ and $g(x) = b_nx^n + b_{n-1} x^{n-1} + \dots + b_1 x + b_0$ both be polynomials in $\mathbb{F}\left[ x \right]$\\
+	The polynomials $f(x)$ and $g(x)$ are equal iff $a_i = b_i$ for all $i$.
+	
+	\underline{\textbf{Operations on Polynomials}}
+	\begin{enumerate}[i)]
+		\item \textbf{Adding and Subtracting}\\
+		We add and subtract term by term. Collect like terms, add/subtract the co-efficients.
+		
+		\begin{itemize}
+			\item[Ex. ] Calculate $(2x^4 + 4x + 1) + (2x^3 + 3x + 4) - (3x^3 + 4)$ in $\mathbb{Z}_5$\\\\
+			$= 2x^4 - x^3 + 7x + 1$\\
+			$= 2x^4 + 4x^3 + 2x + 1$
+		\end{itemize}
+		\item \textbf{Multiplication}\\
+		When we multiply, we expand and collect like terms.
+		
+		\begin{itemize}
+			\item[Ex. ] Calculate $(2ix^2 + (3+i))(5x^2 - i)$ in $\mathbb{C} \left[ x \right]$\\\\
+			$= 10ix^4 - 2i^2x^2 + (15+5i)x^2 - (3i+1)$\\
+			$= 10ix^4 - (17-5i)x^2 + (1-3i)$
+			
+			\item[Ex. ] $(x^5 + x^2 + 1)(x + 1) + x^3 + x + 1$ in $\mathbb{Z}_2$\\\\
+			$= x^6 + x^5 + x^3 + x^2 + x + 1 + x^3 + x + 1$\\
+			$= x^6 + x^5 + 2x^3 + x^2 + 2x + 1$\\
+			$= x^6 + x^5 + x^2 + 1$
+			
+			\item[Ex. ] Prove that $(ax + b)(x^2 + x + 1)$ is the zero polynomial in $\mathbb{R} \left[ x \right]$ iff $a = b = 0$\\\\
+			$(ax + b)(x^2+x+1)$\\
+			$= ax^3 + ax^2 + ax + bx^2 + bx + b$\\
+			$= ax^3 + (a+b)x^2 + (a+b)x + b$\\
+			
+			This is the zero polynomial iff all coefficients are zero. We require $a = a+b = b = 0$. This is only possible if $a = b = 0$.
+			
+			\item[Ex. ] Show that there does not exist a polynomial in $\mathbb{R}\left[ x \right] ax + b$ such that $(x+1)(ax + b) = x^2 + 1$\\\\
+			Expanding, we get:\\
+			$= ax^2 + bx + ax + b$
+			$= ax^2 + (a+b)x + b$
+			
+			To get $x^2 _ 1$, we require:\\
+			$a = 1$\\
+			$b = 1$\\
+			$(a+b) = 0$\\
+			These 4 conditions are impossible to meet simultaneously.
+		\end{itemize}
+	\end{enumerate}
+	
+	\underline{\textbf{Division Algorithm for Polynomials (DAP)}}
+	
+	If $f(x)$ and $g(x)$ are polynomials in $\mathbb{F} \left[ x \right]$ and $g(x)$ is not the zero polynomial, then there exists unique polynomials $q(x)$ and $r(x)$ in $\mathbb{F}\left[ x \right]$ such that\\
+	\[ f(x) = q(x)g(x) + r(x) \text{ where deg } r(x) < \text{ deg } g(x) \text{ or } r(x) = 0 \]
+	
+	The polynomial $q(x)$ is called the quotient polynomial. The polynomial $r(x)$ is called the remainder polynomial. If $r(x) = 0$, we say that $g(x)$ divides $f(x)$ or $g(x)$ is a factor of $f(x)$ and we write $g(x) \vert f(x)$.
+	
+	To find quotients and remainders, we use long division.
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 2'nd, 2015\\
+		\large Integers Modulo M - Congruence Class Arithmetic
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Recall:}}
+	
+	$ax \equiv c \;(\bmod\; m)$ has a solution if $\gcd(a, m) \vert c$.\\
+		
+	\underline{\textbf{Congruence Classes}}
+	
+	Let $a, m \in \mathbb{Z}$ where $m > 0$. The  \textbf{Congruence Class Modulo $m$} of the integer $a$ is the set of integers\\
+	$[a] = {x \in \mathbb{Z} \vert x \equiv a}$\\
+	
+	Example: Suppose $m = 5$
+	\begin{enumerate}[ ]
+		\item $[0] = \lbrace\dots -10, -5, 0, 5, 10, \dots\rbrace = \lbrace5k : k \in \mathbb{Z}\rbrace$
+		\item $[1] = \lbrace\dots, -9, -4, 1, 6, 11, \dots\rbrace = \lbrace 5k+1 : k \in \mathbb{Z}\rbrace$
+		\item And so on.
+	\end{enumerate}
+	\underline{$\mathbf{\mathbb{Z}_m}$}
+	
+	Let $m $ be a positive integer. We define $\mathbb{Z}_m$ to be the set of $m$ congruence classes.\\
+
+	$\mathbb{Z}_m = \lbrace[0], [1], [2], \dots, [m+1]\rbrace$\\
+
+	\underline{\textbf{Congruence Class Arithmetic}}
+	
+	We will define addition and multiplication of Congruence Classes as follows:
+	\begin{enumerate} [ ]
+		\item $[a] + [b] = [a + b]$
+		\item $[a][b] = [ab]$
+	\end{enumerate}
+	
+	Examples in $\mathbb{Z}_6$:
+	\begin{enumerate} [i)]
+		\item $[14] = [2]$
+		\item $[13] = [5]$
+		\item $[2][5] = [10] = [4]$
+		\item $[14][-13] = [-182] = [-2] = [4]$
+	\end{enumerate}
+	Addition and multiplication are well defined. That is, in any congruence class addition or multiplication, a congruence class can be replaced with an equivalent congruence class without disrupting the equality.
+	
+	\underline{\textbf{Identities}}
+	
+	Given a set and an operation, an identity is "something that does nothing". More formally, given a set $S$, and an operation $\circ$, an identity is an element $e \in S$ such that $\forall a \in S, a \circ e = a$.
+	
+	The additive identity is $[0]$ as $[a] + [0] = [a + 0] = [a]$.\\
+	The multiplicative identity is $[1]$ as $[a][1] = [1a] = [a]$.\\
+	\pagebreak
+	
+	\underline{\textbf{Inverse}}
+	
+	The element $b \in S$ is an inverse of $a \in S$ if $a \circ b = b \circ a = e$ where e is the corresponding identity for the operation $\circ$.
+	
+	For example, the \textbf{additive} identity of $[5]$ is $[-5]$ as $[5] + [-5] = [0] = e$ (The additive identity).
+	
+	We define subtraction as addition by the inverse. We will always be able to find an additive inverse.\\
+	We define division as multiplication by the inverse. We will \textbf{NOT} always be able to find the multiplicative inverse. We denote the multiplicative inverse of some value $[a]$ as $[a]^{-1}$.
+	
+	Examples in $\mathbb{Z}_4$:
+	\begin{enumerate} [i)]
+		\item $[3]^{-1} = [3]$ since $[3][3] = [9] = [1]$
+		\item $[2]^{-1}$ does not exist since $[2][x] = 1$ has no solution in $\mathbb{Z}_4$
+	\end{enumerate}
+	
+	\underline{\textbf{Practice:}}
+	
+	Solve the following in $\mathbb{Z}_1{14}$
+	
+	\begin{enumerate} [i)]
+		\item 
+		\begin{flalign*}
+			[75] - [x] &= [5]&\\
+			[75] + [-x] &= [50] \text{ \textbf{(We must express subtraction as addition)}}\\
+			[75] &= [50] + [x] \text{ \textbf{(By additive identity)}}\\
+			[75] + [-50] &= [x] \text{\textbf{ (By additive identity)}}\\
+			[25] &= [x]\\
+			[11] &= [x] \text{ \textbf{(Always reduce to lowest terms)}}
+		\end{flalign*}
+		\item 
+		\begin{flalign*}
+			[10][x] &= [1]&\\
+			10x &= 1\;(\bmod\;14)\\
+			10x + 14y =& 1
+			\end{flalign*}
+			\text{Notice how this is a simple Linear Diophantine. We know how to solve for x and y.}\\
+			$\gcd(10, 14) = 2$\\
+			$2 \nmid 1 \therefore$ \text{There is no solution}
+		\item 
+		\begin{flalign*}
+			[10][x] &= 2&\\
+			10x &= 2\;(\bmod\; 14)\\
+			10x + 14y &= 2\\
+			\gcd(10, 14) &= 2\\
+		\end{flalign*}
+		$2\vert2$ so there is a solution.\\
+		$x = -4, y = 3$ (By inspection)
+		Just like when solving a Linear Diophantine, we now need to plug this into the general formula to get all values of x.\\
+		\begin{flalign*}
+			x &= -4 + 7n, n\in\mathbb{Z} \text{ (By LDET2)}&\\
+			x &\equiv -4 \;(\bmod\; 7)\\
+			x &\equiv 3 \;(\bmod\; 7)\\
+			x &\equiv 3, 10 \;(\bmod\; 7)
+		\end{flalign*}
+		$\therefore [x] = [3], [10]$
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,148 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - October 29'th, 2015
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Everything We Know About Congruences}}
+	\vspace{0.25 in}
+	
+	$a \equiv r \;(\bmod\; n)$
+	\begin{itemize}
+		\item $\iff m \mid (a-b)$
+		\item $a \bmod m = b \bmod m$
+		\item Transitive:\\
+		$\;[a \equiv b \;(\bmod\; m)\;]
+		\land 
+		\;[b \equiv c \;(\bmod\; m)\;]
+		\implies
+		a \equiv c \;(\bmod\; m) $
+		\item Symetric: \\
+		$a \equiv b\;(\bmod\; m) 
+		\iff
+		b \equiv a\;(\bmod\; m)$
+		\item Reflective:\\
+		$a \equiv a\;(\bmod\; m)$
+		\item You can multiply, add, or subtract $a$ to the left side and $b$ to the right side so long as 
+		$a \equiv b\;(\bmod\; m)$
+		\item You can divide both sides by $n$ if $\gcd(n, m) = 1$ (Co-prime)
+	\end{itemize}
+	
+	\vspace{0.25 in}
+	
+	\underline{\textbf{Congruent Iff Same Remainder (CISR)}}
+	\vspace{0.25 in}
+
+	Let $a, b, c \in \mathbb{N}$ where $m>0$\\
+	$a \equiv b\;(\bmod\; m) \iff a$ and $b$ have the same remainder when divided by $m$.
+	
+	\vspace{0.25 in}
+		
+	\underline{\textbf{Linear Congruence}}
+	\vspace{0.25 in}
+	
+	Let $a, c, m \in \mathbb{Z}$ where $m>0$
+	A relation of the form 
+
+	\begin{center}
+	$ax \equiv c\;(\bmod\; m)$
+	\end{center}
+	
+	
+	is called a Linear Congruence in the variable $x$. A solution is an integer $ax_0 \equiv c\;(\bmod\; m)$
+	
+	\vspace{0.25 in}
+			
+	\underline{\textbf{Examples:}}
+	\vspace{0.25 in}
+	
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}[i)]
+	  		\item 
+	  		\begin{math}
+	  			4x \equiv 5\;(\bmod\; 8)\\
+	  			4x - 5 = 8k\\
+	  			4x - 8k = 5\\
+	  			\gcd(4, -8) = 4\\
+	  			4 \nmid -8\\
+	  			\therefore \text{No solution}
+	  		\end{math}
+		\end{enumerate}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}[i)]
+			\setcounter{enumi}{1}
+			\item
+	        \begin{math}
+			  	5x \equiv 3\;(\bmod\; 7)\\
+			  	5x - 3 = 7k\\
+			  	5x - 7k = 3\\
+			  	5x + 7y = 3  \text{ (Let }y = -k)\\
+			  	x=2, y=1\\
+			  	x = 2 + 7n \text{ (By LDET2)}\\
+			  	\therefore x \equiv 2\;(\bmod\; 7)  
+			\end{math}
+		\end{enumerate}
+	\end{minipage}\\
+	\clearpage
+	\begin{enumerate}[i)]
+		\setcounter{enumi}{2}
+		\item
+		\begin{math}
+			2x \equiv 4 \;(\bmod \;6)\\
+			2x - 4 = 6k\\
+			2x - 6k = 4\\
+			2x + 6y = 4\\
+			\gcd(2, 6) = 2\\
+			2 \vert 4 \text{ Thus there is a solution}\\
+			\text{By inspection, } x=-1, y=1\\
+			x = -1 + 3n \text{ By LDET2}\\
+			x \equiv -1 \;(\bmod\; 3)\\
+			x \equiv 3 \;(\bmod\; 3)
+		\end{math}
+	\end{enumerate}
+
+	\vspace{0.25 in}
+				
+	\underline{\textbf{Generalised Linear Congruence Rules:}}
+	\vspace{0.25 in}
+	
+	\begin{enumerate}[i)]
+		\item A solution does not always exist.
+		\item $\gcd(a, m) \vert c$ means a solution exists.
+		\item To find a particular solution, convert into a linear diophantine equation using:\\
+		$ax \equiv c\;(\bmod\; m) \implies (ax- c) = mk, k \in \mathbb{N}$
+	\end{enumerate}
+	
+	\vspace{0.25 in}
+					
+	\underline{\textbf{Generalised Linear Congruence Rules:}}
+	\vspace{0.25 in}
+		
+	Example) Solve $x^2 \equiv 6\;(\bmod\; 10)$\\	
+	\begin{enumerate}[-]
+		\item There is no efficient way to solve polynomial congruences.
+	\end{enumerate}
+	
+	\begin{minipage}[t]{0.2\textwidth}
+		\begin{math}
+		 	x\;(\bmod\; 10)\\
+		  	x^2\;(\bmod\; 10)
+		\end{math}
+	\end{minipage}
+	\begin{minipage}[t]{0.8\textwidth}
+		\begin{text}
+			0 1 2 3 4 5 6 7 8 9\\
+			0 1 4 9 6 5 6 9 4 1
+		\end{text}
+	\end{minipage}
+	
+	\begin{enumerate}[-]
+		\item As we can see, $x \equiv 4, 6 \;(\bmod\;  10)$
+	\end{enumerate}	
+\end{document}

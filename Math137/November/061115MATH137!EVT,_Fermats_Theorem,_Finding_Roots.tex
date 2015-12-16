@@ -1,0 +1,67 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 7'th, 2015\\
+		\large EVT, Fermat's Theorem, Finding Roots
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Extreme Value Theorem}}
+	
+	If $f$ is continuous on a closed interval $[a, b]$, then $f$ attains an absolute maximum $f(c)$ and an absolute minimum $f(d)$ at numbers $c, d \in [a, b]$\\
+	The function \textbf{must} be continuous and \textbf{must} be on a closed interval for this theorem to apply.
+	
+	\underline{\textbf{Fermat's Theorem}}
+	
+	If $f$ has a local maximum or local minimum at c and if $f'(c)$ exists, then $f'(c) = 0$\\
+	Note: This is a one way implication. The converse is not true!\\\\
+	For example, look at $f(x) = x^3$. I don't know how to graph in LaTeX, so just imagine it. Even though $f'(0) = 0, f(0)$ is not an absolute maximum or minimum.\\\\
+	This theorem also fails if the derivative at $c$ does not exist. Imagine the linear function $y=x$ on the closed interval $[0, 1]$. Again, I can't graph so just imagine it. Now this graph has an local maximum at $x=1$, but $f'(1) \not= 0$! This is because we can't take the derivative at 1. Even though $y=x$ is differentiable for all $x$, note what happens if we try to take the derivative at 1. From the left, the function approaches 1, however from the right, our function does not exist (As we are working on our closed interval). So, we can't take the derivative here and the theorem doesn't apply.\\
+	
+	\underline{\textbf{Critical Numbers}}
+	
+	A critical number of a function is a number $c$ such that $f'(c) = 0$ or $f'(c)$ does not exist.\\
+	If $f$ has a local maximum or minimum at $c$, then $c$ is a critical number.\\
+	
+	Example: If $f(x) = x^3 + 6x^2 - 15x$, find the critical numbers of this function.
+	\begin{enumerate}[ ]
+		\item We start by taking the derivative of $f$.\\\\
+		$f'(x) = 3x^2 + 12x - 15$\\
+		$f'(x) = (3)(x-1)(x+5)$\\
+		
+		So, $f'(x) = 0$ when $x = -5, 1$.\\
+		The function is a polynomial function, so it is continuous everywhere and there are no points where the function does not exist.\\\\
+		$\therefore$ Our critical numbers are $x=1, x=-5$.\\
+		\textbf{Note:} If we were asked for critical \textbf{points}, we would need to plug our critical numbers back into the function to get y values.
+	\end{enumerate}
+	
+	\underline{\textbf{The Closed Interval Method}}
+	
+	To find the absolute maximums or minimums of a continous function $f$ on a closed interval $[a, b]$,
+	\begin{enumerate}[i)]
+		\item Find the value of $f$ at the critical points of $f$ in the open interval $(a, b)$.
+		\item Find the value of $f$ at the endpoints of the inteval $f(a), f(b)$.
+		\item Compare these values, the largest is your maximum, the smallest is your minimum.
+	\end{enumerate}
+	\pagebreak
+	\underline{\textbf{Rolle's Theorem}}
+	
+	Let $f$ be a function which satisfies the following hypothesis:
+	\begin{enumerate}[i)]
+		\item $f$ is continuous on a closed interval $[a, b]$
+		\item $f$ is differentiable on the open interval $(a, b)$
+		\item $f(a) = f(b)$
+	\end{enumerate}
+	
+	Then, $\exists\; c \in (a, b)$ such that $f'(c) = 0$.\\
+	
+	\underline{\textbf{Explanation:}}
+	
+	The best way to understand this theorem is with an example. Lets say our interval is $[1, 2]$, and $f(1) = f(2) = 0$. This theorem states that at some point $c$, our function will flatten out ($f'(c) = 0$). There are two different types of functions to consider. \\
+	Suppose our function is the constant function $y=0$. This function is flat ($f'(x) = 0$) at all values of x, so it satisfies our theorem.\\
+	What if our function was polynomial? Well, whether it goes up or down from $x=1$, if $f(1) = f(2)$, the function will have to turn around and return to the same $y$ value. At these points where the function 'turns around', $f'(x) = 0$.
+\end{document}

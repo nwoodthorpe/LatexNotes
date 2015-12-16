@@ -1,0 +1,84 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 18, 2015\\
+		\large Anti-Derivatives
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Notice:}}
+	
+	From this point out, all notes will be taken in Mike Edens class.
+	
+	\underline{\textbf{Anti-Derivatives}}
+	
+	An anti-derivative is the opposite of a derivative. You will be given  a derivative and asked to find the original function that gave that dertivative.
+	
+	\begin{itemize}
+		\item[Ex. ] Given $f'(x)$, find $f(x)$.
+		\begin{enumerate}[a)]
+			\item $f'(x) = 6$\\
+			$f(x) = 6x + C$ (C is some constant)\\
+			\item $f'(x) = 2x$\\
+			$f(x) = x^2 + C$\\
+			\item $f'(x) = 3x$\\
+			$f(x) = \frac{3}{2}x^2 + C$\\
+			\item $f'(x) = -3x^5$\\
+			$f(x) = \dfrac{-3x^6}{6} + C$\\
+			$f(x) = \dfrac{1}{2}x^6 + C$\\
+		\end{enumerate}
+	\end{itemize}
+	
+	When we differentiate powers of $x$, we:
+	\begin{enumerate}[1)]
+		\item Multiply by the exponent.
+		\item Subtract 1 from the exponent.
+	\end{enumerate}
+	When anti-differentiate powers of $x$, we:
+	\begin{enumerate}[1)]
+		\item Add 1 to the exponent.
+		\item Divide by the new exponent.
+		\item Add a constant C
+	\end{enumerate}
+
+	\underline{\textbf{Notation:}} We denote the anti-derivative of $f(x)$ as $F(x)$
+	
+	\underline{\textbf{Anti-Derivatives We Know}}
+	
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+		$f(x)$&$x^p$ ($p \neq 1$)& $x^{-1} = \frac{1}{x}$&$e^x$&$a^x$&$\sin x$&$\cos x$&$\sec^2 x$&$\sec x \tan x$&$\dfrac{1}{\sqrt{1-x^2}}$\\
+		\hline
+		$F(x)$&$ \dfrac{x^{p+1}}{p+1} + C$&$\ln \vert x \vert + C$&$e^x + C$&$\dfrac{a^x}{\ln a} + C$&$-\cos x + C$&$\sin x + C$&$\tan x + C$&$\sec x + C$&$\arcsin x + C$
+	\end{tabular}
+	
+	\begin{tabular}{c|c|c|c}
+		$f(x)$&$\dfrac{1}{1+x^2}$&$\sinh x$&$\cosh x$\\
+		\hline
+		$F(x)$&$\arctan x + C$&$\cosh x + C$&$\sinh + C$\\
+	\end{tabular}
+	\\\\\\\\\\
+	\begin{itemize}
+		\item[Ex. ]
+		\begin{enumerate}[a)]
+			\item $f(x) = \frac{1}{2} e^{3x} + \sin(3x)$
+			$F(x) = \frac12 e^{3x} \cdot \frac13 + (- \cos(3x)) \cdot \frac13 + C$\\
+			$F(x) = \frac16 e^{3x} - \frac13 \cos(3x) + C$\\
+			\item $f(x) = \dfrac{\sqrt{x} - x^2}{x^3}$\\
+			$f(x) = x^{\frac12 - 3} - x^{2-3}$\\
+			$f(x) = x^{-5}{2} - x^{-1}$\\
+			$F(x) = \dfrac{x^{-3}{2}}{\frac{-3}{2}} - \ln \vert x \vert + C$\\\\\\
+			$F(x) = \dfrac{-2}{3} x^{\frac{-3}{2}} - \ln \vert x \vert + C$\\
+			\item $f(x) = 2 \sec^2 (\frac{2}{\pi})$\\
+			$F(x) = \dfrac{2 \tan(\frac{x}{\pi})}{\frac{1}{\pi}}$\\
+			$F(x) = 2\pi \tan(\frac{x}{\pi}) + C$\\
+			\item $f(x) = \dfrac{2x^2 - 1}{1+x^2}$\\
+			$f(x) = 2 + \dfrac{-3}{1+x^2}$\\
+			$F(x) = 2x - \arctan (x) + C$
+		\end{enumerate} 
+	\end{itemize}
+\end{document}

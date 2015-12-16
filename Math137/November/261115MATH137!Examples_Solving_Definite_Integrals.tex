@@ -1,0 +1,95 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 26, 2015\\
+		\large Examples: Solving Definite Integrals
+	\end{center}
+	\vspace{0.25 in}
+	
+	\begin{itemize}
+		\item[\textbf{Ex. 1}] The function $g$ is defined by
+		\[ g(x) = \int_0^x (t-t^2) dt \]\\
+		Calculate $g'(1)$ and find the location of any inflection points of $g$.\\\\
+		$g'(x) = x-x^2$ \;\; (By FTC1)\\
+		$g'(1) = 1-1^2 = 0$\\\\
+		For inflection points, we use the second derivative as usual.\\\\
+		\begin{minipage}[t]{0.5\textwidth}
+			$g''(x) = 1-2x$\\
+			$g''(x)_ = 0 @ x = \frac{1}{2}$
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{tabular}{c|c|c}
+				&$0<x<\frac{1}{2}$&$x>\frac{1}{2}$\\
+				\hline
+				$1-2x$&+&-\\
+				$g(x)$&Conc. Up&Conc. Down
+			\end{tabular}
+		\end{minipage}\\\\
+		$\therefore$ POI at $x=\frac12$\\
+		\item[\textbf{Ex. 2}] Determine $\frac{dy}{dx}$ given that:\\
+		\[ y = \int_{1+3x^2}^4 \dfrac{1}{2+e^t} dt \]
+		
+		Let $u(x) = 1 + 3x^2$ and $f(t) = \dfrac{1}{2+e^t}$\\\\
+		\begin{flalign*}
+			y &= F(u) = \int_{u}^4 f(t) dt&\\
+			y &= F(u) = - \int_4^u f(t) dt\\
+			\frac{dy}{du} &= F'(u) = -f(u)\\\\
+			\therefore \frac{dy}{dx} &= \frac{dy}{du} \cdot \frac{du}{dx}\\
+			&= -f(u) \cdot \frac{d}{dx} (1+3x^2)\\
+			&= \dfrac{-1}{2+e^u} \cdot 6x\\
+			&= \dfrac{-6x}{2+e^{1+3x^2}}
+		\end{flalign*}
+	\end{itemize}
+	\underline{\textbf{In General:}}
+	\[ y = \int_c^{g(x)} f(t) dt\;\;\;\;\; \text{, then}\]
+	\[ \frac{dy}{dx} = f(g(x)) \cdot g'(x) \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\]
+	\pagebreak
+	\begin{itemize}
+		\item[\textbf{Ex. 3}] Evaluate each of the definite integrals.
+		\begin{enumerate}[a)]
+			\item $\int_1^3 (u+\frac{u}{2}) du$\\\\
+			Suppose $f(x) = (u+\frac{u}{2})$\\
+			By FTC2, $\int_1^3 (u+\frac{2}{u}) du = F(3) - F(1)$\\
+			\begin{flalign*}
+				F(x) &= \left[ \frac{u^2}{2} + 2 \ln \mid u \mid \right]_1^3 \;\;\;\; \text{(By FTC2)}&\\
+				 &= (\frac{3^2}{2} + 2 \ln 3) - (\frac{1^2}{2} + 2 \ln 1)\\
+				 &= 4 + \ln 9
+			\end{flalign*}
+			
+			\textbf{Note: } When solving a definite integral, we don't write the $+ c$ when we anti-differentiate since it cancels out later anyways.
+			
+			\item $\int_0^{\ln 8} (2e^{-2t}) dt$
+			\begin{flalign*}
+			 &= \left[ -e^{2t}\right]_0^{\ln 8} \;\;\; \text{( By FTC2)} &\\
+			 &= -(e^{-2 \ln 8} - e^{-2(0)} )\\
+			 &= -(e^{\ln 8^{-2}} - 1)\\
+			 &= -(8^{-2} - 1)\\
+			 &= \frac{-63}{64}
+			\end{flalign*}
+			
+			\item $\int_0^1 (2u+1)^2 du$\\\\
+			We don't have a power rule, so we'll expand.
+			\begin{flalign*}
+				&\int_0^1 (4u^2 + 4u + 1)du&\\
+				&= \left[ \frac{4u^3}{3} + \frac{4u^2}{2} + u \right]_0^1 \;\;\;\; \text{(By FTC2)}\\
+				&= \left[ \frac{4u^3}{3} + 2u^2 + u \right]_0^1\\
+				&=\frac34 + 2 + 1  - 0\\
+				&= \frac{13}{3}
+			\end{flalign*}
+			
+			\item $\int_{\frac{-1}{2}}^{0} (\cos (\pi x)) dx$
+			\begin{flalign*}
+				&\left[ \dfrac{\sin(\pi x)}{\pi}\right]_{\frac{-1}{2}}^0&\\
+				&= \frac{\sin 0}{\pi} - \frac{\sin(\frac{\pi}{2})}{\pi}\\
+				&= \frac{1}{\pi}
+			\end{flalign*}
+		\end{enumerate}
+	\end{itemize}
+	
+\end{document}

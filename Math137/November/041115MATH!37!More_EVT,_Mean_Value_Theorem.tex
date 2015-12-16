@@ -1,0 +1,49 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - November 2'nd, 2015\\
+		\large More EVT, Mean Value Theorem
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{EVT Example:}}
+	
+	The fuel efficiency E of a car driven at a speed of $r$ km/h is given by:\\
+	
+	$E(v) = \frac{1600v}{6400+v^2}$\\
+	
+	If the speed limit is 100, what legal speed maximizes fuel efficiency?\\
+	
+	To find the maximum or minimum values of $E(v)$, we take the derivative and find where it equals 0. These 'critical points' represent the functions local minimums and maximums. Then, we can plug in these values, plus our endpoints, into the original function to find which value minimizes/maximizes the function value.\\
+	
+	Same substitute as yesterday, her solution to this question made no sense. Lovely.
+	
+	\underline{\textbf{Mean Value Theorem (MVT)}}
+	
+	Suppose $f$ is a function such that:
+	\begin{enumerate}[i)]
+		\item f is continuous on the closed interval $[a, b]$
+		\item f is differentiable on the open interval $(a, b)$
+	\end{enumerate}
+	Then, there exists a point $c$ in the open interval $(a, b)$ such that\\
+	
+	$f'(c) = \frac{f(b) - f(a)}{b-a}$\\
+	
+	In other words, at some point $c$ in the open interval $(a, b)$, the tangent line of $f$ at $c$ will equal the slope of the line connecting point $(a, f(a))$ and $(b, f(b))$.
+	
+	Example:\\
+	Two police cars are located at fixed positions 10km apart on a highway where the speed limit is 100 km/h. A car passes the first police car traveling at 95 km/h and 5 minutes later, passes the second police car traveling at 100 km/h. The car is stopped for speeding. Explain why.\\
+	
+	Soln:\\
+	Let $f(t)$ be the position function of the car at time $t$.\\
+	So, $f'(t)$ is the velocity function of the car at time $t$.\\
+	
+	By MVT, we know there is a point in the open interval $(0, 5)$ (minutes) such that $f'(c) = \frac{(f(b)-f(a)}{b-a} = \frac{10}{\frac{1}{12}} = 120$\\
+	$\therefore$ At some point between 0 and 5 minutes, the car was traveling 120 km/h.\\
+	
+	Short note again :/ If the prof isn't back next lecture, I'll just go to a different calc lecture.
+\end{document}

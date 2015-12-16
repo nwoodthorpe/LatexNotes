@@ -1,0 +1,108 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math137 - December 03, 2015\\
+		\large Final Exam Review I
+	\end{center}
+	\vspace{0.25 in}
+	
+	\underline{\textbf{Limits}}\\
+	
+	Evaluate each of the following:\\
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}[a)]
+			\item \begin{flalign*}
+				 &\lim_{x \to 5^-} \dfrac{|5 + 4x - x^2|}{1 - |4-x|}&\\
+				 &= \lim_{x \to 5^-} \dfrac{|(-1)(x^2 - 4x - 5)}{1 - |4-x|}\\
+				 &= \lim_{x \to 5^-} \dfrac{|(x-5)(x+1)|}{1 - |4-x|}\\
+				 &= \lim_{x \to 5^-} \dfrac{|x-5|\;|x+1|}{1 - |4-x|}\\
+				 &= \lim_{x \to 5^-} \dfrac{-(x-5)(x+1)}{-(x-5)}\\
+				 &= 6
+			\end{flalign*}
+		\end{enumerate}
+	\end{minipage}	
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{enumerate}[a)]
+			\setcounter{enumi}{1}
+			\item $\displaystyle \lim_{x \to 0} x^2(1 + \sin \frac{1}{x})$\\
+			$-1 \leq \sin \frac{1}{x} \leq 1 \;\;\;\;\; \forall x \neq 0$\\
+			$0 \leq 1 + \sin \frac{1}{x} \leq 2$\\
+			$0 \leq x^2(1 + \sin \frac{1}{x}) \leq 2x^2$\\
+			$\displaystyle \lim_{x \to 0} 0 \leq \lim_{x \to 0} x^2(1 + \sin \frac{1}{x}) \leq \lim_{x \to 0} 2x^2$\;\;\;\; (By the squeeze theorem)\\
+			$ \displaystyle 0 \leq \lim_{x \to 0} x^2(1+\sin \frac{1}{x}) \leq 0$\\\\
+			$\displaystyle \therefore \lim_{x \to 0} x^2(1 + \sin \frac{1}{x}) = 0$
+		\end{enumerate}
+	\end{minipage}
+	\begin{enumerate}[a)]
+		\setcounter{enumi}{2}
+		\item $\displaystyle \lim_{x \to \infty} x^{e^{-x}}$
+		\begin{flalign*}
+			&= \lim_{x \to \infty} e^{\ln x^{e^{ex}}}&\\
+			&= \lim_{x \to \infty} e^{e^{-x} \ln x}\\
+			&= e^{\lim_{x \to \infty} e^{-x} \ln x}
+		\end{flalign*}
+		
+		We must evaluate this new limit.
+		\begin{flalign*}
+			&=\lim_{x \to \infty} e^{-x} \ln x&\\
+			&= \lim_{x \to \infty} \dfrac{\ln x}{e^x}\\
+			&= \lim_{x \to \infty} \dfrac{\frac{1}{x}}{e^x}\\
+			&= \lim_{x \to \infty} \dfrac{1}{x e^x}\\
+			&= 0\\
+			&\therefore \lim_{x \to \infty} x^{e^{-x}} = e^{\lim_{x \to \infty} e^{-x} \ln x} = e^0 = 1
+		\end{flalign*}
+	\end{enumerate}
+	\clearpage
+	\underline{\textbf{Continuity}}\\
+	\begin{flalign*} &\text{Let } f(x) = \begin{cases}
+		1 - \ln x & x<1\\
+		c \cdot \arctan x & x \geq 1
+	\end{cases}& \end{flalign*}
+	
+	Determine the value of $c$ so that $f$ is a continuous function $\forall x > 0$\\
+	
+	$f$ is a continuous function $\forall x > 0, x \neq 1$\\
+	For $f$ to be continuous at 1, we need:\\
+	$\displaystyle \lim_{x \to 1^-} f(x) = \lim_{x \to 1^+} f(x) = f(1)$\\
+	$\displaystyle \therefore \lim_{x \to 1^-} 1-\ln x = \lim_{x \to 1^+}  c \cdot \arctan x = c \cdot \arctan 1$\\
+	$1 = c \cdot \arctan 1 = c \cdot \arctan 1$\\
+	$1 = c \cdot \pi / 4 = c \cdot \pi / 4$\\
+	$c = \frac{4}{\pi}$\\
+	
+	\underline{\textbf{Differentiability}}\\
+	
+	Using the definition of the derivative, determine any points where $y(x)$ is not differentiable.\\
+	\begin{enumerate}[1)]
+		\item $x < 0, x(x-3) > 0 \implies |x(x-3)| = x(x-3)$
+		\item $0 \leq x < 3, x(x-3) < 0 \implies |x(x-3)| = -x(x-3)$
+		\item $x \geq 3, x(x-3) > 0 \implies |x(x-3)| = x(x-3)$
+	\end{enumerate}
+	
+	\begin{flalign*}
+		&\therefore y(x) = 
+		\begin{cases}
+			x(x-3) & x < 0 \cup x \geq 3\\
+			-x(x-3) & 0 \leq x < 3
+		\end{cases}&
+	\end{flalign*}
+	
+	Now we know $y(x)$ is differentiable for all $x \neq 0, 3$.\\
+	
+	Now we need to prove differentiability at 0 and 3. I'm very tired though, so I'm not going to type it up. TLDR, use the limit definition of a derivative ay a point to check if the derivative exists at 0 and 3.
+	\end{document}

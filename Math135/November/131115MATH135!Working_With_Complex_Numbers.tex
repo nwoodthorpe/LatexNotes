@@ -1,0 +1,113 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 13, 2015\\
+		\large Working With Complex Numbers
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Properties of Arithmetic in $\mathbb{C}$}}
+	
+	Let $u, v, w \in \mathbb{C}$
+	\begin{enumerate}[1)]
+		\item Associativity of addition: $(u + v) + z = u (v z)$
+		\item Commutativity of addition: $u + v = v + u$
+		\item Additive identity: $0 = 0 + 0i$ has the property that $z + 0 = z$
+		\item Additive inverse: If $z = x+yi$ then there exists an \textit{additive inverse} of $z$, written $-z$ with the property that $z + (-z) = 0$ The additive inverse of $z = x+yi$ is $-z = -x - yi$
+		\item Associativity of multiplication: $(u \cdot v) \cdot z = u \cdot (v \cdot z)$
+		\item Commutativity of multiplication: $u \cdot v = v \cdot u$
+		\item Multiplicative identity: $1 = 1 + 0i$ has the property that $z \cdot 1 = z$
+		\item Multiplication inverses: If $z = x + yi \neq 0$ then there exists a \textit{multiplicative inverse} of $z$, written $z^{-1}$, with the property  that $z \cdot z^{-1} = 1$. The multiplicative inverse of $z = x + yi$ is $z^{-1} = \frac{x-yi}{x^2 + y^2}$
+		\item Distributivity: $z \cdot (u + v) = z \cdot u + z \cdot v$
+	\end{enumerate}
+	
+	Prove Number 2: $u + v = v + u$\\
+	
+	Let $u = x = yi, x, y \in \mathbb{R}$\\
+	Let $v = a + bi, a, b \in \mathbb{R}$
+	
+	Left Side:\\
+	$= x + yi + a + bi$\\
+	$= (x+a) + (y+b)i$\\
+	$= (a+x) + (b+y)i$\\
+	$= a + bi + x + yi$\\
+	$= v + u$\\
+	$=$ RS
+	
+	\underline{\textbf{Exponents}}
+	
+	By definition: $z^0 = 1 + 0i$ and $z^n = z \cdot z \cdot \dots \cdot z$ n times.\\
+	Given these definitions, we can define the following: (If $m, n \in \mathbb{N}$)
+	
+	$z^m \cdot z^n = z^{m+n}$\\
+	${z^m}^n = z^{mn}$
+	
+	Example: Find a real solution to $6z^3 + (1+3\sqrt{2}i)z^2 - (11-2\sqrt{2}i)z - 6 = 0$
+	\begin{flalign*}
+		6z^3 + z^2 + 3\sqrt{2}z^2i - 11z + 2\sqrt{2}zi - 6 &= 0&\\
+		6x^3 + z^2 - 11z - 6 + (3\sqrt{2}z^2 + 2\sqrt{2}z)i &= 0
+	\end{flalign*}
+	\begin{flalign*}
+		3\sqrt{2}z^2 + 2\sqrt{2}z &= 0&\\
+		\sqrt{2}z(3z + 2) &= 0\\
+		z &= 0, \frac{-3}{2}
+	\end{flalign*}
+	Now we'll sub these values into the other function.
+	\begin{flalign*}
+		6(0)^3 + 0^2 -11(0) - 6 &= 0&\\
+		-6 &= 0\\
+		6(\frac{-2}{3})^3 + (\frac{-2}{3})^2 + 11\frac{-2}{3}- 6 &= 0\\
+		0 &= 0\\
+	\end{flalign*}
+	$\therefore$ Our solution is $z=6$
+	
+	\underline{\textbf{Complex Conjugate}}
+	
+	The complex conjugate of $z = x + yi$ is the complex number $x - yi$, denoted by $\bar{z}$.
+	
+	Example: $z = 1+2i, \bar{z} = 1 - 2i$
+	
+	We can express $z^{-1}$ in terms of $\bar{z}$
+	
+	If $z = x+yi$
+	
+	$z^{-1} = \dfrac{x - yi}{x^2 + y^2}$\\
+	$z^{-1} = \dfrac{x-yi}{(x-yi)(x+yi)}$\\
+	$z^{-1} = \dfrac{\bar{z}}{z\bar{z}}$
+	
+	\underline{\textbf{Properties of Conjugates}}
+	
+	\begin{enumerate}[1)]
+		\item $\overline{z + w} = \bar{z} + \bar{w}$
+		\item $\overline{zw} = \bar{z} \cdot \bar{w}$
+		\item $\bar{\bar{z}} = z$
+		\item $z + \overline{z} = 2Re(z)$
+		\item $z - \overline{z} = 2iIe(z)$
+		\item $\overline{(\dfrac{1}{z})}= \dfrac{1}{z}$
+		\item $\overline{(\dfrac{z}{w})} = \dfrac{\bar{z}}{\bar{w}}$
+	\end{enumerate}
+	
+	\underline{\textbf{Real Numbers and Conjugates}}
+	
+	Prove that $z \in \mathbb{R}$ iff $z = \overline{z}$.
+	\begin{itemize}
+		\item[$\implies$] Assume $z$ is a real value:
+		
+		$z = x + 0i$\\
+		$\overline{z} = x - 0i$\\
+		$z = \overline{z}$
+		\item[$\impliedby$] Assume $z = \overline{z}$:
+		
+		$x + yi = x-yi$\\
+		$y = -y$\\
+		$y = 0$\\
+		So, $z = x + 0i$, $z \in \mathbb{R}$.
+	\end{itemize}
+	
+	Note: $z$ is purely imaginary iff $z = -\overline{z}$
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 5'th, 2015\\
+		\large Existence of Inverses, Chinese Remainder Theorem
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Corollary to F$\ell$T}}
+	
+	For any integer $a$ and prime $p$,\\
+	$a^p = a\;(\bmod\; p)$\\
+	
+	\underline{\textbf{Existence of Inverses in $\mathbb{Z}_p$}}
+	
+	Let $p$ be a prime number. If $[a]$ is any non-zero element in $\mathbb{Z}_p$, then there exists an element $[b] \in \mathbb{Z}_p$ such that $[a][b] = [1]$\\\\
+	Proof:
+	\begin{enumerate}[ ]
+		\item Assume $[a]$ is a non-zero element in $\mathbb{Z}_p$.	\\
+		$a \not\equiv 0\;(\bmod\; p)$\\
+		So, $p \nmid a$\\
+		By F$\ell$T, $a^{p1} \equiv 1\;(\bmod\; p)$\\
+		Consider $[b] = [a^{p-2}]$ (Allowed since $p \geq 2$)\\
+		$[a][b] = [a][p-2]$\\
+		$[a][b] = [a^{p-1}] = [1]$
+	\end{enumerate}
+	This proof gives us another method to find the inverse of an element in $\mathbb{Z}_p$ if $p$ is prime.
+	
+	$[a^{-1}] = [a]^{p-2}$
+	
+	Example: What is the inverse of $7$ in $\mathbb{Z}_{11}$?
+	\begin{flalign*}
+		[7]^{-1} &= [7]^{11-2} &\\
+		&= [7]^9\\
+		&= [5^4 \cdot 7] \text{ (Because $7^2 \equiv 5\;(\bmod\;11)$)}\\
+		&= [3^2 \cdot 7] \text{ (Because $5^2 \equiv 3 \;(\bmod\; 11)$)}\\
+		&= [63]\\
+		&= [8]
+	\end{flalign*}
+	
+	\underline{\textbf{Examples of F$\ell$T Proofs}}
+	
+	Let $p$ be prime, $r, k, s \in \mathbb{Z}$:
+	\begin{enumerate}[i)]
+		\item If $p \nmid a$ and $r \equiv s\;(\bmod\; p-1)$, then $a^r \equiv a^s \;(\bmod\; p)$.
+		
+		Assume $p \nmid a$ and $r \equiv s \;(\bmod\; p)$
+		
+		$r - s = (p-1)k$, $k \in \mathbb{Z}$\\
+		$r = (p-1)k + s$
+		
+		\begin{flalign*}
+			a^r &\equiv a^{(p-1)k + s} \;(\bmod\; p)&\\
+			&\equiv a^{(p-1)k}a^s \;(\bmod\; p)\\
+			&\equiv 1^k a^s \;(\bmod\; p)\\
+			&\equiv a^s \;(\bmod\; p)\\
+			&\equiv a^s \;(\bmod\; p)
+		\end{flalign*}
+		\pagebreak
+		\item If $r = pk + s$, then $a^4 \equiv a^{s+k} \;(\bmod\; p)$.
+		
+		\begin{flalign*}
+			a^r &\equiv a^{pk + s} \;(\bmod\; p)&\\
+			&\equiv (a^p)^k a^s \;(\bmod\; p)\\
+			&\equiv a^k a^s \;(\bmod\; p)\\
+			&\equiv a^{k + s} \;(\bmod\; p)
+		\end{flalign*}
+	\end{enumerate}
+	
+	\underline{\textbf{Chinese Remainder Theorem}}
+	
+	Let $a_1, a_2 \in \mathbb{Z}$. If $\gcd(m_1, m_2) = 1$, then the simultaneous linear congruences:
+	
+	$n \equiv a_1 \;(\bmod\; m_1)$\\
+	$n \equiv a_2 \;(\bmod\; m_2)$
+	
+	have a unique solution modulo $(m_1)(m_2)$. Thus, if $n = n_0$ is one integer solution, then the complete solution is:
+	
+	$n \equiv n_0 \;(\bmod\; m_1m_2)$
+	
+\end{document}

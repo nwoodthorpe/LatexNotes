@@ -1,0 +1,45 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 9'th, 2015\\
+		\large Introduction To RSA Encryption
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Cryptography}}
+	
+	Cryptography is the practice and study of secure communications.
+	
+	\underline{\textbf{RSA}}
+	
+	RSA is an effective public-key cryptosystem used to communicate private messages. In this class, we will prove why RSA works, and simulate encryption and decryption with small prime values.
+	
+	\underline{\textbf{Setting up RSA}}
+	\begin{enumerate}[1)]
+		\item Choose 2 large, distinct primes $p$ and $q$.
+		\item Let $n = pq$.
+		\item Select an integer $e$ so $gcd(e, (p-1)(q-1)) = 1$ and $1 < e < (p-1)(q-1)$.
+		\item Solve $ed \equiv 1\;(\bmod\; (p-1)(q-1))$.
+		\item Publish the public encryption key $(e, n)$.
+		\item Keep secure the private decryption key $(d, n)$.
+	\end{enumerate}
+	\underline{\textbf{Sending a Message}}
+	\begin{enumerate}[1)]
+		\item Look up the recipients public key $(e, n)$.
+		\item Generate the message $M$ so that $0 \leq M \leq n$.
+		\item Compute the ciphertext $C$ as follows:\\
+		$M^e \equiv C\;(\bmod\; n)$ where $0 \leq C \leq n$
+		\item Send $C$ to the recipient.
+	\end{enumerate}
+	\underline{\textbf{Receiving/Decrypting a Message}}
+	\begin{enumerate}[1)]
+		\item Use private key $(d, n)$.
+		\item Compute the message text $R$ from $C$ as follows:\\
+		$C^d \equiv R\;(\bmod\; n)$ where $0 \leq R \leq n$
+		\item Hooray! You now have the plain-text message, $R$.
+	\end{enumerate}
+\end{document}

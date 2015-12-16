@@ -1,0 +1,151 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math135 - November 19, 2015\\
+		\large Proof of DMT - Complex Exponentials
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Imaginary Inverse Property:}}
+	
+	\[ z^{-n} = (z^{-1})^n = (z^n)^{-1} = \dfrac{1}{z^n} \]
+	
+	\underline{\textbf{Proof of DMT}}
+	
+	Reminder: DMT States that $(\cos \theta + i \sin \theta)^n =
+	 (\cos (n \theta) + i \sin (n \theta))$
+	\begin{itemize}
+		\item[Case 1: ]\textbf{n = 0}\\\\
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{itemize}
+				\item[LS: ] $(\cos \theta + i \sin \theta)^0$\\
+				$=1$
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{itemize}
+				\item[RS: ] $\cos 0 + i \sin 0$\\
+				$= 1 + 0i$\\
+				$= 1$\\
+				$= LS$
+			\end{itemize}
+		\end{minipage}
+		\\
+		\item[Case 2: ] $\mathbf{n > 0}$\\\\
+		Proof by induction:\\\\
+		Base Case: $n = 1$\\
+		\begin{itemize}
+			\item[\;\;\;]
+			\begin{minipage}[t]{0.5\textwidth}
+				\begin{itemize}
+					\item[LS: ] $(\cos \theta + i \sin \theta)^1$\\
+					$= \cos \theta + i \sin \theta$
+				\end{itemize}
+			\end{minipage}
+			\begin{minipage}[t]{0.5\textwidth}
+				\begin{itemize}
+					\item[RS: ]$\cos((1)\theta) + i \sin((1)\theta)$\\
+					$= \cos \theta + i \sin \theta$\\
+					$= LS$
+				\end{itemize}
+			\end{minipage}
+		\end{itemize}
+		Inductive Hypothesis:
+		\begin{itemize}
+			\item[\;\;\;] Assume $(\cos \theta + i \sin \theta)^k = \cos(k \theta) + i \sin(k \theta)$ for some $k > 0$
+		\end{itemize}
+		Inductive Conclusion:
+		\begin{itemize}
+			\item[\;\;\;] Need to show: $(\cos \theta + i \sin \theta)^{k+1} = \cos((k+1)\theta) + i \sin((k+1)\theta)$\\
+			\begin{itemize}
+				\item[LS: ]
+				\begin{flalign*}
+					&(\cos \theta + i \sin \theta)^{k+1}&\\
+					&= (\cos \theta + i \sin \theta)^k (\cos \theta + i \sin \theta)\\
+					&= (\cos (k \theta) + i \sin (k \theta))(\cos \theta + i \sin \theta) \;\;\;\text{(By Inductive Hypothesis)}\\
+					&=\cos (k\theta + k) + i \sin(k \theta + k) \;\;\; \text{(By PMCT)}\\
+					&= \cos((k+1)\theta) + i \sin ((k+1)\theta)\\
+					&= RS
+				\end{flalign*}
+			\end{itemize}
+		\end{itemize}
+		
+		$\therefore$ by POMI, $(\cos \theta + i \sin \theta)^n = \cos(n \theta) + i \sin (n \theta)$ for all $n > 0$.
+		\clearpage
+		\item[Case 3: ] $\mathbf{n < 0}$\\
+		
+		Let $n = -m, m > 0$
+		
+		\begin{flalign*}
+			(\cos \theta + i \sin \theta)^n &= (\cos \theta + i \sin \theta)^{-m}&\\
+			&= \dfrac{1}{(\cos \theta + i \sin \theta)^m}\\
+			&= \dfrac{1}{(\cos(m \theta) + i \sin(m \theta))}\;\;\; \text{(By Case 2)}\\
+			&= \dfrac{\cos(m \theta) - i \sin(m \theta)}{\cos^2(m \theta) + \sin^2(m \theta)}\\
+			&= \cos(-m \theta) + i \sin(-m \theta)\;\;\; \text{(By symmetry of sin/cos)}\\
+			&=\cos(n \theta) + i \sin(n \theta)
+		\end{flalign*}
+	\end{itemize}
+	QED. 
+	
+	\underline{\textbf{A Proof with Imaginary Numbers}}
+	
+	\begin{itemize}
+		\item[Ex. ] Prove that if $w$ is complex, $\vert w \vert = 1$ and $\theta$ is an argument of $w$, then $\frac{-i}{2}(w^n - w^{-n}) = \sin (n \theta)\; \forall\; n \in \mathbb{Z}$\\\\
+		\begin{flalign*}
+			\text{LS: } &= \frac{-i}{2}\left( w^n - w^{-n} \right)&\\
+			&= \frac{-i}{2} \left( (\cos \theta + i \sin \theta)^n - (\cos \theta + i \sin \theta)^{-n} \right)\\
+			&= \frac{-i}{2} \left (\cos (n \theta) + i \sin (n \theta) - (\cos(-n \theta) + i \sin(-n \theta))\right)\\
+			&= \frac{i}{2} \left( \cos (n \theta) + i \sin (n \theta) - \cos(n \theta) + \sin(n \theta)\right)\\
+			&= \frac{-i}{2} \left( 2i \sin(2 \theta) \right)\\
+			&= \sin (n \theta)\\
+			&= \text{RS} \;\;\;\; \square
+		\end{flalign*}
+	\end{itemize}
+	
+	\underline{\textbf{Complex Exponential}}
+	
+	We will define complex exponential functions as:
+	
+	\[ e^{i \theta} = \cos \theta + i \sin \theta \]
+	
+	We can write the polar form of any complex number as $z = 4 e^{i \theta}$, where $r = \vert z \vert$, and $\theta$ is an argument of $z$.
+	
+	\begin{itemize}
+		\item[Ex. ] Write $(2 e^{i(\frac{11 \pi}{6})})^6$ in standard form. 
+		\begin{flalign*}
+			(2 e^{i(\frac{11 \pi}{6})})^6 &= (2(\cos \frac{11 \pi}{6} + i \sin \frac{11 \pi}{6}))^6&\\
+			&= 2^6 (\cos 11\pi + i \sin 11\pi)\\
+			&= 64(\cos \pi + i \sin \pi)\\
+			&= 64(-1 + 0i)\\
+			&= -64
+		\end{flalign*}
+	\end{itemize}
+	\clearpage
+	\underline{\textbf{Awesome Properties of Complex Exponential Form}}
+	
+	Notice how $(2 e^{i \frac{11 \pi}{6}})^6 = 2^6 e^{i 11 \pi}$.
+	
+	Exponential form is useful because most of the exponent laws from the reals still apply.
+	
+	\begin{itemize}
+		\item[Ex. ] $(e^{i \theta})^n = e^{in\theta}$\\
+		$(e^{i\theta})(e^{i\phi}) = e^{i(\theta + \phi)}$
+	\end{itemize}
+	
+	Derivatives also work similarly in complex exponential form.
+	
+	$\dfrac{d}{d\theta} (e^{i \theta}) = i(e^{i\theta})$\\
+	
+	\underline{\textbf{The Craziest Equation In Math}}
+	
+	Notice what happens when we set $r=1$, $\theta = \pi$.
+	
+	\[ e^{i \pi} = \cos \pi + i \sin \pi \]
+	\[ e^{i \pi} = -1 \]
+	\[ e^{i \pi} + 1 = 0 \]
+\end{document}
