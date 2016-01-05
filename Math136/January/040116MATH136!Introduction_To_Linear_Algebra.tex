@@ -1,0 +1,104 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - December 04, 2015\\
+		\large Introduction to Linear Algebra
+	\end{center}
+	\vspace{0.25 in}
+	\underline{\textbf{Administrative Stuff}}
+	
+		\begin{minipage}[t]{0.2\textwidth}
+			Instructor: \\
+			Office\\
+			Email:\\
+			Dropboxes:\\
+			Assignments Due:
+		\end{minipage}
+		\begin{minipage}[t]{0.8\textwidth}
+			Gabriel Gauthier-Shalom\\
+			MC 5113\\
+			g3gauthiershalom@uwaterloo.ca\\
+			Box 2 infront of MC4067\\
+			3PM
+		\end{minipage}
+		
+	\underline{\textbf{What is Linear Algebra}}
+	
+	The central objects of study are linear equations. That is, equations of degree one.
+
+	For example, $x+y=0\;,\;\; 2x+3z-y = 5$
+	
+	So geometrically, we look at lines, planes, and higher dimensional analogues.
+	
+	\underline{\textbf{Why?}}
+	
+	Because you will use it in many future courses in math, physics, etc. Also, proofs are really frickin important.
+	
+	\underline{\textbf{Vectors}}
+	
+	A Vector $\vec x \in \mathbb{R}^n$ in n-dimensional real space is a tuple of n real numbers, which we write in a column.
+	
+	$\vec x = \begin{bmatrix}
+		x_1\\
+		\vdots\\
+		x_n
+	\end{bmatrix} \in \mathbb{R}^n$
+	
+	$\mathbb{R}^n$ is the set of all such vectors.
+	
+	\underline{\textbf{Definitions}}
+	
+	Two vectors $\vec x = \begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}$ and $\vec y = \begin{bmatrix}y_1\\\vdots\\y_n\end{bmatrix}$ in $\mathbb{R}^n$ are \textbf{equal} if $x_1 = y_1, x_2 = y_2, \dots, x_n = y_n$
+	
+	We can \textbf{sum} vectors $\vec x$ and $\vec y \in \mathbb{R}^n$ as follows: $\vec x + \vec y = \begin{bmatrix}x_1 + y_1\\x_2+y_2\\\vdots\\x_n + y_n\end{bmatrix}$
+	
+	\textbf{Summation} Example: $\begin{bmatrix}1\\2\end{bmatrix} + \begin{bmatrix}3\\4\end{bmatrix} = \begin{bmatrix}4\\6\end{bmatrix}$
+	
+	For $c \in \mathbb{R}$, \textbf{scalar multiplication} is defined as $c\vec x = \begin{bmatrix}cx_1\\\dots\\cx_n\end{bmatrix}$
+	
+	Scalar Multiplication Example: $4\begin{bmatrix}
+	-1\\-1\\0\end{bmatrix} = \begin{bmatrix}
+	-4\\-4\\0\end{bmatrix}$
+	
+	\clearpage
+	
+	A \textbf{linear combination} of $\vec v_1, \vec v_2, \dots, \vec v_k \in \mathbb{R}^n$ is the sum $c_1\vec v_1 + c_2\vec v_2 + \dots + c_k \vec v_k$ with $c_1, c_2, \dots, c_k$ being scalars.
+	
+	E.g. if $\vec v_1 = \begin{bmatrix}1\\0\end{bmatrix}, \vec v_2 = \begin{bmatrix}2\\2\end{bmatrix}$ then $3\begin{bmatrix}1\\0\end{bmatrix} -1\begin{bmatrix}2\\2\end{bmatrix} = \begin{bmatrix}1\\-2\end{bmatrix}$ is a linear combination of those vectors.
+	
+	\underline{\textbf{Vector Properties}}
+	
+	If $\vec x, \vec y, \vec z \in \mathbb{R}^n$ and $c, d \in \mathbb{R}$ then:
+	\begin{itemize}
+		\item[\;\;]\begin{flalign*}
+		\text{PROPERTY 1}:\;\;\;\;\; &\vec x + \vec y \in \mathbb{R}^n&\\
+		\text{PROPERTY 2}:\;\;\;\;\; &(\vec x + \vec y) + \vec z = (\vec z + \vec x) + \vec y\\
+		\text{PROPERTY 3}:\;\;\;\;\; &(\vec x + \vec y) = (\vec y + \vec x)\\
+		\text{PROPERTY 4}:\;\;\;\;\; &\exists \; \vec 0 \in \mathbb{R}^n \text{ such that } \vec x + \vec 0 = \vec x \text{ for any } x \in \mathbb{R}^n\\
+		\text{PROPERTY 5}:\;\;\;\;\; &\text{For any } \vec x \in \mathbb{R}^n, \text{ there is a vector } -\vec x \in \mathbb{R}^n \text{ such that } \vec x + -\vec x = 0\\
+		\text{PROPERTY 6}:\;\;\;\;\; &c\vec x \in \mathbb{R}^n\\
+		\text{PROPERTY 7}:\;\;\;\;\; &(c+d)\vec x = c\vec x + d \vec x\\
+		\text{PROPERTY 8}:\;\;\;\;\; &c(d\vec x) = (cd)\vec x\\
+		\text{PROPERTY 9}:\;\;\;\;\; &c(\vec x + \vec y) = c\vec x + c\vec y\\
+		\text{PROPERTY 10}:\;\;\;\;\; &1\;\vec x = \vec x
+		\end{flalign*}
+	\end{itemize}
+	
+	This list of properties will be very useful for lots of work we will do later on in the course. As an exercise left to the reader, try proving all of these properties.
+\end{document}
