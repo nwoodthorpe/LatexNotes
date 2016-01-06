@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.2)  5 DEC 2015 16:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.2)  6 JAN 2016 17:04
 entering extended mode
 **template.tex
 (template.tex
@@ -609,14 +609,6 @@ ABD: EveryShipout initializing macros
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.12} (current compat level: 1.8).
 
-! You can't use `macro parameter character #' in vertical mode.
-l.25 	#
-        6
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (template.aux) ) 
@@ -632,7 +624,7 @@ Here is how much of TeX's memory you used:
 am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on template.pdf (1 page, 29331 bytes).
+Output written on template.pdf (1 page, 28389 bytes).
 PDF statistics:
  21 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

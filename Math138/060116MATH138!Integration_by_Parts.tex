@@ -1,0 +1,205 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 04, 2016\\
+		\large Integration by Parts
+	\end{center}
+	\vspace{0.25 in}
+	
+	\underline{\textbf{The Formula}}
+	
+	Let $u$ and $v$ be functions of $x$.
+	
+	The product rule says $\frac{d}{dx} (u)(v) = \frac{du}{dx} v + u \frac{dv}{dx}$.
+	
+	If we integrate, we get:
+	\begin{flalign*}
+		\int \frac{d}{dx}(u\;v) dx &= \int \frac{du}{dx} \cdot (v)(dx) + \int u \cdot \frac{du}{dx} dx&\\
+		(u)(v) &= \int v \cdot (du) + \int u \cdot (dv)\\
+		&= \int u \cdot dv = (u)(v) - \int v \cdot du\;\;\;\; \text{(REMEMBER THIS FORMULA IT'S VERY IMPORTANT!)}
+	\end{flalign*}
+	
+	This looks a little bit confusing, and I was confused at first so I'll try to explain. What we've just proven is this: If we have a function that is very difficult or impossible to integrate with our current rules, we can split it into the product of two functions $u$ and $dv$ and use \underline{Integration by Parts} to integrate.
+	
+	To do this, first we need a $u$ and $dv$ function! Even though $dv$ looks like a derivative, don't worry about this. Choose $u$ and $dv$ such that $u$ times $dv$ equals the function you're trying to integrate. Below are tips for choosing effective functions. Then you'll want to \textit{differentiate} $u$ and call the derivative $du$. Next, \textit{integrate} $dv$ and call the integral $v$. Now by Integration by Parts, the original integration we were trying to solve is equal to $(u)(v) - \int v \cdot du$.
+	
+	\underline{\textbf{Strategies for Choosing Functions}}
+	
+	When integrating the product of two functions using Integration by Parts, we need to choose $u$ and $v$ effectively. We will be differentiating $u$ and integrating $v$.
+	\begin{itemize}
+		\item Pick $dv$ to be the most complicated part of the integral that you know how to integrate.
+		\item Pick $u$ so it gets simpler when you take the derivative.
+	\end{itemize}
+	
+	\underline{\textbf{ILATE Rule}}
+	
+	The above tips may seem ambiguous and confusing. Thankfully, the 'ILATE' rule make choosing $u$ and $dv$ as simple as memorization.
+	
+	\begin{itemize}
+		\item Pick $u$ to be the first function that appears in this list:\begin{itemize}
+			\item \textbf{I}nverse trig functions
+			\item \textbf{L}ogarithms
+			\item \textbf{A}lgebraic (Polynomials)
+			\item \textbf{T}rig
+			\item \textbf{E}xponentials
+		\end{itemize}
+	\end{itemize}
+	
+	\clearpage
+	
+	\underline{\textbf{Examples}}
+	
+	\begin{enumerate}[a)]
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int x^2 \ln x \; dx&\\
+				&= \frac{x^3}{3} \ln x - \int \frac{x^3}{3} \cdot \frac{1}{x} dx\\
+				&= \frac{x^3}{3} \ln x - \int \frac{x^2}{3} dx\\
+				&= \frac{x^3}{3} \ln x - \frac{x^3}{9} + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				u &= \ln x&\\
+				du &= \frac{1}{x} dx\\\\
+				dv &= x^2 dx\\
+				v &= \frac{x^3}{3}
+			\end{flalign*}
+		\end{minipage}
+		
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int x e^x \; dx&\\
+				&= x e^x - \int e^x \; dx\\
+				&= x e^x - e^x + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				u &= x&\\
+				du &= \frac{1}{x} dx\\\\
+				dv &= x^2 dx\\
+				v &= \frac{x^3}{3}
+			\end{flalign*}
+		\end{minipage}
+		
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int \ln x \; dx&\\
+				&= x \ln x - \int x \frac{1}{x} \; dx\\
+				&= x \ln x - x + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				u &= \ln x&\\
+				du &= \frac{1}{x} dx\\
+				dv &= dx\\
+				v &= x
+			\end{flalign*}
+		\end{minipage}
+		
+		\item \begin{minipage}[t]{0.4\textwidth}
+			\begin{flalign*}
+				&\int x^2 \cos x\; dx&\\
+				&=x^2 \sin x - \int 2x \sin x \; dx\\
+				&= x^2 \sin x - ((2x)(-\cos x) - 2\int \cos x \; dx\\
+				&= x^2 \sin x + 2x \cos x + 2 \sin x + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				u &= x^2,\;\; du = 2x\;dx \;\;\;\text{FIRST USAGE}&\\
+				dv &= \cos x,\;\; v = \sin x\\
+				u &= 2x,\;\; du = 2 \; dx \;\;\;\text{SECOND USAGE}\\
+				dv &= 2\; dx,\;\;v = -\cos x
+			\end{flalign*}
+		\end{minipage}
+		
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int e^x \cos x \; dx\\
+			&= \cos x e^x - \int e^x (-\sin x) \; dx\\
+			&= e^x \cos x  + \int e^x \sin x \; dx\\
+			&= e^x \cos x + e^x \sin x - \int e^x \cos x\\
+			&\text{Notice the integral is the same as our original integral.}\\
+			&\text{Let the original integral be $I$}\\
+			I &= e^x \cos x  + e^x \sin x - I\\
+			2I &= e^x \cos x + e^x \sin x\\
+			I &= \frac{1}{2}(e^x \cos x + e^x \sin x)
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \cos x, \;\; du = -\sin x\; dx \;\;\;\text{FIRST USAGE}&\\
+			dv &= e^x, \;\; v = e^x\\
+			u &= \sin x,\;\; du = \cos x\;\;\; \text{SECOND USAGE}\\
+			dv &= e^x,\;\; v = e^x 
+			\end{flalign*}
+		\end{minipage}
+		
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int_1^3 x^3 \ln x\; dx\\
+			&= \left[\frac{x^4}{4} \ln x \right]_1^3 - \int_1^3 \frac{x^4}{4}\frac{1}{x}\; dx\\
+			&= \left[\frac{x^4}{4} \ln x \right]_1^3 - \int_1^3 \frac{x^3}{4} \; dx\\
+			&= \left[ \frac{x^4}{4} \ln x - \frac{x^4}{16}\right]_1^3\\
+			&= \frac{81}{4} \ln 3 - \frac{81}{16} - (0 - \frac{1}{16})\\
+			&= 18 \frac{\ln 3}{4} - \frac{80}{16}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \ln x&\\
+			du &= \frac{1}{x} dx\\\\
+			dv &= x^3 dx\\
+			v &= \frac{x^4}{4}
+			\end{flalign*}
+		\end{minipage}
+	\end{enumerate}
+	
+	\underline{\textbf{Trig Identities}}
+	
+	In this section, we have two goals: integrating powers of Sin/Cos, and Sec/Tan. When these are multiplied together, they don't reduce into simpler trig functions like most other combinations.
+	
+	\underline{\textbf{How to Integrate Powers of Sin/Cos}}
+	
+	e.g. $\int \sin^m (x) \cos^n (x)\;dx$
+	
+	\begin{enumerate}[\text{Case }1:]
+		\item $m$ and $n$ are both even.\\
+		\begin{itemize}
+			\item Use trig formulas to reduce to lower powers.
+			\item Then use these trig identites:
+			\begin{itemize}
+				\item $\sin^2 x = \frac{1}{2}(1-\cos(2x))$
+				\item$\cos^2 x = \frac{1}{2}(1 + \cos(2x))$
+			\end{itemize}
+		\end{itemize}
+		
+		\item $m$ or $n$ is odd.\\\\
+		Then substitute $u = $ the base of the even power.
+		
+		\item Both are odd.\\\\
+		Let $u = $ the base of the higher power.
+		
+		\item $m$ or $n$ isn't an integer.\\\\
+		Let $u$ be the base of the ugliest power.
+	\end{enumerate}
+\end{document}
