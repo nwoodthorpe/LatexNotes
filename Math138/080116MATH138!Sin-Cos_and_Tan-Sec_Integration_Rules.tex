@@ -1,0 +1,173 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 08, 2016\\
+		\large Sin/Cos and Tan/Sec Integration Rules
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Rules}
+	
+	In the last lecture, we went over the 4 cases for sin/cos integration. We refer to these cases when solving the following examples.
+	
+	P.s. If the letters not being on the same line as the math bothers you, sorry! I know there are ways to fix it but I've been typesetting for hours and I don't care anymore :D
+	
+	\h{Examples}
+	\begin{enumerate}[a)]
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int \sin^6 x \cos^3 x\; dx&\\
+				&= \int u^6 \cos^2 x\; du\\
+				&= \int u^6(1-u^2)\; du\\
+				&= \int u^6 - u^8\; du\\
+				&= \frac{u^7}{7} - \frac{u^9}{9} + c\\
+				&\text{Side note: Can they take marks off if you write $-c$?}			
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				u &= \sin x&\\
+				du &= \cos x\; dx\\
+			\end{flalign*}
+		\end{minipage}
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \cos ^15 x \sin ^5 x\; dx&\\
+			&= -\int u^15 \sin ^4 x \; du\\
+			&= -\int u^15(1-u^2)^2\;du\\
+			&= -\int u^15(1-2u^2 + u^4)	\; du\\
+			&= -\int u^16 - 2u^16 + u^19\\
+			&= -(\frac{u^16}{16} - \frac{u^18}{9} + \frac{u^20}{20}) + c\\
+			&= \frac{\cos^16 x}{16} - \frac{\cos^18 x}{9} + \frac{\cos^20 x}{20} + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \cos x&\\
+			du &= -\sin x\; dx\\
+			\sin^4 x& = (1-\cos^2 x)^2\\
+			(\sin^2 x)^2 &= (1-u^2)^2\\
+			\end{flalign*}
+		\end{minipage}
+		\clearpage
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \sin^2 x \cos^2 x\; dx&\\
+			&= \int\left( \frac{1-\cos(2x)}{2}\right)\left( \frac{1+\cos(2x)}{2} \right)\\
+			&= \frac{1}{4} \int 1-\cos^2(2x)\; dx\\
+			&= \frac14 \int \sin^2 (2x)\; dx\\
+			&= \frac14 \int \left( \frac{1 - \cos(4x)}{2}\right)\; dx\\
+			&= \frac18 \int 1 - \cos 4x\; dx\\
+			&= \frac18 \left( x - \frac{\sin(4x)}{4} \right) + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \cos x&\\
+			du &= -\sin x\; dx\\
+			\sin^4 x& = (1-\cos^2 x)^2\\
+			(\sin^2 x)^2 &= (1-u^2)^2\\
+			\end{flalign*}
+		\end{minipage}
+	\end{enumerate}
+	
+	\h{Powers of Sec/Tan (Same as Csc/Cot)}
+	
+	Say we are trying to integrate $\int \tan^m x \cdot \sec^n x$. The rules work very similarly to sin/cos, but the cases are different.
+	
+	\begin{enumerate}[\text{Case } 1:]
+		\item If $n$ is even and $m$ is anything, let $u = \tan x$ and use the identity $\sec^2 x = 1 + \tan^2 x$
+		\item If $m$ is odd and $n$ is anything, let $u = \sec x$ and use the identity $\tan^2 x = \sec^2 x - 1$\\
+		Note: If $n$ is even and $m$ is odd, use the higher power for $u$.
+		\item if $m$ is even and $n$ is odd, use $\tan^2 x = \sec^2 x - 1$ to write the entire integral in terms of $\sec$, then use the formula for $\int \sec^n x\; dx$ from Assignment 1.
+	\end{enumerate}
+	
+	\h{Examples}
+	
+	\begin{enumerate}[a)]
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \tan^2 x \sec^4 x\; dx&\\
+			&= \int u^2 \sec^2 x\; dx\\
+			&= \int u^2(1+\tan^2 x) \; du\\
+			&= \int u^2(1+u^2)\; du\\
+			&= \int u^2 + u^4\; du\\
+			&= \frac{u^3}{3} + \frac{u^5}{5}\\
+			&= \frac{\tan^3 x}{3} + \frac{\tan^5 x}{5}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \tan x&\\
+			du &= \sec^2 x\; dx\\
+			\end{flalign*}
+		\end{minipage}
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int \tan^3 x \sec^3 x\; dx&\\
+				&= \int u^2 \tan^2 x \; du\\
+				&= u^2(\sec^2 x - 1)\; du\\
+				&= u^2(u^2 - 1)\; du\\
+				&= \int u^4 - u^2\; du\\
+				&= \frac{u^5}{5} - \frac{u^3}{3} + c\\
+				&= \frac{\sec^5 x}{5} - \frac{\sec{^3 x}}{3}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \sec x&\\
+			du &= \sec x \tan x; dx\\
+			\end{flalign*}
+		\end{minipage}
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \tan^3 x \sec^{14} x\; dx&\\
+			&= \int u^{13} \tan^2 x \; du\\
+			&= \int u^{13}(\sec^2 x - 1)\; du\\
+			&= \int u^{13}(u^2 - 1)\; du\\
+			&= \int u^{26} - u^{13}\; du\\
+			&= \frac{u^{27}}{27} - \frac{u^{14}}{14} + c\\
+			&= \frac{\sec^{27} x}{27} - \frac{\sec^{14} x}{14} + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			u &= \sec x&\\
+			du &= \sec x \tan x\; dx\\
+			\end{flalign*}
+		\end{minipage}
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \tan^4 x \sec^3 x\; dx&\\
+			&= \int(\sec^2 x - 1)^2 \sec^3 x\; dx\\
+			&= \int(\sec^4 + 2\sec^2 x + 1) \sec^3 x\; dx\\
+			&= \int sec^6 x + 2\sec^5 x + \sec^3 x \; dx\\
+			&\text{Now use the reduction formula for secant to reduce (From Assignment 1)}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			
+		\end{minipage}
+	\end{enumerate}
+\end{document}
