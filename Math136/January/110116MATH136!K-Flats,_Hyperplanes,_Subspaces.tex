@@ -1,0 +1,151 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - January 11'th, 2016\\
+		\large F-Flats, Hyperplanes and Subspaces
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Line}
+	
+	A \textbf{line} in $\mathbb{R}^3$ through $\vec b \in \mathbb{R}$ with direction vector $v \in \mathbb{R}$ is the set $\{ c_1\vec v + \vec b \}$ which we often write as a vector equation:
+	
+	$\vec x = c_1 \vec v + \vec v,\; c_1 \in \mathbb{R} \;\;\;\;(\vec v \neq \vec 0)$
+	
+	\h{Plane} 
+	
+	A \textbf{plane} in $\mathbb{R}^n$ is given by the vector equation:
+	
+	$\vec x = c_1 \vec v_1 + c_2 \vec v_2 + \vec b,\;\;c_1, c_2 \in \mathbb{R}$\\
+	(Where $\vec v_1, \vec v_2, \vec b$ are fixed vectors and $c_1, c_2$ vary over $\vec b$) where $\{ \vec v_1, \vec v_2 \}$ are linearly independent (L.I) 
+	
+	\h{K-Flat}
+	
+	Let $\vec v_1, \vec v_2, \dots, \vec v_k \in mathbb{R}^n$ be L.I. vectors and $\vec b \in \mathbb{R}^n$. We call the set with vector equation
+	
+	$\vec x = c_1 \vec v_1 + c_2 \vec v_2 + \dots + c_k \vec v_k + \vec b,\;\;c_1, c_2, \dots, c_k \in \mathbb{R}$
+	
+	A \textbf{k-flat} through $\vec b$
+	
+	\h{Hyperplane}
+	
+	A $(n-1)$-flat in $\mathbb{R}^n$ is called a \textbf{hyperplane}.
+	
+	\begin{itemize}
+		\item[E.g.] The vector equation:\\\\
+		$\vec x = c_1 \0{1\\1\\0\\0} + c_2\0{0\\0\\1\\1} + c_3\0{2\\1\\0\\1} + \0{-1\\0\\0\\0},\;\;\;c_1, c_2, c_3 \in \mathbb{R}$\\\\
+		Defines a 3-flat in $\mathbb{R}^4$ which is a hyperplane.\\\\
+		Note: Before we call this a 3-flat, we must check all vectors are L.I.
+	\end{itemize}
+	
+	\h{Subspaces}
+	
+	A subspace of $\mathbb{R}^n$ is a subset $S \subset \mathbb{R}^n$ which satisfies the following 10 properties:
+	\begin{enumerate}[$S_1$]
+		\item $\vec x + \vec y \in S \;\forall \vec x, \vec y \in S$
+		\item $(\vec x + \vec y) + \vec w = \vec x + (\vec y + \vec w) \;\forall \vec x, \vec y, \vec w \in S$
+		\item $\vec x + \vec y = \vec y + \vec x$
+		\item There is $\vec 0 \in S$ with $\vec x + \vec 0 = \vec x \;\forall \vec x \in S$
+		\item For any $\vec x \in S$, there is $(-\vec x) \in S$ with $\vec x + (- \vec x) = \vec 0$
+		\item $c \vec x \in S \forall c \in \mathbb{R}, \vec x \in S$
+		\item $c(d\vec x) = (cd)\vec x \;\forall c, d \in \mathbb{R}, \vec x \in S$
+		\item $(c+d) \vec x = c\vec x + d \vec x \;\forall c, d \in \mathbb{R}$
+		\item $c(\vec x + \vec y) = c\vec x + c\vec y \;\forall c \in \mathbb{R}, \vec x, \vec y \in S$
+		\item $1 \vec x = \vec x \;\forall \vec x \in S$
+	\end{enumerate}
+	
+	\clearpage
+	
+	\h{Theorem 1.2.1 - Subspace Test}
+	
+	Let $S \subset \mathbb{R}^n$ be a non-empty subset of $\mathbb{R}^n$ that is closed under addition and scaler multiplication (I.e. $\vec x + \vec y \in S \; \forall \vec x, \vec y \in S$ and $c \vec x \in S \; \forall c \in \mathbb{R}, \vec x \in S$
+	
+	Then, $S$ is a subspace of $\mathbb{R}^n$
+	
+	\begin{itemize}
+		\item[E.g.] Is $S = $span$\{ \0{1\\0 }\}$ a subspace  of $\mathbb{R}^2$?\\\\
+		First, note that $\0{1\\1} = 0\0{1\\0} \in S$, so $S$ is non empty.\\\\
+		Now we must check that $S$ satisfies closure under addition.\\
+		If $\vec x, \vec y \in S$, then by definition $\vec x = c_1\0{1\\0}, \vec y = c_2\0{1\\0}$ for some $c_1, c_2 \in \mathbb{R}$\\
+		Then $\vec x + \vec y = c_1\0{1\\0} + c_2\0{1\\0} = (c_1+c_2)\0{1\\0} \in S$\\\\
+		$\therefore S$ is closed under addition $\checkmark$\\\\
+		Now we must check closure under scalar multiplication.\\
+		Suppose $\vec x \in S,\;d \in \mathbb{R}$\\
+		We need to check that $d\vec x \in S$\\\\
+		$d\vec x = d(c\0{1\\0}) = dc\0{1\\0} \in S$\\
+		$\therefore S$ is closed under scalar multiplication.\\
+		$\therefore S$ is a subspace of $\mathbb{R}^n$\\
+		
+		\item[E.g.] Is $T = \{  \0{x_1\\x_2}\in \mathbb{R}^2 \mid x_1 + x_2^2 = 0 \}$ a subset of $\mathbb{R}^3$?\\\\
+		Trick question! $T \in \mathbb{R}^2$, so it can't be a subspace of $\mathbb{R}^3$\\\\
+		Is $T$ a subspace of $\mathbb{R}^2$?\\\\
+		It is non empty because $\0{0\\0} \in T$\\\\
+		Closed under multiplication?\\
+		Lets try $\0{-1\\1} \in T$ since $(-1) + 1^2 = 0$\\
+		But $2\0{-1\\1} = \0{-2\\2} \notin T$ since $(-2) + 2^2 \neq 0$\\
+		Since $T$ is not closed under multiplication it is not a subspace of $\mathbb{R}^2$
+		\clearpage
+		\item[E.g.] is $u = \{\0{x_1\\x_2\\x_3} \in \mathbb{R}^3 \mid x_1 + x_2 + x_3 = 0\}$ a subspace of $\mathbb{R}^3$?\\\\
+		$\0{0\\0\\0} \in U \checkmark$\\\\
+		Closed under addition?\\\\
+		If $\0{x_1\\x_2\\x_3}, \0{y_1\\y_2\\y_3} \in U$, then\\\\
+		$(x_1 + y_1) + (x_2 + y_2) + (x_3 + y_3) = (x_1 + x_2 + x_3) + (y_1 + y_2 + y_3) = 0 + 0 = 0$\\\\
+		So $\0{x_1 + y_1\\x_2+y_2\\x_3+y_3} = \0{x_1\\x_2\\x_3} + \0{y_1\\y_2\\y_3} \in U$\\\\
+		Exercise: Check closure under scalar multiplication.
+	\end{itemize}
+	
+	\h{Theorem 1.2.2}
+	
+	If $\vec v_1, \vec v_2, \dots, \vec v_k \in \mathbb{R}^n$, then $S = $span$\{ \vec v_1, \vec v_2, \dots, \vec v_k \}$ is a subspace of $\mathbb{R}^n$
+	
+	\begin{itemize}
+		\item[E.g.] Is the line with vector equation $\vec x = c\0{1\\0} + \0{0\\1},\;\;c \in \mathbb{R}\;\;\;$ a subspace of $\mathbb{R}^2$?\\\\
+		If we were to graph this vector equaton, we would see this:
+		
+		\begin{center}
+			\begin{tikzpicture}
+			\begin{axis}[
+			axis equal image,
+			axis lines=middle,
+			xmin=-3,xmax=3,
+			ymin=-3,ymax=3,
+			enlargelimits={abs=1cm},
+			axis line style={latex-latex},
+			yticklabel style={anchor=west},
+			ytick={1},
+			xtick={},
+			]
+			% This doesn't clip to y=-10:10 nicely
+			% because there are too few samples near the asymptote:
+			\addplot[very thick, black, domain=-10:10,samples=200, restrict y to domain=-100:100]
+			{1};
+			\addplot[only marks] table {
+				0 1
+			};
+			\end{axis}
+			\end{tikzpicture}
+		\end{center}
+		Notice this never passes through the $\vec 0$ vector. Clearly this cannot be a subspace of $\mathbb{R}^2$.
+	\end{itemize}
+\end{document}

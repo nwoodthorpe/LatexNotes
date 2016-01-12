@@ -1,0 +1,150 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 11'th 2016\\
+		\large Trig Integration
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Trig Integration - Cases}
+	
+	Sometimes letting $x$ equal a trig function can simplify an integral.
+	
+	We'll be looking at three main cases:
+	
+	\begin{enumerate}[1)]
+		\item $\sqrt{a^2 - x^2} \implies x = a\sin \theta$
+		\item $\sqrt{a^2 + x^2} \implies x = a\tan \theta$
+		\item $\sqrt{x^2 - a^2} \implies x = a\sec \theta$
+	\end{enumerate}
+	
+	\h{Three Warnings}
+	
+	\begin{enumerate}[1)]
+		\item Watch for simpler methods of integration!
+		\item You may need to simplify before making a trig sub.
+		\item Always switch back to $x$ at the end.
+	\end{enumerate}
+	
+	\h{Examples}
+	
+	\begin{enumerate}[1)]
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \frac{1}{\sqrt{x^2 + 4}}\;dx&\\
+			= &\int \frac{2 \sec^2 \theta}{\sqrt{4 \tan^2 \theta + 4}}\\
+			= &\int \frac{\sec^2 \theta}{\sqrt{\tan^2 \theta + 1}}\\
+			= &\int \frac{\sec^2 \theta}{\sqrt{\sec^2 \theta}}\\
+			= &\int \sec \theta \; d\theta\\
+			= &\ln \vert\;\sec \theta + \tan \theta\;\vert\; + c\\
+			= &\ln \vert\; \frac{\sqrt{x^2 + 4}}{2} + \frac{x}{2}\;\vert\; + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			x &= 2 \tan \theta&\\
+			dx &= 2 \sec^2 \theta \; d\theta\\
+			&\text{NOTE: USE TRIANGLES TO GET THESE VALUES}\\
+			\tan \theta &= \frac{x}{2}\\
+			\sec \theta &= \frac{\sqrt{x^2 + 4}}{2}\\
+			\end{flalign*}
+		\end{minipage}
+		\clearpage
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int \frac{\sqrt{9 - 4x^2}}{x^2}\; dx\\
+			= &2 \int \frac{\sqrt{\frac{9}{4} - x^2}}{x^2}\\
+			= &2 \int \frac{\sqrt{\frac{9}{4} - \frac{9}{4}\sin \theta}}{\frac{9}{4}\sin^2 \theta} \cdot \frac32 \cos \theta \; d\theta\\
+			= &2 \cdot \frac32 \cdot \frac32 \cdot \frac49 \int \frac{\sqrt{1-\sin^2 \theta} \cdot \cos \theta}{\sin^2 \theta}\\
+			= &2 \int \frac{\cos^2 \theta}{\sin^2 \theta}\\
+			= &2 \int \cot^2 \theta\\
+			= &2 \int \csc^2 \theta - 1\\
+			= &2 (-\cot \theta - \theta) + c\\
+			= &2 (\frac{-\sqrt{9 - 4x^2}}{2x} - \arcsin \frac{2x}{3})
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+			x &= \frac{3}{2}\sin \theta&\\
+			dx &= \frac32 \cos \theta\; d\theta\\
+			\frac{2x}{3} &= \sin \theta\\
+			\cot \theta &= \frac{\sqrt{9 - 4x^2}}{2x}
+			\end{flalign*}
+		\end{minipage}
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int \frac{dx}{x^2 \sqrt{x^2 - 4}}&\\
+				= &\int \frac{2 \sec \theta \tan \theta}{4 \sec^2 \theta \sqrt{4 \sec^2 \theta - 4}}\\
+				= &\frac14 \int \frac{\sec \theta \tan \theta}{\sec^2 \theta \sqrt{\sec^2 \theta - 1}}\\
+				= &\frac14 \int \frac{\tan \theta}{\sec \theta}\\
+				= &\frac14 \int \cos \theta\\
+				= &\frac14 \sin \theta\\
+				= &\frac14 \frac{\sqrt{x^2 - 4}}{x}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				x &= 2 \sec \theta&\\
+				\frac{x}{2} &= \sec \theta\\
+				\frac{2}{x} &= \cos \theta\\
+			\end{flalign*}
+		\end{minipage}
+		\clearpage
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			&\int x \sqrt{x^2 - 9}\; dx&\\
+			= &\frac12 \int \sqrt{u}\; du\\
+			= &\frac13 u^{3/2} + c\\
+			= &\frac13 (x^2 - 9)^{3/2} + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				u &= x^2 - 9&\\
+				du &= 2x\; dx\\
+				\frac{du}{2x} = dx
+			\end{flalign*}
+		\end{minipage}
+		\item \begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				&\int \frac{x^2}{(1+x^2)^2}\; dx&\\
+				= &\int \frac{\tan^2 \theta \sec^2 \theta}{\sec^4 \theta}\\
+				= &\int \frac{\tan^2 \theta}{\sec^2 \theta}\\
+				= &\int \left( \frac{\sin^2 \theta}{\cos^2 \theta}\right)\left(\cos^2 \theta\right)\\
+				= &\int \sin^2 \theta\\
+				= &\frac12 \int 1 - \cos(2\theta)\; d\theta\\
+				= &\frac12\left(\theta - \frac{\sin(2\theta)}{2}\right) + c\\
+				= &\frac12\left(\arctan x - \frac{x}{1+x^2}\right) + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\begin{flalign*}
+				x &= \tan \theta&\\
+				dx &= \sec^2 \theta\\
+				\sin(2\theta) &= 2\sin \theta \cos \theta\\
+				&= \frac{2x}{1+x^2}
+			\end{flalign*}
+		\end{minipage}
+	\end{enumerate}
+\end{document}
