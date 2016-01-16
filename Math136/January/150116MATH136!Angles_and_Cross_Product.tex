@@ -1,0 +1,102 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - January 15'th, 2016\\
+		\large Angles and Cross Product
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Angle}
+	
+	Let $\vec x, \vec y \in \mathbb{R}^n$. The \textbf{angle} between $\vec x$ and $\vec y$ is any angle $\theta$ such that $\vec x \cdot \vec y = \mid\mid \vec x \mid\mid\;\mid\mid\vec y \mid\mid \cos \theta$
+	
+	\begin{itemize}
+		\item[E.g.] In $\mathbb{R}^2$, if $\vec x = \0{1\\0}, \vec y = \0{1\\1}$, $\theta$ is the angle between the two vectors below:
+		
+		\begin{center}
+			\begin{tikzpicture}
+			\begin{axis}[
+			axis equal image,
+			axis lines=middle,
+			xmin=0,xmax=1,
+			ymin=0,ymax=1,
+			enlargelimits={abs=1cm},
+			axis line style={latex-latex},
+			yticklabel style={anchor=west},
+			ytick={1},
+			xtick={1},
+			]
+			% This doesn't clip to y=-10:10 nicely
+			% because there are too few samples near the asymptote:
+			\addplot[->] [very thick, black, domain=0:1,samples=200, restrict y to domain=-100:100]
+			{x};
+			\addplot[->] [very thick, black, domain=0:1,samples=200, restrict y to domain=-100:100]
+			{0.01};
+			\addplot[only marks] table {
+				
+			};
+			\end{axis}
+			\end{tikzpicture}
+		\end{center}
+		
+		Clearly, the angle subtended between the two vectors should be $\frac{\pi}{4}$. Filling in the angle formula would also return $\frac{\pi}{4}$.\\\\
+		$\theta = \frac{7\pi}{4}$ is also a correct answer.
+	\end{itemize}
+	
+	\h{Constructing Orthogonal Vectors}
+	
+	Given $\vec x = \0{x_1\\x_2} \in \mathbb{R}^2$, how can we construct an orthogonal vector?
+	
+	$\vec 0$ works, but that's stupid.
+	
+	We could also take $\0{-x_2\\x_1}$ since $\0{-x_2\\x_1} \cdot \0{x_1\\x_2} = (-x_2)(x_1) + (x_1)(x_2) = 0$
+	
+	What about a vector that's orthogonal to TWO vectors SIMULTANEOUSLY in $\mathbb{R}^3$?
+	
+	\h{Cross Product}
+	
+	Let $\vec v = \0{x_1\\x_2\\x_3}, \vec w = \0{w_1\\w_2\\w_3} \in \mathbb{R}^3$.
+	
+	The cross product of $\vec v$ and $\vec w$ is:
+	
+	$\vec v \times \vec w = \0{v_2w_3 - v_3w_2\\v_3w_1 - v_1w_3\\v_1w_2-v_2w_1}$
+	
+	Important property: $\vec v \times \vec w$ is orthogonal to both $\vec v$ and $\vec w$.
+	
+	\clearpage
+	
+	\h{Theorem 1.3.5}
+	
+	Suppose $\vec v, \vec w, \vec y \in \mathbb{R}^3, c \in \mathbb{R}$
+	
+	\begin{enumerate}[1)]
+		\item If $\vec n = \vec v \times \vec w$, then for any $\vec y \in\; $span$\{ \vec v, \vec w \},$ we have $\vec y \cdot \vec n = 0$.
+		\item $\vec v \times \vec w = -\vec w \times \vec v$
+		\item $\vec v \times \vec v = \vec 0$
+		\item $\vec v \times \vec w = \vec 0$ iff either $\vec v = \vec 0$ or $\vec w = \vec 0$ or $\vec w$ is a scalar multiple of $\vec v$.
+		\item $\vec v \times (\vec w + \vec y) = \vec v \times \vec w + \vec v \times \vec y$
+		\item $(c \vec v) \times \vec w = c(\vec v \times \vec w)$
+		\item $\mid \mid \vec v \times \vec w \mid \mid = \mid \mid \vec v \mid \mid \; \mid\mid\vec w\mid\mid\;\mid \sin \theta \mid$ where $\theta$ is the angle between $\vec v$ and $\vec w$.
+	\end{enumerate}
+\end{document}
