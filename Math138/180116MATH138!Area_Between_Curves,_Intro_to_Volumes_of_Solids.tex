@@ -1,0 +1,135 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 18'th, 2016\\
+		\large Area Between Curves, Intro to Volume of Solids
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Area's Between Curves}
+	
+	Suppose we want to find the area between two curves$f(x)$ and $g(x)$.
+	
+	The area is = area under $f(x)$ - area under $g(x)$, so long as $f(x)$ is on top.
+	
+	The formula for the area bounded by $f$ and $g$ ($f \geq g$) between $x=a$ and $x=b$ is:
+	
+	$\displaystyle \int_a^b f(x) - g(x)\;dx$
+	
+	\begin{itemize}
+		\item[Ex. ] Find the area between $f(x) = x^2$ and $g(x) = x$ from $x=1$ to $x=3$.\\\\
+		By a sketch, we see $x^2$ is above $x$ between $x=1$ and $x=3$.
+		\begin{flalign*}
+			A &= \int_1^3 x^2 - x\;dx&\\
+			&= \left[ \frac{x^3}{3} - \frac{x^2}{2} \right]_1^3\\
+			&= \vdots \;\;\;\;\text{(Note: I'll start omitting more steps because they're simple and I'm lazy)}
+			&= \frac{14}{3}
+		\end{flalign*}
+	\end{itemize}
+	
+	\h{Negative Area}
+	
+	If you get negative area between curves, you screwed up! Check your integral, and check you have the correct function on top.
+	
+	Sometimes, we'll want to find the area between curves on an interval where they intersect and the function on top changes. For this case, we need a more accurate formula for area between curves.
+	
+	\h{The Official Actual For-Real Formula For Area Between Curves}
+	
+	\begin{flalign*}
+		A &= \int_a^b \mid f(x) - g(x) \mid dx &
+	\end{flalign*}
+	
+	It's hard to work with absolute values though, so we'll split the integral up where the functions intersect instead.
+	
+	\begin{itemize}
+		\item[Ex. ] Find the area enclosed by:
+		
+		$\displaystyle f(x) = 1-x^2\;\;\;g(x) = x^2$\\\\
+		By doing a sketch, we see $f(x)$ is on top. We need to find our bounds of integration though, this question didn't give us any. To do that, we set the functions equal to find the intersections.\\\\
+		$x = \pm \frac{1}{\sqrt2}$\\
+		\begin{flalign*}
+			A &= \int_{\frac{-1}{\sqrt2}}^{\frac{1}{\sqrt2}} (1-x^2) - x^2\;dx&\\
+			&= \vdots\\
+			&=\sqrt{2}
+		\end{flalign*}
+	\end{itemize}
+	\clearpage
+	\h{Functions of $y$}
+	
+	When taking an integral of a function of $y$, we do $\displaystyle \int_a^b $right - left
+	
+	\begin{itemize}
+		\item[Ex. ] Find the area bounded by $x=y^2 + 1, x=y$ from $y=0$ to $y=2$.\\\\
+		By sketch, we see $x = y^2 +1$ is the outer/right curve.
+		\begin{flalign*}
+			A &= \int_0^2 y^2 + 1 - y\;dy\\
+			&= \vdots\\
+			&= \frac83
+		\end{flalign*}
+	\end{itemize}
+	
+	\h{Volumes of Revolution}
+	
+	Goal: Learn how to find the volume of certain symmetric objects using fancy integration techniques.
+	
+	For more general objects, we need even fancier integration techniques. For these, see multi-variable calculus in MATH237.
+	
+	The general idea is similar to how we found the area under a curve before. We will split up our object into infinitely many infinitely small slices. At $x$, the slice has area $A(x)$.
+	
+	Item volume $\displaystyle = \int_a^b A(x)\;dx$
+	
+	\begin{itemize}
+		\item[Ex. ] Find the volume of a sphere with radius $r$.\\\\
+		Note that using the formula $x^2 + y^2 = r^2$, we can find out the x, y, or radius of a circle using the other two pieces of information. If we manipulate this function into $y = \sqrt{r^2 - x^2}$, we have a function for $y$ given the radius and an $x$ value.\\\\
+		For a sphere centered on the origin, the $y$ value at a given $x$ represents the radius (Remember half of the sphere is BELOW the x-axis). Now we can create a formula that defines the area of a 'slice'.\\
+		\begin{flalign*}
+			A(x) &= \text{Area of circle @ x}&\\
+			&= \pi(\sqrt{r^2 - x^2})^2\\
+			&= \pi(r^2 - x^2)
+		\end{flalign*}
+		
+		Therefore,
+		
+		\begin{flalign*}
+			\text{Volume} &= \int_{-r}^{r} \pi(r^2 - x^2)\; dx&\\
+			&= \vdots\\
+			&= \frac43 \pi r^3
+		\end{flalign*}
+	\end{itemize}
+	
+	There are two methods we will use to calculate the value of a solid of revolution:
+	
+	\begin{enumerate}[\#1)]
+		\item Washers/Discs (A.K.A cross sections)
+		\item Cylindrical Shells
+	\end{enumerate}
+	
+	Each has it's uses, sometimes only one method of the two will actually work.
+\end{document}

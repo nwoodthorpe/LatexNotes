@@ -1,0 +1,98 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - January 18'th, 2016\\
+		\large Scalar Equations of Vector Planes
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Recall}
+	
+	A Plane is given by a vector equation:
+	\begin{flalign*}
+		\vec x &= c_1\vec v_1 + c_2 \vec v_2 + \vec b, c_1, c_2 \in \mathbb{R}&
+	\end{flalign*}
+	Where $\vec v_1, \vec v_2, \vec b$ are fixed vectors with $\{ \vec v_1,\vec v_2 \}$ being linearly independent.
+	
+	\h{Theorem 1.3.6}
+	
+	The above plane can be described as the set of vectors satisfying:
+	\begin{flalign*}
+		(\vec x - \vec b) \cdot \vec n &= 0\;,\;\;\text{Where }\vec n = \vec v_1 \times \vec v_2&
+	\end{flalign*}
+	
+	\h{Scalar Equation and Normal Vector}
+	
+	In the above theorem, the equation $(\vec x - \vec b) \cdot \vec n = 0$ can be rearranged into:
+	\begin{flalign*}
+		\vec x \cdot \vec n = \vec b \cdot \vec n
+	\end{flalign*}
+	
+	And that is the \textbraceleft{Scalar Equation} for the plane. The vector $\vec n$ is a \textbf{Normal Vector} to the plane.
+		
+	\begin{itemize}
+		\item[Ex. ] Find a scalar equation for the plane with vector equation:
+		\begin{flalign*}
+			\vec x &= c_1\0{1\\1\\1} + c_2\0{0\\1\\2}, c_2, c_2 \in \mathbb{R}&
+		\end{flalign*}\\\\
+		First, we need the normal vector by taking the cross product (See formula on last note).
+		\begin{flalign*}
+			\0{1\\1\\1} \times \0{0\\1\\2} &= \0{1 \cdot 2 - 1\cdot 1\\-(1\cdot 2 - 1\cdot 0)\\1\cdot 1-1\cdot 0}&\\
+			&= \0{1\\-2\\1}
+		\end{flalign*}
+		
+		\begin{flalign*}
+			\vec x \cdot \vec n &= \vec b \cdot \vec n&\\
+			\0{x_1\\x_2\\x_3} \cdot \0{1\\-2\\1} &= \0{0\\0\\0} \cdot \0{1\\-2\\1}\\
+		x_1 - 2x_2 + x_3 &= 0\;\;\; \square
+		\end{flalign*}
+		
+		If we were to generate some point on this plane and plug it into this equation, we would find the equation satisfied. :)
+		
+	\end{itemize}
+		\clearpage
+		\h{Generalizing to Hyperplanes}
+		
+		More generally, if $\{ \vec v_1, \dots, \vec v_{m-1} \}$ is a L.I set of vectors in $\mathbb{R}^m$, and $\vec b \in \mathbb{R}^m$, then we consider the hyperplane with vector equation:
+		
+		$\vec x = c_1\vec v_1 + \dots + c_{m-1}\vec v_{m-1}\;\;\;, c_1, \dots, c_{m-1} \in \mathbb{R}$
+		
+		Then, if $\vec n \in \mathbb{R}^m$ is a non-zero vector that is orthogonal to each of $\vec v_1, \dots, \vec v_{m-1}$, then that same hyperplane has a scalar equation from expanding $\vec x \cdot \vec n = \vec b \cdot \vec n$ to:
+		
+		$n_1x_1 + n_2x_2 + \dots + n_mx_m = n_1b_1 + n_2b_2 + \dots + n_mb_m$
+		
+		Where $\displaystyle \vec n = \0{n_1\\\vdots\\n_m}$
+		
+		(Later, we will show that such an $\vec n$ always exists and how to find it.)
+		
+		\h{Projections}
+		
+		The \textbf{Projection} of $\vec u$ onto $\vec v$ is:
+		
+		Proj$\;_{\vec v} (\vec u) = \left( \frac{\vec u \cdot \vec v}{\mid\mid\vec v\mid\mid^2}\right)\vec v$
+		
+		The \textbf{Perpendicular} of $\vec u$ onto $\vec v$ is:
+		
+		Perp$\;_{\vec v}(\vec u) = \vec u - \text{Proj}_{\vec v}(\vec u)$
+\end{document}
