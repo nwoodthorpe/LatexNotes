@@ -1,0 +1,113 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 20'th, 2016\\
+		\large Plane Projections, Intro to Linear Systems
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Example}
+
+	Find proj$_{\vec v}(\vec u)$ and perp$_{\vec v}(\vec u)$ where:\\\\
+	$\vec u = \0{1\\2\\3}. \vec v = \0{-1\\0\\1}$ in $\mathbb{R}^3$
+	
+	\begin{flalign*}
+		\text{Proj}_{\vec v}(\vec u) &= \left( \frac{\vec u \cdot \vec v}{\vec v \cdot \vec v} \right) \vec v&\\
+		&= \frac{1(-1) + 2(0) + 3(1)}{(-1)^2 + 0^2 + 1^2}\0{-1\\0\\1}\\
+		&= \frac22\0{-1\\0\\1} = \0{-1\\0\\2}
+	\end{flalign*}
+	
+	\begin{flalign*}
+		\text{perp}_{\vec v}(\vec u) &= \vec u - \text{proj}_{\vec v}(\vec u)&\\
+		&= \0{1\\2\\3} - \0{-1\\0\\1}\\
+		&= \0{2\\2\\2}
+	\end{flalign*}
+	
+	\h{Projection onto a Plane}
+	
+	To project onto a plane, we will first find the vertical component in the direction of the normal vector.
+	
+	So first, we find proj$_{\vec n}(\vec u)$, then
+	
+	proj$_p(\vec u) = \vec u - $proj$_{\vec n}(\vec u) = $perp${\vec n}(\vec u)$
+	
+	Where $p$ is the plane(through $\vec 0$), $\vec n$ is the normal to the plane and $\vec u$ is the vector being projected onto $p$.
+	
+	Recall: The scalar equation for a plane $p$ will be:
+	
+	$\vec x \cdot \vec n = 0$ OR
+	
+	$n_1x_1 + n_2x_2 + x_3x_3 = 0$
+	
+	\begin{itemize}
+		\item[Ex. ] Consider the plane $p$ in $\mathbb{R}^3$ with vector equation:\\\\
+		$\vec x = c_1\0{1\\2\\3} + c_2\0{1\\0\\-1},\;\;	c_1, c_2 \in \mathbb{R}$\\\\
+		Find proj$_p\vec u$ where $\vec u = \0{7\\2\\3}$
+	
+		First, find the normal vector by taking the cross product.
+		
+		\begin{flalign*}
+			\vec n &= \0{1\\2\\3} \times \0{1\\0\\-1}&\\
+			&= \0{-2\\4\\-2}
+		\end{flalign*}
+		
+		Next, find proj$_{\vec n} \vec u$
+		
+		\begin{flalign*}
+			\text{proj}_{\vec n}\vec u &= \left( \frac{\vec n \cdot \vec u}{\vec n \cdot \vec n} \right) \vec n&\\
+			&= \frac{(-2)7 + 4\cdot 2 + (-2)(3)}{(-2)^2 + 4^2 + (-2)^2} \vec n\\
+			&= \frac{-1}{2}\0{-2\\4\\-2}\\
+			&= \0{1\\-2\\1}
+		\end{flalign*}
+		
+		\begin{flalign*}
+			\text{proj}_p\vec u &= \text{perp}_{\vec n}\vec u = \vec u - \text{proj}_{\vec n}\vec u&\\
+			&= \0{7\\2\\3} - \0{1\\-2\\1}\\
+			&= \0{6\\4\\2}
+		\end{flalign*}
+	\end{itemize}
+	
+	\h{Systems of Linear Equations}
+	
+	An equation in $n$ variables $x_1, x_2, \dots, x_n$ of the form $a_1x_1 + \dots + x_nx_n = b$ where $a_1, \dots, a_n, b$ are constant scalars is called a \textbf{Linear Equation}
+	
+	The constants are the coefficients and $b$ is often referred tp as the \textbf{Right hand side}
+	
+	A set of $m$ linear equations in the variable $x_1, \dots, x_n$is called a \textbf{System of $m$ linear equations in $n$ variables}
+	
+	\begin{itemize}
+		\item[Ex. ] $x_1 - 2x_2 = 0$\\$3x_1 + x_2 = 4$\\\\
+		Is a system of 2 linear equations in 2 variables.\\
+		We can solve for the variables using old high-school substitution.
+	\end{itemize}
+	
+	A system of linear equations with at least one solution is called \textbf{Consistent}.
+	
+	\begin{itemize}
+		\item[Ex. ] $x_1 + x_2  + x_3 = 0$\\
+		$x_1 - x_2 = 0$\\
+		$2x_1 + x_3 = 1$\\\\
+		We can try to solve this, but we'll get a contraction! So no solution exists and this system of linear equations is \textbf{Inconsistent}.
+	\end{itemize}
+\end{document}
