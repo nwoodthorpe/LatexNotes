@@ -22,12 +22,68 @@
 
 \begin{document}
 	\begin{center}
-		\LARGE Math138 - January 20'th, 2016\\
-		\large Volumes of Revolution - Washers, Disks, Cylinders
+		\LARGE Math136 - January 22'th, 2016\\
+		\large Solving Systems of Equations
 	\end{center}
 	\vspace{0.25 in}
 	
-	\h{Washers / Disks}
+	\h{Equivalence}
 
-
+	Two systems of linear equations which have the same solution sets are \textbf{equivalent}.
+	
+	\h{(Augmented) Coefficient Matrix}
+	
+	Suppose we have a system of $m$ equations in $n$ variables:
+	
+	$a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1$\\
+	$a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2$\\
+	$\vdots$\\
+	$a_{m1}x_1 + a_{m2}x_n + \dots + a_{mn}x_n = b_n$
+	
+	The coefficient matrix of this system is:
+	
+	$\0{a_{11}&a_{12}&\dots&a_{1n}\\a_{21}&a_{22}&\dots&a_{2n}\\\vdots\\a_{m1}&a_{m2}&\dots&a_{mn}}$
+	
+	And the augmented coefficient matrix is:
+	
+	$\left[\begin{array}{cccc|c}
+		a_{11}&a_{12}&\dots&a_{1n}&b_1\\a_{21}&a_{22}&\dots&a_{2n}&b_2\\\vdots&&&&\vdots\\a_{m1}&a_{m2}&\dots&a_{mn}&b_m
+	\end{array}\right]$
+	
+	For now, we can think of the augmented matrix as a convenient way to represent our system of equations. Later, we'll see that we get a lot more out of this by developing matrix operations.
+	
+	\h{Elementary Row Operations}
+	
+	The elementary row operations are:
+	
+	\begin{enumerate}
+		\item Multiplying a row by a non-zero scalar
+		\item Adding a multiple of one row to another
+		\item Swapping two rows
+	\end{enumerate}
+	
+	Note: All of these operations are reversible.
+	
+	As we will see, if we start with a system of equations, then perform elementary row operations on the augmented matrix, we end up with the augmented matrix of an equivalent system of equations.
+	
+	\h{Row Equivalent}
+	
+	Two matrices $A$ and $B$ are row-equivalent if one can be obtained from the other by a sequence of elementary row operations.
+	
+	\h{Theorem 2.2.1}
+	
+	If the augmented matrices [$ A_1 \mid \vec b_1 $] and [$A \mid \vec b$] are row equivalent, then the associated systems of linear equations are equivalent.
+	\clearpage
+	\h{Reduced Row Echelon Form}
+	
+	A matrix $R$ is in reduced row echelon form (RREF) if:
+	
+	\begin{enumerate}
+		\item All rows containing a non-zero entry are above rows which contain only zero's.
+		\item The first non-zero entry in each row is 1 (The leading 1)
+		\item The leading in each non-zero row is to the right of the leading row in any row above
+		\item A leading one is the only non-zero entry in it's column.
+	\end{enumerate}
+	
+	If $A$ is row equivalent to $R$ which is in RREF, then $R$ is the RREF of $A$.
 \end{document}

@@ -1,0 +1,63 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 22'th, 2016\\
+		\large Recapping Volumes, Average Value of Functions
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Recap: Two Methods}
+
+	\begin{itemize}
+		\item[\textbf{\#1}] \textbf{Disks and Washers}\\\\
+		$A(x) = \pi(\text{outerRad}^2 - \text{innerRad}^2)$
+		\item[\textbf{\#2}] \textbf{Cylindrical Shells}\\\\
+		$A(x) = 2\pi rh$
+	\end{itemize}
+	
+	Two things to consider:
+	
+	\begin{itemize}
+		\item[\textbf{\#1}] Which variable do we want to use?
+		\item[\textbf{\#2}] What does the region look like?
+	\end{itemize}
+	
+	\h{Volumes of Revolution Chart}
+	
+	\begin{tabular}{|c|c|c|}
+		\hline&&\\
+		&Functions of $x$&Functions of $y$\\
+		\hline&&\\
+		Rotating around&&\\horizontal line&\textbf{Disks/Washers}&\textbf{Cylinders}\\&&\\
+		\hline&&\\
+		Rotating around&&\\
+	vertical line&\textbf{Cylinders}&\textbf{Disks/Washers}\\&&\\
+		\hline
+	\end{tabular}
+	
+	\h{Average Volume of a Function}
+	
+	The \textbf{Average value} of $f(x)$ from $x=a$ to $x=b$ is:\\\\
+	$\displaystyle f_{\text{avg}} = \frac{1}{b-a} \int_a^b f(x)\; dx$
+\end{document}
