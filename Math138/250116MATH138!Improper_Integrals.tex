@@ -1,0 +1,33 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - January 25'th, 2016\\
+		\large 
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Two Types}
+
+
+\end{document}

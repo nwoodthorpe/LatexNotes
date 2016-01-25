@@ -1,0 +1,72 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - January 25'th, 2016\\
+		\large Solving Systems in Reduced Row Echelon Form
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Theorem 2.2.2}
+
+	If $A$ is a matrix, then $A$ has a unique RREF $R$.
+	
+	\h{Terminology}
+	
+	Try to solve this system of linear equations:
+	
+	$x_1 + x_2 + x_3 = 0$\\
+	$2x_1 - x_2 - x_3 = 1\\
+	3x_1 = 1$
+	
+	After a number of elementary row operations, you'll manage to get the augmented coefficient matrix to this state:
+	
+	$\left[\begin{array}{ccc|c}
+	1&0&0&1/3\\0&1&1&-1/3\\0&0&0&0
+	\end{array}\right]$
+	
+	Since the columns corresponding to $x_1$ and $x_2$ have leading ones, we cal them \textbf{leading variables}. Since the column corresponding to $x_3$ does not, it is a \textbf{free variable}.
+	
+	What we note is that to get a solution to our system: $x_1 = -1/3,\;\;x_2 + x_3 = -1/3,\;\; 0=0$, we can assign any value to our free variables and then the leading variables can have their values determined.
+	
+	Say $x_3 = s$ for some $s \in \mathbb{R}$
+	
+	Then: $x_1 = -1/3,\;\; x_2 = -1/3 - s$
+	
+	So,all solutions to our system of equations are:
+	
+	$x_1 = -1/3,\;\; x_2 = -1/3 - s,\;\; x_3 = s$
+	
+	\h{Algorithm to solve a System of Linear Equations}
+	
+	\begin{enumerate}
+		\item Write the augmented matrix
+		\item Use ERO's to get RREF
+		\item Write the system corresponding to the RREF
+		\item If the system has an equation "0=1" the system in inconsistent, STOP!
+		\item Otherwise, each free variable (corresponding to a clumn without a leafing 1) is assigned a value which is a \textbf{free parameter})
+		\item Move the free variables to the right hand side to determine the corresponding values for the leading parameters.
+	\end{enumerate}
+	
+	If we have $k$ free variables in a consistent system, then the set of solutions forms a $k$-flat.
+\end{document}
