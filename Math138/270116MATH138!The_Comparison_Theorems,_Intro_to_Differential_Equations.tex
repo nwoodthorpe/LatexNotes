@@ -1,0 +1,78 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 27'th, 2016\\
+		\large The Comparison Theorems and Intro to Differential Equations
+	\end{center}
+	\vspace{0.25 in}
+	
+	Comparison theorems give us a way to determine if an improper integral converges or diverges without integrating!
+	
+	\h{The Theorems:}
+	
+	Suppose $f$ and $g$ are continuous functions where $f(x) \geq g(x) \geq 0$
+	
+	\begin{enumerate}
+		\item If $\displaystyle \int_a^\infty f(x)\;dx$ converges, then $\displaystyle \int_a^\infty g(x)\;dx$ also converges.
+		\item If  $\displaystyle \int_a^\infty g(x)\;dx$ diverges, then  $\displaystyle \int_a^\infty f(x)\;dx$ also diverges.
+	\end{enumerate}
+	
+	\h{Examples}
+	
+	Determine if the following converge or diverge.
+	
+	Recall: $\int_1^\infty \frac{1}{x^p}$ converges iff $p>1$ and $\int_0^\infty e^{-x}$ converges.
+	
+	\begin{enumerate}
+		\item $\int_0^\infty e^{-x^2}\;dx$, note that $0 \leq e^{-x^2} \leq e^{-x}$ eventually ($x \geq 1$) and $\int_0^\infty e^{-x}\;dx$ converges. So, $\int_0^\infty e^{-x^2}\;dx$ converges by comparison.
+		
+		\item $\int_1^\infty \frac{x}{(x^2+2)^2}\;dx$, note if $x \geq 1$, then $0 \leq \frac{x}{(x^2+2)^2} < \frac{x}{x^4} = \frac{1}{x^3}$ and $\int_1^\infty \frac{1}{x^3}\; dx$ converges because $p>1$. So, $\int_1^\infty \frac{x}{(x^2+2)^2}\; dx$ converges by comparison.
+	\end{enumerate}
+	
+	\h{Recall}
+	
+	If you split up the region, you only need one divergent integral for the whole thing to diverge.
+	
+	But, if you split up the integrand, you must check all of them. A positive divergence and a negative divergence can cancel out.
+	
+	\h{Introduction to Differential Equations}
+	
+	An equation that contains derivatives of a dependent variable or function $y=f(x)$ is called a \textbf{differential equation} (DE).
+	
+	(Actually an ordinary differential equation (ODE) when working with one variable).
+	
+	The \textbf{order} of an ODE is the order of the highest derivative that appears.
+	
+	An ODE is called \textbf{linear} if it contains only linear functions if $y, y', y''$, etc.
+	
+	The \textbf{general solution} of an ODE is the collection of all possible solutions including arbitrary constants.
+	
+	A \textbf{particular solution} is a solution where we solve for all arbitrary constants.
+	
+	To get a particular solution, we need extra information like the value of $y, y', y''$ etc. at certain points. These values are called \textbf{initial conditions}.
+	
+	An ODE plus initial conditions is called an \textbf{Initial Value Problem} (IVP).
+	
+	
+\end{document}
