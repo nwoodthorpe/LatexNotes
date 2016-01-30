@@ -1,0 +1,71 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - January 29'th, 2016\\
+		\large Matrix Multiplication
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Transpose}
+	
+	The \textbf{transpose} of a $m \times n$ matrix $A$ is the $n \times m$ matrix $A^T$ where the $ij$th entry is the $ji$th entry of $A$. That is:\\
+	$(A^T)_{ij} = (A)_{ji}$
+	
+	\h{Theorem 3.1.2} If $A, B \in M_{m\times n} (\mathbb{R})$ then:
+	\begin{enumerate}[1)]
+		\item $(A^T)^T = A$
+		\item $(A+B)^T = A^T + B^T$
+		\item $(cA)^T = cA^T$
+	\end{enumerate}
+	
+	Note: We will often view vectors in $\mathbb{R}^n$ as $n \time 1$ matrices.
+	
+	\h{Matrix - Vector Multiplication}
+	
+	Suppose $A$ is a $m \times n$ matrix with rows $(\vec a_1)^T, (\vec a_2)^T, \dots, (\vec a_m)^T$ for $\vec a_i \in \mathbb{R}^n$. Then for $\vec x \in \mathbb{R}^n$, we define $A\vec x$ by:
+	
+	$A\vec x = \0{\vec a_1 \cdot \vec x\\\vdots\\\vec a_m \cdot \vec x}$
+	
+	And this defines the multiplication of a $m \times n$ matrix by a vector (or equivalently, an $n \times 1$ matrix)
+	
+	The result is an $m \times 1$ matrix.
+	
+	So ($m \times n$ matrix) times ($n \times 1$ matrix) gives ($ \times 1$ matrix)
+	
+	\h{Matrix - Matrix Multiplication}
+	
+	Suppose $A$ is an $m \times n$ matrix, and $B$ is a $n \times p$ matrix with columns $\vec b_1, \vec b_2, \dots, \vec b_p$
+	
+	Then $AB = A\0{\vec b_1&\vec b_2&\dots & \vec b_p} = \0{A\vec b_1&A\vec b_2&\dots&A\vec b_p}$
+	
+	\h{Matrix Manipulation Theorem}
+	
+	If $A, B, C$ are matrices so that all following products are defined, we have:
+	\begin{enumerate}[1)]
+		\item $A(B+C) = AB + BC$
+		\item $t(A+B) = (tA)B$
+		\item $A(BC) = (AB)C$
+		\item $(AB)^T = B^TA^T$
+	\end{enumerate}
+\end{document}

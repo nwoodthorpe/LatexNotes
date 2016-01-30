@@ -1,0 +1,88 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 29'th, 2016\\
+		\large Intro to Mathematical Modeling
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Examples of Modeling Real World Problems with ODEs}
+	
+	\begin{itemize}
+		\item[\textbf{Ex. }] Newton's Law of Cooling: A hot/cold object's temperature changes proportionally to the difference to the surrounding temperature.\\\\
+		$\frac{dT}{dt} = -k(T-T_{room})$
+	\end{itemize}
+	
+	\h{Mixing Tank Problems}
+	
+	\begin{itemize}
+		\item[\textbf{Ex. }] A tank has 80L of fresh water. At $t=0$, a salt solution of 0.24kg/L flows into the tank at 8L/min. Liquid drains out of the tank at 12L/min. Construct an ODE for the mass of salt $x(t)$ in the tank at time $t$.
+		
+		\begin{flalign*}
+			\frac{dx}{dt} &= \text{Rate of change of salt mass in the tank.}&\\
+			&= \text{Rate of salt going in - Rate of salt going out}\\
+			&= (0.25) \cdot (8) - (\text{concentration} \cdot 12)
+		\end{flalign*}
+		
+		What is the concentration in the tank??
+		
+		\begin{flalign*}
+			\text{conc.} &= \frac{\text{Amount of Salt}}{\text{Volume of Liquid}}&\\
+			&= \frac{x}{80 - 12t - 8t}\\
+			&= \frac{x}{80-4t}
+		\end{flalign*}
+		
+		Sooo, we get:
+		
+		
+		\begin{flalign*}
+			\frac{dx}{dt} &= 2 - \frac{x}{80-4t}(12)&\\
+			&= 2 - \frac{3x}{20-t}, \;\;\;\;x(0) = 0\;\;\;0\leq t \leq 20
+		\end{flalign*}
+	\end{itemize}
+	
+	\h{Direction Fields}
+	
+	Lost (most) ODEs can't be solved using elementary functions.
+	
+	\begin{itemize}
+		\item[\textbf{Ex. }] $\frac{dy}{dx} = y - x^2$
+		\item[\textbf{Ex. }] $\frac{dy}{dx} = x - y^2$
+	\end{itemize}
+	
+	Lets look at a graphical approach to solve ODEs. Consider $\frac{dy}{dx} = f(x, y)$, this tells us what the slope of the tangent looks like at each point.
+	
+	\h{Comparsion}
+	
+	\begin{tabular}{c|c}
+		Analytical&Geometric\\
+		\hline\\
+		$y' = f(x, y)$ & Direction Field\\
+		$y(x) = $soln to ODE. & Solution Curve
+	\end{tabular}
+	
+	Think of the $x-y$ plane sprinkled with iron filings. $f(x, y)$ is the magnetic field that aligns with these filings.
+	
+	The solution curve is a curve that is tangent to one of these filings at each point.
+\end{document}
