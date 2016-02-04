@@ -1,0 +1,84 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 20'th, 2016\\
+		\large Volumes of Revolution - Washers, Disks, Cylinders
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Washers / Disks}
+	
+	Summary: If the cross-section is:
+	\begin{itemize}
+		\item[A disk: ] Find the radius and use $a = \pi r^2$
+		\item[A Washer: ] Find inner outer radius and use $A = \pi(\text{outer}^2 - \text{inner}^2)$
+	\end{itemize}
+	
+	\h{Examples}
+	
+	Find the volume of the solid obtained by rotating:
+	\begin{enumerate}[1)]
+		\item $y = \sqrt{x-1}$ about the x axis from $x = 1$ to $x = 5$.\\\\
+		$A(x) = \pi(x-1)$\\
+		\begin{flalign*}
+			\text{Volume} &= \int_1^5 \pi(x-1)\;dx&\\
+			&= \pi \int_1^5 x-1\;\;dx\\
+			&= \vdots\\
+			&= 8\pi
+		\end{flalign*}
+		\item The area between $y=x^2$ and $y=\sqrt x$ about $y=1$.\\\\
+		This is a washer question. Inner radius = $1-x^2$, outer radius = $1-\sqrt x$.
+		\begin{flalign*}
+			A &= \pi((1-x^2)^2 - (1-\sqrt x)^2 )&\\
+			&= \pi(x^4 - 2x^2 - x + 2\sqrt{x})\\\\
+			V &= \int_0^1 A(x)\; dx\\
+			&= \pi \int_0^1 x^4 - 2x^2 - x + 2 \sqrt x\\
+			&= \vdots\\
+			&= 11\pi / 30
+		\end{flalign*}
+	\end{enumerate}
+	\clearpage
+	\h{Method \# 2: Cylinder Shells}
+	
+	Cylinder shells are good for rotating functions of x around vertical lines or functions of y around horizontal lines.
+	
+	\begin{itemize}
+		\item[Ex. ] Rotate $y = 2x^2 - x^3$ about the $y$ axis from $x=0$ to $x=2$.\\\\
+		Radius: $x$,\;\;Height = $2x^2 - x^3$\\\\
+		$A = 2\pi x(2x^2 - x^3)$\\
+		\begin{flalign*}
+		A &= 2\pi \int_0^2 2x^3 - x^4&\\
+		&= \vdots\\
+		&= \frac{16\pi}{5}
+		\end{flalign*}
+		\item[Ex. ] Rotate $y=x^2$ and $y = 6x - 2 x^2$ about the y-axis.\\\\
+		Radius = $x$,\;\;Height = $-3x^2 + 6x$\\
+		\begin{flalign*}
+			v &= 2\pi \int_0^2 x(-3x^2 + 6x)\;dx&\\
+			&= \vdots\\
+			&= 8\pi
+		\end{flalign*}
+		
+	\end{itemize}
+\end{document}

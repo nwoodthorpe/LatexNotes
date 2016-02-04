@@ -1,0 +1,141 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 4'th, 2016\\
+		\large Introduction to Calculus II
+	\end{center}
+	\vspace{0.25 in}
+	
+	\underline{\textbf{Administrative Stuff}}
+	
+	\begin{minipage}[t]{0.2\textwidth}
+		Professor:\\
+		Office:\\
+		Office Hours:\\
+		Email:\\
+		Assignments Due:\\
+		First Assignment Due:\\
+	\end{minipage}
+	\begin{minipage}[t]{0.8\textwidth}
+		Jordan Hamilton\\
+		MC 6502\\
+		4-6PM Mondays, Wednesdays, MC5417\\
+		j4hamilt@uwaterloo.ca\\
+		Fridays at 2PM\\
+		January 15'th
+	\end{minipage}
+	
+	\underline{\textbf{This Week:}}
+	\begin{itemize}
+		\item Review Integration (Chapter 5)
+		\item Integration by Parts (Chapter 7.1)
+		\item Trig Integrals (Chapter 7.2)
+	\end{itemize}
+	
+	\underline{\textbf{Integration}}
+	
+	We already know lots of integrals (anti-derivatives). Ones we should know include powers of $x$, $\frac{1}{x}$, $e^x$, basic trig, trig inverses and hyperbolic trig functions.
+	
+	\begin{minipage}[t]{0.1\textwidth}
+		Recall:\\
+	\end{minipage}
+	\begin{minipage}[t]{0.8\textwidth}
+		Definite integrals represent the area below the curve from $x=a$ to $x=b$, shown as $\displaystyle \int_a^b f(x) dx$\\
+		We use the Fundamental Theorem of Calculus (FTC) to evaluate.
+	\end{minipage}
+	
+	\underline{\textbf{Fundamental Theorem of Calculus}}
+	
+	If $f(x)$ is continuous and...$\;\;\;\;$
+	\begin{minipage}[t]{0.2\textwidth}
+		Part 1:\\
+		Part 2:
+	\end{minipage}
+	\begin{minipage}[t]{0.8\textwidth}
+		...$F(x) = \int_a^x f(t) dt$ then $F'(x) = f(x)$\\
+		...If $f(x)$ is any anti-derivative of $f(x)$ (so $F'(x) = f(x)$), then:\\
+		$\displaystyle \int_a^b f(x) dx = F(b) - F(a)$
+	\end{minipage}
+	
+	\begin{itemize}
+		\item[Ex. ] $\displaystyle \int_0^1 x^2 dx$\\
+		$\displaystyle =\left[ \frac{x^3}{3}\right]_0^1$\\
+		$\displaystyle =\frac{1^3}{3}$\\
+		$\displaystyle = \frac{1}{3}$
+	\end{itemize}
+	
+	We can also use FTC tp find the derivative of integral functions.\\
+	Suppose $P(x) = \int_{g(x)}^{h(x)}f(t) dt$\\
+	We want to solve for $P'(t)$
+	\begin{itemize}
+		\item[\;\;] Let $F(x)$ be an anti-derivative of $f(x)$. Then by FTC, $P(x) = F(h(x)) - F(g(x))$
+		\begin{flalign*}
+			P'(x) &= F'(h(x)) \cdot h'(x) - F'(g(x)) \cdot g'(x)&\\
+			&= f(h(x)) \cdot h'(x) - f(g(x)) \cdot g'(x)
+		\end{flalign*}
+	\end{itemize}
+	
+	\clearpage
+	
+	\underline{\textbf{U-Substitution (Reverse Chain Rule)}}
+	
+	$\int f(g(x)) \cdot g'(x) dx = \int f(u) du$ where $u = g(x)$
+	
+	But how do we pick $u$?
+	\begin{itemize}
+		\item If you see a function together with its derivative, let $u$ be this function.
+		\item Let $u$ = the base of an ugly power or denominator.
+		\item Let $u$ = whats inside a function like sin, log, etc.
+	\end{itemize}
+	
+	\underline{\textbf{U-Sub Examples}}
+	
+		\begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+				\text{a)\;\;\;\;}&\int \frac{\ln x}{x}dx&\\
+				= &\int u\; du\\
+				= &\frac{u^2}{2} + c
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			$\;$\\\textbf{Side Work}\\
+			Let $u = \ln x$\\
+			$x\;du = dx$
+		\end{minipage}
+		
+		\begin{minipage}[t]{0.3\textwidth}
+			\begin{flalign*}
+			\text{b)\;\;\;\;}&\int_0^1 \frac{x^3}{1+x^4}\;dx&\\
+			&= \int_1^2 \frac{x^3}{u} \cdot \frac{du}{4x^3}\\
+			&= \int_1^2 \frac{1}{4u}\;du\\
+			&= \frac14 \int_1^2 \frac{1}{u}\;du\\
+			&= \frac14 \left[ \ln \vert u \vert \right]_1^2\\
+			&= \frac{1}{4}(\ln 2 - \ln 1)\\
+			&= \frac{\ln 2}{4}
+			\end{flalign*}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			$\;$\\\textbf{Side Work}\\
+			Let $u = 1 + x^4$\\
+			$\frac{du}{dx} = 4x^3$\\
+			$\frac{du}{4x^3} = dx$\\
+			If $x = 0$, $u = 1$\\
+			If $x = 1$, $u = 2$
+		\end{minipage}
+\end{document}

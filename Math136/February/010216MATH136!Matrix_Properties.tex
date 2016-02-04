@@ -1,0 +1,58 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - February 1'st, 2016\\
+		\large Matrix Properties
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Second Definition of Matrix-Vector Multiplication}
+	
+	If $A = \left[ \vec a_1\; \dots\; \vec a_n\right] \in M_{m\times n} (\mathbb{R})$ and $\vec x \in \mathbb{R}^n$ is an $n \times 1$ matrix then $A \vec x = x_1 \vec a_1 + \dots + x_n \vec a_n$
+	
+	\h{Theorem 3.1.3} 
+	
+	If $\vec e_i$ is the $i$th standard basis vector and $A = \left[ \vec a_1\;\dots\; \vec a_n \right]$, then $A\vec e_i = \vec a_i$
+	
+	\h{Theorem 3.1.5 - Matrices Equal Theorem}
+	
+	if $A, B \in M_{m\times n} (\mathbb{R})$ and $A \vec x = B \vec x \;\forall\; \vec x \in \mathbb{R}^n$, then $A = B$
+	
+	
+	\h{Identity Matrix}
+	
+	The \textbf{identity matrix} in $M_{m \times n}(\mathbb{R})$ is $I_n = \0{e_1&e_2&\dots&e_n}$
+	
+	E.g. $I_2 = \0{1&0\\0&1}\;\;\;\;\;\;\;\;I_4 = \0{1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1}$
+	
+	\h{Theorem 3.1.6}
+	
+	$AI = IA = A$ where $A \in M_{n \times n}(\mathbb{R})$ and $I = M_{n\times n}(\mathbb{R})$ is the identity matrix. This characterizes the identity matrix as the multiplicative identity for matrix multiplication, the only matrix with this property.
+	
+	Remember, even though in this example, $AI = IA$, matrix multiplication is not guaranteed to be commutative. In most cases, $AB \neq BA$.
+	
+	\h{Block Form}
+	
+	The definition we learned in class is super confusing and I'm pretty sure Shalom wrote some of the index's wrong so it doesn't even make sense. Look this up in the course notes or abuse a different friend :)
+\end{document}

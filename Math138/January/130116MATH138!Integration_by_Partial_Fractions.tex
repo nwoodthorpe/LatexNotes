@@ -1,0 +1,105 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 13'th, 2016\\
+		\large Integration by Partial Fractions
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Idea:}
+	
+	When evaluating $\int \frac{p(x)}{d(x)}\; dx$ where $p$ and $q$ are polynomials, try decomposing the integrand into many easier pieces.
+	
+	In out rules, we always assume the degree of our numerator is less than the degree of the denominator. If it isn't, do long division first.
+	
+	\begin{tabular}{c|c}
+		\textbf{If the denominator has:}&\textbf{Then write:}\\
+		\hline\\
+		1) Distinct linear factors & Choose one constant per factor\\
+		$(a_1x+b_1)(a_2x+b_2)\dots(a_nx+b_n)$&$\frac{A_1}{a_1x+b_1}+\dots+\frac{A_n}{a_nx+b_n}$\\\\
+		\hline\\
+		2)Repeated linear factor & One constant per term\\
+		$(ax+b)^n$&$\frac{A_n}{ax+b} + \frac{A_2}{(ax+b)^2} + \dots + \frac{A_n}{(ax+b)^n}$\\\\
+		\hline\\
+		3) A product of distinct irreducible quadratic factors. & A linear term per factor\\
+		$(a_1x^2 + b_1x+c_1) + \dots + (a_nx^2 + b_nx + c_n)$&$\frac{A_1x + B_1}{a_1x^2+b_1x+c_1} + \dots + \frac{A_nx+B_n}{a_nx^2+b_nx+c_n}$\\\\
+		\hline\\
+		4) A repeated irreducible quadratic&A linear term per power\\
+		$(x^2 + bx + c)^n$&$\frac{A_1x + B_1}{(ax^2+bx+c)} + \dots + \frac{A_n x + B_n}{(ax^2+bx+c)^n}$\\\\
+		\hline
+	\end{tabular}
+	
+	\h{Decomposition Practice}
+	
+	\begin{enumerate}[1)]
+		\item $\frac{1}{(x+1)(x+2)} = \frac{A}{x+1} + \frac{B}{x+2}$
+		\item $\frac{1}{x^2(x+1)} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x+1}$
+		\item $\frac{1}{x^2(x+1)^2(2x-7)} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x+1} + \frac{D}{(x+1)^2} + \frac{E}{2x-7}$
+	\end{enumerate}
+	
+	To find $A, B, C, \dots$ we either sub good values of $x$ in or cross multiply and compare coefficients.
+	\clearpage
+	\h{Examples:}
+	
+	\begin{enumerate}
+		\item \begin{flalign*}
+			&\int \frac{x}{x^2 - 4x + 5}\; dx&\\
+			&\frac{x}{(x-5)(x+1)} = \frac{A}{x+1} + \frac{B}{x-5}\\
+			&\implies x = (x+1)(x-5)\left[ \frac{A}{x+1} + \frac{B}{x-5}\right]\\
+			&= (x-5)A + (x+1)B
+		\end{flalign*}
+		
+		\h{Finding A and B}
+		
+		Method \#1: Compare Coefficients:
+		\begin{flalign*}
+			x &= Ax - 5A + Bx + B&\\
+			&= (A+B)x - 5A + B\\\\
+			A+B &= 1\\
+			0 &= -5A + B\\
+			B &= 5A\\
+			A +5A &= 1\\
+			6A &= 1\\
+			A &= \frac16\\
+			\frac16 + &= 1\\
+			B &= \frac56
+		\end{flalign*}
+		
+		Method \# 2: Put in smart $x$ values:\\\\
+		The goal here is to insert $x$ such that A or B cancels out.\\\\
+		$x=(x-5)A + (x+1)B$\\\\
+		Sub in $x = 5$:\\
+		$5 = 0 + 6B$\\
+		$B = \frac56$\\\\
+		Sub in $x = -1$\\
+		$-1 = -6A + 0$\\
+		$A = \frac16$\\\\
+		So,
+		\begin{flalign*}
+			\int \frac{x}{(x+1)(x-5)} dx &= \int \frac{1/6}{x+1} + \frac{5/6}{x-5} dx&\\
+			&= \frac16 \int{1}{x+1} + \frac56 \int{1}{x-5}\\
+			&= \frac16 \ln\mid x+1\mid + \frac56 \ln \mid x-5 \mid + c
+		\end{flalign*}
+	\end{enumerate}
+\end{document}

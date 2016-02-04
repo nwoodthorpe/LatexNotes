@@ -1,0 +1,70 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - February 1'st, 2016\\
+		\large Solving Differentials - Separable ODEs
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Separable ODEs}
+	
+	A separable Ordinary Differential Equation is an equation where we can get a function of x on one side and a function of y on the other side. If we can achieve this, we can integrate both sides like normal.
+	
+	\h{Separable ODE Definition}
+	
+	A separable ODE is a first-order ODE that can be written as $\frac{dy}{dx} = g(y) \cdot h(x)$. IE, we can separate into a product of functions, one containing only $y$, the other containing only $x$
+	
+	To solve these, move $g(y)$ to the LHS and integrate.
+	
+	\begin{flalign*}
+		\frac{1}{g(y)} \frac{dy}{dx} &= h(x)&\\
+		\int \frac{1}{g(y)} \frac{dy}{dx} dx &= \int h(x)\;dx\\
+		\int \frac{1}{g(y)}\; dx &= \int h(x)\; dx
+	\end{flalign*}
+	
+	Note: Normally you cannot treat the differential as a fraction and cancel out $dy$ or $dx$ in this example, we actually use a substitution and skip a step, so we've not broken any rules.
+	
+	\begin{itemize}
+		\item[\textbf{Ex. }] Find the particular solution to the IVP $\frac{dy}{dx} = \frac{3x^2 + 4x + 2}{2(y-1)},\;\;\;\;y(0) = -1$
+		
+		Notice we can separate this into functions of $x$ and functions of $y$!
+		\begin{flalign*}
+			2(y-1) dy &= 3x^2 + 4x + 2&\\
+			\int 2y - 2\; dy &= \int 3x^2 + 4x + 2\; dx\\
+			2y^2 - 2y &= x^3 + 2x^2 + 2x + c\\\\
+			(-1)^2 - 2(-1) &= 0 + 0 + 0 + c\\
+			-3 &= c\\
+			&\text{So, we plug in $c$ and try to solve for y}\\
+			y^2 - 2y &= x^3 + 2x^2 + 2x + 3\\
+			(y-1)^2 - 1 &= x^2 + 2x^2 + 2x + 3\\
+			y-1 &= \pm \sqrt{x^3 + 2x^2 + 2x + 4}\\
+			y &= 1 \pm \sqrt{x^3 + 2x^2 + 2x + 4}
+		\end{flalign*}
+		But only one of these satisfies $y(0) = -1$
+		
+		So $y = 1 - \sqrt{x^3 + 2x^2 + 2x + 4}$
+	\end{itemize}
+	
+	WARNING: Watch out for dividing by 0! If you create a possible divide by 0 with $y$, then do two separate cases.
+\end{document}

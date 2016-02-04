@@ -1,0 +1,133 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - January 13'th, 2016\\
+		\large Partial Fractions Continued
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Examples:}
+	
+	\begin{enumerate}[1)]
+		\item \begin{flalign*}
+			&\int \frac{x+3}{x^4 + 9x^2}\; dx&\\
+			\frac{x+3}{x^2(x^2+9)} &= \frac{A}{x} + \frac{B}{x^2} + \frac{Cx+ D}{x^2+9}\\
+			\implies x+3 &= Ax^3 + 9Ax + Bx^2 + 9B + Cx^3 + Dx^2\\
+			&= (A+C)x^3 + (B+D)x^2 + 9AX + 9B\\\\
+			&\text{By Substitution...}\\
+			0 &= A + C\\
+			0 &= B + D\\
+			1 = 9A \implies A &= \frac19\\
+			3 = 9B \implies B &= \frac13\\\\
+			\int \frac{x+3}{x^4+9x^2}\;dx &= \frac{1}{9x} + \frac{1}{3x^2} + \frac{\frac{-1}{9}x - \frac{1}{3}}{x^2 + 9}\;dx\\
+			&= \frac19 \ln \mid x \mid - \frac13 x - \frac19 \int \frac{x}{x^2 - 9} - \frac13 \int \frac{1}{x^2 - 9}\;\;\;\;\text{(Use U-sub)}\\
+			&= \frac19 \ln \mid x \mid - \frac{1}{3x} - \frac{1}{9}\left( \frac13 \ln \mid x^2 + 9 \mid \right) - \frac13 \left( \frac13 \arctan(\frac{x}{3})\right) + c
+		\end{flalign*}
+		
+		\item \begin{flalign*}
+			&\int \frac{x^3 - 2x}{x^2 + 3x + 2}\;dx&\\
+			&\text{Notice deg(num) \textgreater\; deg(denom). We must long divide. After long dividing we get:}\\
+			\frac{x^3 - 2x}{x^2 + 3x + 2} &= x - 3 + \frac{5x + 6}{x^2 + 3x + 2}\\
+			\frac{5x-6}{(x+2)(x+1)} &= \frac{A}{x+2} + \frac{B}{x+1}\\\\
+			&\text{We follow the same steps as before to get:}\\
+			A &= 4\\
+			B &= 1\\\\
+			\int \frac{x^3 - 2x}{x^2 + 3x + 2} &= \int (x-3) + \frac{4}{x+2} + \frac{1}{x+1}\; dx\\
+			&= \frac{x^2}{2} - 3x + 4\ln \mid x+2\mid + \ln \mid x+1\mid + c
+		\end{flalign*}
+	\end{enumerate}
+	\clearpage
+	\h{Strategy for Integration}
+	
+	\begin{enumerate}[\#1)]
+		\item Try an algebraic manipulation (ex. Expanding, long division, factoring, identities)
+		\begin{flalign*}
+			a)\;&\int \frac{\tan^2 \theta}{\sec^2 \theta}\; d\theta&\\
+			&= \int \frac{\sin^2 \theta}{\cos^2 \theta} \cdot \cos^2 \theta \; d\theta\\
+			&= \int \sin^2 \theta\\
+			&= \int \frac12\left(1 - \cos(2\theta)\right)\\
+			&\text{At this point, it's a simple integral.}
+		\end{flalign*}
+		\begin{flalign*}
+			b)\;&\int \frac{x+1}{x^2 + 4x + 3}\; dx&\\
+			&= \int \frac{x+1}{(x+1)(x+3)}\\
+			&= \int \frac{1}{x+3}\\
+			&= \ln \mid x+3 \mid + c
+		\end{flalign*}
+		
+		\item Look for a substitution!
+		\begin{itemize}
+			\item Let a troublesome term = $u$
+			\item Let something inside an ugly power = $u$
+			\item Let a function inside a function = $u$
+		\end{itemize}
+		
+		\begin{flalign*}
+			a)\;&\int \frac{\ln x}{x} \;\;\; u = \ln x&\\
+			&= \int u \; du\\
+			&= \frac{u^2}{2}\\
+			&= \frac{(\ln x)^2}{2}
+		\end{flalign*}
+		\begin{flalign*}
+			b)\;&\int e^{\sqrt{x}}\;\;\; u=\sqrt{x} &\\
+			&= 2\int e^u\;du\\
+			&\text{Now use IBP}
+		\end{flalign*}
+		\begin{flalign*}
+			c)\;&\int \frac{x^2}{x^3+7}\; dx\;\;\; u = x^3 + 7&\\
+			&= \int \frac{1}{3u^{9/17}}\; du\\
+			&= \frac13 \int u^{-9^17}\; du\\
+			&\text{Now use power rule.}
+		\end{flalign*}
+		\clearpage
+		\item Look at major attributes of the integrand
+		\begin{itemize}
+			\item Powers of sin/cos or sec/tan or csc/cot?
+			\begin{itemize}
+				\item Use appropriate u-sub
+			\end{itemize}
+			\item Rational Functions?
+			\begin{itemize}
+				\item Long division
+				\item Partial Fractions
+			\end{itemize}
+			\item Radicals?
+			\begin{itemize}
+				\item Completing the square and trig sub.
+			\end{itemize}
+			\item Products of unrelated functions?
+			\begin{itemize}
+				\item IBP (ILATE)
+			\end{itemize}
+		\end{itemize}
+	\end{enumerate}
+	
+	\h{Can we Integrate Any Elementary Function?}
+	
+	Nope.
+	
+	For example, you we cannot find the anti-derivative of:
+	
+	$\displaystyle \frac{e^x}{x}, e^(x^2), \frac{\sin x}{x}, \frac{\cos x}{x}, \sin{x^2}, \frac{1}{\ln x}, \cos(x^2)$
+\end{document}

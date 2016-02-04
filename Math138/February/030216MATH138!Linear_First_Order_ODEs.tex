@@ -1,0 +1,66 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math138 - February 3'rd, 2016\\
+		\large Linear First Order ODEs
+	\end{center}
+	\vspace{0.25 in}
+	
+	\h{Recall}
+	
+	First order: $y'$ appears, no higher derivative. Linear: only linear functions in $y$ and $y'$
+	
+	A general form of a linear first order ODE is
+	
+	$A(x) y' + B(x)y = c(x)$
+	
+	We can manipulate to get $y' + P(x)y = Q(x)$
+	
+	\h{Preliminary Example}
+	
+	Suppose we want to solve $\frac{dy}{dx} + \frac{1}{x} \cdot y = 1$. This ODE is not separable. The trick is to multiply both sides of the function by $x$.
+	
+	$x \frac{dy}{dx} + y = x$
+	
+	Notice the left side of this function is really just the product rule! Whoa! We can rewrite as:
+	
+	$\frac{d}{dy}\left(xy\right) = x$
+	
+	Integrating gives:
+	
+	$xy = \frac{x^2}{2}$\\
+	$y = \frac{x}{2} + \frac{c}{x}$
+	
+	\h{Finding the Trick}
+	
+	In this last example, we multiplied both sides by $x$ and the left side became the product rule. This allowed us to simplify the ODE very easily. Unfortunately, multiplying by $x$ won't always work. Luckily, there is a closed form solution to find this "trick" function.
+	
+	Suppose we have the ODE $\displaystyle \frac{dy}{dx} + P(x)y = Q(x)$. Call the function we want $\mu(x)$
+	
+	We do a bunch of fancy math, and at the end of it, we find:
+	
+	$\displaystyle \mu = e^{\int P(x) dx}$
+	
+	Yeah thats an integral in the exponent. How awesome is that?
+\end{document}

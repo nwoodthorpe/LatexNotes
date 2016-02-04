@@ -1,0 +1,53 @@
+\documentclass{letter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
+\pgfplotsset{vasymptote/.style={
+		before end axis/.append code={
+			\draw[densely dashed] ({rel axis cs:0,0} -| {axis cs:#1,0})
+			-- ({rel axis cs:0,1} -| {axis cs:#1,0});
+		}
+	}}
+	
+\newcommand{\m}{\begin{bmatrix}}
+\newcommand{\mm}{\end{bmatrix}}
+\newcommand{\0}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\h}[1]{\underline{\textbf{#1}}}	
+
+\begin{document}
+	\begin{center}
+		\LARGE Math136 - February 3'rd, 2016\\
+		\large Linear Mappings
+	\end{center}
+	\vspace{0.25 in}
+	
+	A function $f\;:\;\mathbb{R}^n \to \mathbb{R}^m$ given by $f(\vec z) = A\vec x$(for $A \in M_{m\times n} (\mathbb{R})$) is called a \textbf{matrix mapping}. We will use two notations for convenience.
+	
+	$f(\0{x_1\\\vdots\\x_n}) = \0{y_1\\\vdots\\y_m}$
+	
+	$f(x_1, \dots, x_n) = (y_1, \dots, y_m)$
+	
+	\h{Theorem 3.2.1}
+	
+	If $A$ is an $m \times n$ matrix and $f : \mathbb{R}^n \to \mathbb{R}^m$ is defined by $f(\vec x) = A\vec x$, then for all $\vec x, \vec y \in \mathbb{R}^n, b, c \in \mathbb{R}$, we have
+	
+	$f(b\vec x + c\vec y) = bf(\vec x) + cf(\vec y)$
+	
+	\h{Linear Mapping}
+	
+	A \textbf{linear mapping} $L : \mathbb{R}^n \to \mathbb{R}^m$ satisfies $L(b \vec x + c\vec y) = bL(\vec x) + cL(\vec y)\;\forall\;b, c \in \mathbb{R}, \vec x, \vec y \in \mathbb{R}^n$
+	
+	A linear mapping $L : \mathbb{R}^n \to \mathbb{R}^n$ is a linear operation.
+	
+	\h{Theorem 3.2.2}
+	
+	Every linear mapping $L : \mathbb{R}^n \to \mathbb{R}^m$ can be represented as a matrix mapping whose $i$th column is the image of the $i$th standard basis vector of $\mathbb{R}^n$ under $L$ for all $i \in \{ 1, \dots, n \}$. That is, $L(\vec x) = \left[ L \right] \vec x$ where $\left[ L \right] = \left[ L(\vec e_1), \dots, L(\vec e_n)\right]$
+	
+	Short note because I'm super confused and couldn't explain this stuff if I wanted too -\_-
+\end{document}
